@@ -1,0 +1,9 @@
+#logo{width:10%;}
+#menu{width:90%;}
+#content {
+	background: rgba(100,100,100,0.5);
+	color: white;
+	border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+}
