@@ -1,16 +1,31 @@
 <html>
 	<head>
+		<script src="js/PAGE.js"></script>
 		<link rel="stylesheet" href="stylesheet.css">
 	</head>
-	<body bgcolor="black">
+	<body bgcolor="black" onload="PAGE.begin()">
 		<center>
 			<table id="content">
-				<tr id="header">
-					<td id="logo">
-						<img src="imgs/logo.png" width="100" height="100">
-					</td>
-					<td id="menu">
-						<span>Games</span>
+				<tr>
+					<td>
+						<table id="header">
+							<tr>
+								<td id="logo"><img src="imgs/logo.png" width="100" height="100"></td>
+								<td>
+									<ul id="menu">
+										<li class="menuarrow" onclick="PAGE.lft()"><center>&#8592;<span id="lftarrowtext">hi</span></center></li>
+										<li><center><span id="page">HOME</span></center></li>
+										<li class="menuarrow" onclick="PAGE.rgt()"><center><span id="rgtarrowtext">hi</span>&#8594;</center></li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</td></tr><tr><td>
+						<div id="pageContents">
+							<p>Ohai there!<br>
+							I am a guy that is known as John, ioanD, ianiD, FlattenedTesseract and as Ioan Dragomir, my real name(Ioan means John).<br>
+							I make games. I like maths, physics, biology and programming.<br></p>
+						</div>
 					</td>
 				</tr>
 			</table>
