@@ -18,6 +18,7 @@ var G = {
 	deltaRotY: [ 0, +1, +1, +1,  0, -1, -1, -1],
 	gunrot: 0,
 	score: 0,
+	lmb: null,
 	weapon: 0, //0 is spoon, 1 is gun
 	mouseAngle: 0,
 	zombieCount: 0,
@@ -382,7 +383,9 @@ var G = {
 	getMouseButtons: function(evt, down) {
 		evt = evt || window.event;
 		var button = evt.which || evt.button;
-		if(button==1)
+		if(G.lmb==null)
+			G.lmb=button;
+		if(button==G.lmb)
 			G.LMB=down;
 	},
 	setCookie: function(cname, cvalue, exdays) {
@@ -434,7 +437,6 @@ var G = {
 				if(G.zombies[i].active && G.zombies[i].hp > 0)
 					if(G.lineRect(G.player.x, G.player.y, G.gunrot * Math.PI / 4, G.zombies[i].x - 10, G.zombies[i].y - 20, 20, 40)){
 						G.zombies[i].hp -= 3;
-						console.log("hit");
 					}
 	}
 };
