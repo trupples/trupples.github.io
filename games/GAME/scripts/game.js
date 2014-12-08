@@ -328,6 +328,7 @@ var G = {
 				var player_distance = G.distance(G.zombies[i].x, G.zombies[i].y, G.player.x, G.player.y);
 				if(player_distance < 40 && G.zombies[i].cooldown<0) {
 					G.player.hp --;
+					document.getElementById("ow").play();
 					G.zombies[i].cooldown = 1000;
 				}
 				G.zombies[i].tX = G.pointOnCircle(G.player, player_distance/2).x;
@@ -430,13 +431,16 @@ var G = {
 		if(G.weapon===0)
 			for(i=0;i<500;i++)
 				if(G.zombies[i].active && G.zombies[i].hp > 0)
-					if(G.distance(G.player.x, G.player.y, G.zombies[i].x, G.zombies[i].y) < 64)
+					if(G.distance(G.player.x, G.player.y, G.zombies[i].x, G.zombies[i].y) < 64){
 						G.zombies[i].hp-=2;
+						document.getElementById("ugh").play();
+					}
 		else
 			for(i=0;i<500;i++)
 				if(G.zombies[i].active && G.zombies[i].hp > 0)
 					if(G.lineRect(G.player.x, G.player.y, G.gunrot * Math.PI / 4, G.zombies[i].x - 10, G.zombies[i].y - 20, 20, 40)){
 						G.zombies[i].hp -= 3;
+						document.getElementById("ugh").play();
 					}
 	}
 };
