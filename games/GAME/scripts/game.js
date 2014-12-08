@@ -431,7 +431,7 @@ var G = {
 		if(G.weapon===0)
 			for(i=0;i<500;i++)
 				if(G.zombies[i].active && G.zombies[i].hp > 0)
-					if(G.distance(G.player.x, G.player.y, G.zombies[i].x, G.zombies[i].y) < 64){
+					if(G.distance(G.player.x, G.player.y, G.zombies[i].x, G.zombies[i].y) < 100){
 						G.zombies[i].hp-=2;
 						document.getElementById("ugh").play();
 					}
