@@ -6,11 +6,11 @@ love.load = function() {
 	g = {};
 	g.pop = love.audio.newSource("res/pop.mp3");
 	g.titlebase = love.graphics.newImage("res/titlebase.png");
-	g.titiltitle = love.graphics.newImage("res/titletitle.png");
+	g.titletitle = love.graphics.newImage("res/titletitle.png");
 	g.titleX = -1000;
 	g.titleY = -300;
 	g.ameState = "title";
-	g.popd=false;
+	g.popd=0;
 }
 
 love.draw = function() {
@@ -28,9 +28,15 @@ love.update = function(dt) {
 	if(g.titleX > 0){
 		g.titleX = 0;
 	}
-	if(g.titleX==0&&!g.popd){
+	if(g.titleX==0&&g.popd==0){
+		love.audio.stop(g.pop);
 		love.audio.play(g.pop);
-		g.popd=true;
+		g.popd=1;
+	}
+	if(g.titleY==0&&g.popd==1){
+		love.audio.stop(g.pop);
+		love.audio.play(g.pop);
+		g.popd=2;
 	}
 	if(g.titleX>-200&&g.titleY<0){
 		g.titleY += dt * 600;
