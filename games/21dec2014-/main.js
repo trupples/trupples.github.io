@@ -15,7 +15,7 @@ love.draw = function() {
 	love.graphics.setColor(106, 58, 58, 255);
 	love.graphics.rectangle("fill", 0, 0, 360, 640);
 	if(g.ameState == "title")
-		love.graphics.draw(g.titlebase, g.titleX, 0, 0, 0.5 * 0.9, 0.5 * 0.9, 0, 0);
+		love.graphics.draw(g.titlebase, g.titleX, 0, 0, 0.5, 0.5, 0, 0);
 }
 
 love.update = function(dt) {
