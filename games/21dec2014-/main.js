@@ -1,4 +1,4 @@
-love.graphics.preload("res/titlebase.png");
+/*love.graphics.preload("res/titlebase.png");
 love.audio.preload("res/pop.mp3");
 
 var g;
@@ -30,4 +30,5 @@ love.update = function(dt) {
 	}
 }
 
-love.run();
+love.run();*/
+setTimeout(function(){document.getElementById("canvas").getContext("2d").fillRect(100, 100, 100, 100);}, 1000);
