@@ -5,8 +5,8 @@ var g;
 love.load = function() {
 	g = {};
 	g.pop = love.audio.newSource("res/pop.mp3");
-	g.titlebase = love.graphics.newImage("res/titlebase.png");
-	g.titletitle = love.graphics.newImage("res/titletitle.png");
+	g.titlebase = love.graphics.newImage("res/titlebase.png");		//title screen background (seal face)
+	g.titletitle = love.graphics.newImage("res/titletitle.png");	//title screen title ("seals united" text)
 	g.titleX = -1000;
 	g.titleY = -300;
 	g.ameState = "title";
@@ -24,7 +24,7 @@ love.draw = function() {
 
 love.update = function(dt) {
 	if(g.titleX < 0)
-		g.titleX += dt * 750;
+		g.titleX += dt * 600;
 	if(g.titleX > 0){
 		g.titleX = 0;
 	}
