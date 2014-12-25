@@ -41,8 +41,7 @@ PIZZA.map = [['#','|','#','|','#','|','#','|','#','|','#','|','#','|','#'],
 			['-','+','-','+','-','+','-','+','-','+','-','+','-','+','-'],
 			['#','|','#','|','#','|','#','|','#','|','#','|','#','|','#'],
 			['-','+','-','+','-','+','-','+','-','+','-','+','-','+','-'],
-			['#','|','#','|','#','|','#','|','#','|','#','|','#','|','#'],
-			];
+			['#','|','#','|','#','|','#','|','#','|','#','|','#','|','#']];
 PIZZA.nothing = ["You find nothing.",
 					"There is nothing over here",
 					"\"Hello... hello... hello...\", you hear your voice echoing",
@@ -94,6 +93,8 @@ PIZZA.n = function() {
 	if(PIZZA.y<15&&PIZZA.x%2==0){
 		PIZZA.y++;
 		PIZZA.cooldown(2000);
+		if(x==tX&&y==tY)
+			PIZZA.writeStatus();
 	}
 }
 PIZZA.s = function() {
@@ -193,4 +194,5 @@ function callbackTagsWithClass(matchClass, callback) {
         }
     }
 }
+
 
