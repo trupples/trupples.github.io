@@ -5,3 +5,4 @@ PAGE.initPage = function(p){
 	document.getElementById(p).style.fontSize = "100%";
 	document.getElementById("pageContents").src = PAGE.pages[p];
 }
+PAGE.documentHeight = function ()
