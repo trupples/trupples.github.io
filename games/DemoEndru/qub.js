@@ -48,7 +48,7 @@ var _ = {
 			ddd.ctx.clearRect(0,0,ddd.canv.width,ddd.canv.height)
 			for(var obj in $$.dictionary)
 				if(typeof obj.render === 'function')
-   					ctx.putImageData(obj.render(delta), obj.renderOffset[0]|0, obj.renderOffset[1]|0);
+   					ddd.ctx.putImageData(obj.render(delta,ddd.ctx), obj.renderOffset[0]|0, obj.renderOffset[1]|0);
 		}
 	},
 	keybd: {

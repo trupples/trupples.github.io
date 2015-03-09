@@ -48,7 +48,7 @@ var _ = {
 			ddd.ctx.clearRect(0,0,ddd.canv.width,ddd.canv.height)
 			for(var obj in $$.dictionary)
 				if(typeof obj.render === 'function')
-   					ctx.putImageData(obj.render(delta), obj.renderOffset[0]|0, obj.renderOffset[1]|0);
+   					ctx.putImageData(obj.render(delta,ddd.ctx), obj.renderOffset[0]|0, obj.renderOffset[1]|0);
 		}
 	},
 	keybd: {
@@ -105,7 +105,7 @@ ddd.matrix.rotateY = function(rad){
 		[-s, 0, c, 0],
 		[ 0, 0, 0, 1]]
 }
-function ddd.matrix.rotateZ(rad){
+ddd.matrix.rotateZ = function(rad){
 	rad = typeof rad !== 'undefined' ? rad : 0
 	var c = math.cos(rad),
 	    s = math.sin(rad)

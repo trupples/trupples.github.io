@@ -1,8 +1,10 @@
-var canvas, ctx;
+var auxCanv, auxCtx;
 function load(){
 	$d("buttons",{})
-	canvas = document.getElementById("canv")
-	ctx    = canvas.getContext("2d")
+	ddd.canvas = document.getElementById("canv")
+	ddd.ctx    = ddd.canvas.getContext("2d")
+	auxCanv    = document.getElementById("acanv")
+	auxCtx     = auxCanv.getContext("2d")
 }
 function mouseUp(evt){
 	var x = new Number();
@@ -24,5 +26,24 @@ function mouseUp(evt){
         x -= canvas.offsetLeft;
         y -= canvas.offsetTop;
 
-        alert("x: " + x + "  y: " + y);
+       // alert("x: " + x + "  y: " + y);
 }
+$d("main",{
+	update = function(){
+
+	},
+	renderOffest: [0,0],
+	render = function(delta,ctx){
+		
+		/*for (var x = 0; x < 800; x++) {
+       			for (var y = 0; y < 600; y++) {
+        			var ret = 
+        			var i = (y * buffer.width + x) * 4;
+	        		buffer.data[i] = ret[0] * 255;
+        			buffer.data[i + 1] = ret[1] * 255;
+       				buffer.data[i + 2] = ret[2] * 255;
+        			buffer.data[i + 3] = ret[3] * 255;*/
+        }
+    }
+	}
+})
