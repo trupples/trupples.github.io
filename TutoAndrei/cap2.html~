@@ -1,5 +1,5 @@
 <h3>II. Variabile</h3>
-<a href="cap1.html">Capitolul I</a> | <a href="cap3.html">Capitolul III</a><br><br>
+<a href="ianiD.github.io/TutoAndrei/cap1.html">Capitolul I</a> | <a href="ianiD.github.io/TutoAndrei/cap3.html">Capitolul III</a><br><br>
 Un aspect fundamental al (aproape) fiecarui limbaj de programare, printre care si JavaScript(cel pe care il folosim), e capacitatea de a folosi variabile.<br>
 Scopul variabilelor e de a stoca informatii.<br>
 Acestea au mai multe proprietati:<br>
@@ -38,4 +38,4 @@ suma = doi + varsta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 suma = suma * varsta / 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- varsta = 13; suma = 104; doi = 3<br>
 echo(suma)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- va afisa '104', nu 'suma'<br>
 </code><br><br>
-<a href="cap1.html">Capitolul I</a> | <a href="cap3.html">Capitolul III</a>
+<a href="ianiD.github.io/TutoAndrei/cap1.html">Capitolul I</a> | <a href="ianiD.github.io/TutoAndrei/cap3.html">Capitolul III</a>
