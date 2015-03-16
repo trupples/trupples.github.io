@@ -1,0 +1,43 @@
+<h3>III. Operatii aritmetice si conditii</h3>
+<a href="cap2.html">Capitolul II</a> | <a href="cap3.html">Capitolul IV</a><br><br>
+Dupa cum s-ar outea sa stii, in JavaScript ai la indemana diverse operatii aritmetice.<br>
+Acestea sunt facute cu autorul operatorilor si operanzilor.<br>
+Luand ca exemplu: 2 + 2 = 4; + este operator; 2 si 2 sunt operanzi; 4 este rezultatul.<br>
+Operanzii pot fi variabile sau numere, booleeni, mesaje etc.<br>
+Comparatie intre operatorii din mate si cei din JavaScript:<br><code>
+mate -&gt; javascript<br>
+&nbsp;&nbsp;+&nbsp;&nbsp;-&gt;&nbsp;&nbsp;+<br>
+&nbsp;&nbsp;-&nbsp;&nbsp;-&gt;&nbsp;&nbsp;-<br>
+&nbsp;&nbsp;x&nbsp;&nbsp;-&gt;&nbsp;&nbsp;*<br>
+&nbsp;&nbsp;:&nbsp;&nbsp;-&gt;&nbsp;&nbsp;/<br></code>
+<br>
+Al doilea lucru despre care vom discuta in acest capitol sunt operatiile conditionate. Acestea vor aparea folositoare in multe cazuri.<br>
+Operatiile conditionate ne ajuta atunci cand trebuie sa executam un set de instructiuni daca o anumita conditie e respectata(adevarata) sau, in cazul in care conditia e  falsa, sa executam alt set de instructiuni.<br>
+Acestea se rezolva cu autorul instructiunii <code>if</code>(in engleza: daca).<br>
+Sintaxa instructiunii <code>if</code>(cum se foloseste):<br>
+<code>if(conditie){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instructiuni_adevarat<br>
+}</code><br>
+Daca e nevoie se poate adauga <code>else</code>:<br>
+<code>if(conditie){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instructiuni_adevarat<br>
+}else{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instructiuni_fals<br>
+}</code><br>
+In cazul in care conditia este respectata/este adevarata, se vor executa <code>Instructiuni_adevarat</code>. Altfel, daca sunt specificate, se vor executa <code>Instructiuni_fals</code>.<br>
+Conditiile sunt formate tot din operatori si operanzi, insa de data asta operatorii sunt 'mai mare', 'mai mic sau egal', 'mai mic' etc.<br>
+Operatori:<br><code>
+mate -&gt; javascript<br>
+&nbsp;&nbsp;&gt;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;&gt;<br>
+&nbsp;&nbsp;&lt;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;&lt;<br>
+&nbsp;&nbsp;&ge;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;&gt;=<br>
+&nbsp;&nbsp;&le;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;&lt;=<br>
+&nbsp;&nbsp;=&nbsp;&nbsp;-&gt;&nbsp;&nbsp;== sau ===<br>
+&nbsp;&nbsp;&ne;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;!= sau !==<br></code>
+<br>
+Exemple de conditii:<br>
+<code>2 + 2 &gt;= 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADEVARAT<br>
+2 + 2 == 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADEVARAT<br>
+6 * 5 &gt;= 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADEVARAT<br>
+6 + 9 &lt; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FALS<br></code>
+

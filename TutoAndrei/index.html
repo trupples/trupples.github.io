@@ -9,7 +9,7 @@
 		top:5px;left:5px;
 		background-color:white;
 		border-style:solid;
-		border-width:1px;">browser-ul tau curent nu suporta tag-ul <code>&lt;canvas&gt;</code></canvas>
+		border-width:1px;" onmousemove="handlemousemove(event)">browser-ul tau curent nu suporta tag-ul <code>&lt;canvas&gt;</code></canvas>
 	<div id="restart" style="position:absolute;top:310px;left:5px;width:400px;background-color:red;color:white;font-size:30px;" onclick="clearInterval(interval);eval(startupCode);interval=setInterval(function(){eval(repeatCode)},60);"><center><code>START/RESTART</code></center></div>
 	<textarea id="repeatcode" cols="80" rows="60" style="position:absolute;width:400px;height:300px;top:305px;left:415px;background-color:rgba(0,0,0,1);color:white;resize:none;" placeholder="Ce scrii aici se va repeta de 60 de ori pe secunda"></textarea>
 	<textarea id="startupcode" cols="80" rows="60" style="position:absolute;width:400px;height:300px;top:5px;left:415px;background-color:rgba(0,0,0,1);color:white;resize:none;" placeholder="Ce scrii aici se va executa o singura data la apasarea butonului start/restart"></textarea>

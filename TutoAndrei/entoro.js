@@ -1,5 +1,5 @@
 window.requestAnimFrame = (function(){return  window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(callback){window.setTimeout(callback, 1000 / 60);};})();
-var canv, ctx, interval, startupCode="", repeatCode=""
+var canv, ctx, interval, startupCode="", repeatCode="",mouse={x:0,y:0}
 function load(){
 	canv=document.getElementById('canv');
 	ctx=canv.getContext('2d');
@@ -7,36 +7,6 @@ function load(){
 		echo(errorMsg+" line:"+lineNumber);
 		clearInterval(interval)
 	}
-	document.getElementById("startupcode").keydown = function(ev) {
-		var keyCode = ev.keyCode || ev.which;
-		if (keyCode == 9) {
-			ev.preventDefault();
-			var start = this.selectionStart;
-			var end = this.selectionEnd;
-			var val = this.value;
-			var selected = val.substring(start, end);
-			var re, count;
-		}
-	if(ev.shiftKey) {
-		re = /^\t/gm;
-		count = -selected.match(re).length;
-		this.value = val.substring(0, start) + selected.replace(re, '') + val.substring(end);
-		// todo: add support for shift-tabbing without a selection
-		} else {
-		re = /^/gm;
-		count = selected.match(re).length;
-		this.value = val.substring(0, start) + selected.replace(re, '\t') + val.substring(end);
-		}
-
-	if(start === end) {
-		this.selectionStart = end + count;
-	} else {
-		this.selectionStart = start;
-	}
-
-		this.selectionEnd = end + count;
-	}
-	document.getElementById("repeatcode").keydown = document.getElementById("startupcode").keydown
 }
 
 function punct(x,y){
@@ -72,3 +42,9 @@ function echo(entry){
 function cls(){
 	document.getElementById("console").innerHTML=''
 }
+function handlemousemove(event) {
+	var rect = document.getElementById("canv").getBoundingClientRect();
+	mouse.x = event.clientX-rect.left;
+	mouse.y = event.clientY-rect.top;
+}
+
