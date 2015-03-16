@@ -1,26 +1,22 @@
-<html>
-	<body>
-		<h3>I. Consola si functia <code>echo()</code></h3>
-		<a href="cap2.html">Capitolul II</a><br><br>
-		Consola este fereastra de sub butonul START/RESTART.<br>
-		Aceasta e impartita in doua parti:<br>
-		a) Log-ul - pe care sistemul scrie erori si diverse informatii<br>
-		b) Partea unde poti scrie instructiuni pe care le vei executa pe loc, o singura data<br>
-		Pentru a folosi (b), mai intai scrii instructiunea in caseta, iar apoi apesi ENTER<br>
-		<br>
-		Functia <code>echo()</code> te auta sa scrii diverse informatii pe log.<br>
-		Sintaxa acesteia(Cum se foloseste) este urmatoarea:<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<code>echo(mesaj)</code><br>
-		Deocamdata, toate mesajele care nu sunt exprsii matematice vor fii inconjurate de doua apostrofuri (ex. 'mesaj') sau de doua ghilimele (ex. "mesaj")<br>
-		E recomandat sa pui expresiile matematice intre paranteze(numai rotunde!!!) pentru a evita erori.<br>
-		Mesajele pot fi inlantuite folosind caracterul '+'. Ex: "1+1=" + (1+1), ce va lipi "1+1=" cu rezultatul (1+1), deci va fi "1+1="+"2" sau "1+1=2".<br>
-		<br>
-		Ca un exercitiu, scrie in partea pt. instructiuni a consolei: (si vezi ce se intampla)<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;echo("1+1="+(1+1))<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;echo("2*3+4-5="+(2*3+4-5))<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;echo("Salutare!")<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;eecchhoo("2*3")<br>
-		Ultima insructiune va da o eroare deoarece nu exista functia eecchhoo()<br><br><br>
-		<a href="cap2.html">Capitolul II</a>
-	</body>
-</html>
+<h3>I. Consola si functia <code>echo()</code></h3>
+<a href="cap2.html">Capitolul II</a><br><br>
+Consola este fereastra de sub butonul START/RESTART.<br>
+Aceasta e impartita in doua parti:<br>
+a) Log-ul - pe care sistemul scrie erori si diverse informatii<br>
+b) Partea unde poti scrie instructiuni pe care le vei executa pe loc, o singura data<br>
+Pentru a folosi (b), mai intai scrii instructiunea in caseta, iar apoi apesi ENTER<br>
+<br>
+Functia <code>echo()</code> te auta sa scrii diverse informatii pe log.<br>
+Sintaxa acesteia(Cum se foloseste) este urmatoarea:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>echo(mesaj)</code><br>
+Deocamdata, toate mesajele care nu sunt exprsii matematice vor fii inconjurate de doua apostrofuri (ex. 'mesaj') sau de doua ghilimele (ex. "mesaj")<br>
+E recomandat sa pui expresiile matematice intre paranteze(numai rotunde!!!) pentru a evita erori.<br>
+Mesajele pot fi inlantuite folosind caracterul '+'. Ex: "1+1=" + (1+1), ce va lipi "1+1=" cu rezultatul (1+1), deci va fi "1+1="+"2" sau "1+1=2".<br>
+<br>
+Ca un exercitiu, scrie in partea pt. instructiuni a consolei: (si vezi ce se intampla)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo("1+1="+(1+1))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo("2*3+4-5="+(2*3+4-5))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo("Salutare!")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;eecchhoo("2*3")<br>
+Ultima insructiune va da o eroare deoarece nu exista functia eecchhoo()<br><br><br>
+<a href="cap2.html">Capitolul II</a>
