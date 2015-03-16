@@ -36,8 +36,8 @@ mate -&gt; javascript<br>
 &nbsp;&nbsp;&ne;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;!= sau !==<br></code>
 <br>
 Exemple de conditii:<br>
-<code>2 + 2 &gt;= 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADEVARAT<br>
-2 + 2 == 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADEVARAT<br>
-6 * 5 &gt;= 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADEVARAT<br>
-6 + 9 &lt; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FALS<br></code>
+<code>2 + 2 &gt;= 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ADEVARAT)<br>
+2 + 2 == 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ADEVARAT)<br>
+6 * 5 &gt;= 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ADEVARAT)<br>
+6 + 9 &lt; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(FALS)<br></code>
 
