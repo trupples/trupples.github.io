@@ -12,11 +12,11 @@ function load(){
 function punct(x,y){
 	ctx.fillRect(x, y, 1, 1);
 }
-function dreptunghi(mode, x, y, w, h){
-	if(mode=="linie")
-		ctx.strokeRect(x, y, w, h)
-	else
-		ctx.fillRect(x, y, w, h)
+function dreptunghi(x, y, w, h){
+	ctx.fillRect(x, y, w, h)
+}
+function dreptunghi_c(x, y, w, h){
+	ctx.strokeRect(x, y, w, h)
 }
 function linie(x1, y1, x2, y2){
 	ctx.beginPath()
@@ -27,11 +27,11 @@ function linie(x1, y1, x2, y2){
 function sterge(){
 	ctx.clearRect(0, 0, 400, 300)
 }
-function culoare(linie, pata){
-	if(typeof linie !== 'undefined')
-		ctx.strokeStyle=linie;
-	if(typeof pata !== 'undefined')
-		ctx.fillStyle=pata;
+function culoare(contur, unplere){
+	if(typeof contur !== 'undefined')
+		ctx.strokeStyle=contur;
+	if(typeof umplere !== 'undefined')
+		ctx.fillStyle=umplere;
 }
 function fundal(stil){
 	document.getElementById("canv").style.backgroundColor=stil
