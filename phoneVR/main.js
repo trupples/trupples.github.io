@@ -1,9 +1,11 @@
 window.requestAnimFrame = (function(){return  window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(callback){window.setTimeout(callback, 1000 / 60);};})();
 var vertices = {}
 var cube
-var cam = {pos: {x:0, y:0, z:0},rot: {x:0, y:0, z:0}}
+var cam = {pos: {x:0, y:0, z:-5},rot: {x:0, y:0, z:0}}
 var movement = {x:0,y:0,z:0}
 load = function(){
+    document.getElementById("canvas").width = document.body.clientWidth; 
+    document.getElementById("canvas").height = document.body.clientHeight;
 	ddd.ctx=document.getElementById("canvas").getContext("2d")
 	if (!window.DeviceOrientationEvent) throw "DeviceOrientationEvent not supported!";
 	else window.addEventListener('deviceorientation', function(evt){
@@ -36,7 +38,7 @@ load = function(){
 function renderMesh(mesh){
 	for(var v in mesh.vertices){
 		var vertex = {x:mesh.vertices[v][0], y:mesh.vertices[v][1], z:mesh.vertices[v][2], w:mesh.vertices[v][3]}
-		//vertex = ddd.matrix.apply(vertex, ddd.matrix.translation(cam.pos.x, cam.pos.y, cam.pos.z))
+		vertex = ddd.matrix.apply(vertex, ddd.matrix.translation(cam.pos.x, cam.pos.y, cam.pos.z))
 		vertex = ddd.matrix.apply(vertex, ddd.matrix.rotationY(cam.rot.y))
 		vertex = ddd.matrix.apply(vertex, ddd.matrix.rotationX(cam.rot.x))
 		var c = ddd.project(vertex.x, vertex.y, vertex.z)
