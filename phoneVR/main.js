@@ -7,6 +7,7 @@ load = function(){
     document.getElementById("canvas").width = document.body.clientWidth; 
     document.getElementById("canvas").height = document.body.clientHeight;
 	ddd.ctx=document.getElementById("canvas").getContext("2d")
+	ddd.ctx.rotate(90 * (Math.PI / 180));   
 	if (!window.DeviceOrientationEvent) throw "DeviceOrientationEvent not supported!";
 	else window.addEventListener('deviceorientation', function(evt){
 		evt.preventDefault()
