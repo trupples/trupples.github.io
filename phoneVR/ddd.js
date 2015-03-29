@@ -4,7 +4,7 @@ ddd.clip = {}
 ddd.clip.min = 0.3
 ddd.clip.max = 100000000
 //http://stackoverflow.com/questions/17885850/how-to-parse-a-string-containing-text-for-a-number-float-in-javascript
-function parseSentenceForNumber(sentence){
+function parseSentenceForNumbers(sentence){
     var matches = /(\+|-)?((\d+(\.\d+)?)|(\.\d+))/g.exec(sentence);
     return matches;
 }
@@ -83,7 +83,7 @@ ddd.loadObj=function(str){
 	var lines = str.split('\n')
 	for(var line in lines){
 		if (/^\s*v/.test(lines[line])) {	//vertex
-			var vert = parseSentenceForNumber(lines[line]);
+			var vert = parseSentenceForNumbers(lines[line]);
 			vert[0]=parseInt(vert[0]);vert[0]=vert[0]?vert[0]:0;
 			vert[1]=parseInt(vert[1]);vert[1]=vert[1]?vert[1]:0;
 			vert[2]=parseInt(vert[2]);vert[2]=vert[2]?vert[2]:0;
@@ -91,7 +91,7 @@ ddd.loadObj=function(str){
 			mesh.vertices.push(vert);
 		}
 		if(/^s*f/.test(lines[line])) {	//face
-			var face = parseSentenceForNumber(lines[line]);
+			var face = parseSentenceForNumbers(lines[line]);
 			mesh.faces.push(face);
 		}
 	}
