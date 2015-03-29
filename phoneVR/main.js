@@ -45,10 +45,10 @@ update=function(){
 	ddd.ctx.fillStyle="white";
 	renderMesh(cube);
 	ddd.ctx.fillText((cam.pos.x+""),10,10)
-	ddd.ctx.fillText((cam.pos.y+""),20,10)
-	ddd.ctx.fillText((cam.pos.z+""),30,10)
-	ddd.ctx.fillText((cam.rot.x+""),10,100)
-	ddd.ctx.fillText((cam.rot.y+""),20,100)
-	ddd.ctx.fillText((cam.rot.z+""),30,100)
+	ddd.ctx.fillText((cam.pos.y+""),10,20)
+	ddd.ctx.fillText((cam.pos.z+""),10,30)
+	ddd.ctx.fillText((cam.rot.x+""),10,40)
+	ddd.ctx.fillText((cam.rot.y+""),10,50)
+	ddd.ctx.fillText((cam.rot.z+""),10,60)
 	window.requestAnimFrame(update);
 }
