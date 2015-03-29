@@ -15,8 +15,8 @@ load = function(){
 	if (!window.DeviceMotionEvent) 		throw "DeviceMotionEvent not supported!";
 	else window.addEventListener('devicemotion', function(evt){
 		evt.preventDefault()
-		movement.x = movement.x+evt.acceleration.y*Math.cos(cam.rot.y)+evt.acceleration.x*Math.sin(cam.rot.y);
-		movement.z = movement.z+evt.acceleration.x*Math.sin(cam.rot.y)+evt.acceleration.y*Math.cos(cam.rot.y);
+		movement.x = evt.acceleration.y*Math.cos(cam.rot.y)+evt.acceleration.x*Math.sin(cam.rot.y);
+		movement.z = evt.acceleration.x*Math.sin(cam.rot.y)+evt.acceleration.y*Math.cos(cam.rot.y);
 		cam.pos.x = cam.pos.x+movement.x;
 		cam.pos.z = cam.pos.z+movement.z;
 	}, false);
