@@ -4,8 +4,8 @@ var cube
 var cam = {pos: {x:0, y:0, z:-5},rot: {x:0, y:0, z:0}}
 var movement = {x:0,y:0,z:0}
 load = function(){
-    document.getElementById("canvas").width = document.body.clientWidth; 
-    document.getElementById("canvas").height = document.body.clientHeight;
+    document.getElementById("canvas").width = document.body.clientHeight; 
+    document.getElementById("canvas").height = document.body.clientWidth;
 	ddd.ctx=document.getElementById("canvas").getContext("2d")
 	ddd.ctx.rotate(90 * (Math.PI / 180));   
 	if (!window.DeviceOrientationEvent) throw "DeviceOrientationEvent not supported!";
