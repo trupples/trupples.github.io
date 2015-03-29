@@ -11,7 +11,7 @@ load = function(){
 	else window.addEventListener('deviceorientation', function(evt){
 		evt.preventDefault()
 		cam.rot.y = -evt.alpha * Math.PI / 180;
-		cam.rot.x = -evt.gamma * Math.PI / 180;
+		cam.rot.x = (-evt.gamma-Math.PI/2) * Math.PI / 180;
 		cam.rot.z = evt.beta * Math.PI / 180;
 	}, false);
 	if (!window.DeviceMotionEvent) 		throw "DeviceMotionEvent not supported!";
