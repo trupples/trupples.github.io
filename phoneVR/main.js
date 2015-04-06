@@ -1,46 +1,37 @@
 window.requestAnimFrame = (function(){return  window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(callback){window.setTimeout(callback, 1000 / 60);};})();
-var vertices = {}
-var cube, cross
-var cam = {pos: {x:0, y:0, z:-5},rot: {x:0, y:0, z:0}}
+var vertices = {};
+var cube, cross;
+var left, leftCtx, right, rightCtx;
+var cam = {pos: {x:0, y:0, z:-5},rot: {x:0, y:0, z:0}, eyeDist: 0.1}
+var ccam = cam;
 var movement = {x:0,y:0,z:0}, position = {x:0, y:0, z:0};
 function mobile(){
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
-function setLeft(){
-    ddd.canv=document.getElementById("canvasLeft");
-	ddd.ctx=ddd.canv.getContext("2d");
-    cam.pos.x=cam.pos.x+Math.cos(cam.rot.y)*0.1;
-    cam.pos.y=cam.pos.y;//+Math.cos(cam.rot.y)*0.1;
-    cam.pos.z=cam.pos.z+Math.sin(cam.rot.y)*0.1;
-}
-function setRight(){
-    ddd.canv=document.getElementById("canvasRight");
-	ddd.ctx=ddd.canv.getContext("2d");
-    cam.pos.x=cam.pos.x-Math.cos(cam.rot.y)*0.1;
-    cam.pos.y=cam.pos.y;//-Math.cos(cam.rot.y)*0.1;
-    cam.pos.z=cam.pos.z-Math.sin(cam.rot.y)*0.1;
-}
 load = function(){
-    setLeft();
-    if (mobile()) {
-        ddd.canv.width=document.body.clientHeight;
-        ddd.canv.height=document.body.clientWidth/2;
+    var realWidth = document.body.clientWidth>document.body.clientHeight?document.body.clientWidth:document.body.clientHeight;
+    var realHeight = document.body.clientWidth<document.body.clientHeight?document.body.clientWidth:document.body.clientHeight;
+    left = document.getElementById("canvasLeft");leftCtx=left.getContext("2d");
+    right = document.getElementById("canvasRight");rightCtx=right.getContext("2d");
+    left.width=right.width=realWidth/2;
+    left.height=right.height=realHeight;
+    if (realWidth==document.body.clientWidth) {
+        console.log("MOBILE");
+        left.style.top=0;
+        left.style.left=0;
+        right.style.top=realWidth/2;
+        right.style.left=0;
     }else{
-        ddd.canv.width=document.body.clientWidth/2;
-        ddd.canv.height=document.body.clientHeight;
+        console.log("PC");
+        left.style.top=0;
+        left.style.left=0;
+        right.style.top=0;
+        right.style.left=realWidth/2;
     }
-    ddd.canv.aspect = ddd.canv.width / ddd.canv.height;
-    ddd.canv.midd = ddd.canv.width/2 + ddd.canv.height/2;
-    setRight();
-    if (mobile()) {
-        ddd.canv.width=document.body.clientHeight;
-        ddd.canv.height=document.body.clientWidth/2;
-    }else{
-        ddd.canv.width=document.body.clientWidth/2;
-        ddd.canv.height=document.body.clientHeight;
-    }
-    ddd.canv.aspect = ddd.canv.width / ddd.canv.height;
-    ddd.canv.midd = ddd.canv.width/2 + ddd.canv.height/2;
+    left.aspect = left.width / left.height;
+    right.aspect = right.width / right.height;
+    left.midd = left.width/2 + left.height/2;
+    right.midd = right.width/2 + right.height/2;
 	if (!window.DeviceOrientationEvent) throw "DeviceOrientationEvent not supported!";
 	else window.addEventListener('deviceorientation', function(evt){
 		evt.preventDefault();
@@ -107,23 +98,17 @@ load = function(){
 }
 
 update=function(){
-    setLeft();
-    ddd.ctx.fillStyle="white";
-	ddd.ctx.strokeStyle="black";
-    ddd.ctx.lineWidth=2;
-	ddd.ctx.clearRect(0, 0, 10000, 10000);
-	ddd.renderMesh(cube, cam, ddd.rendermode.faces);
-	ddd.renderMesh(cross, cam, ddd.rendermode.faces);
-    ddd.ctx.fillRect(ddd.canv.width-5,0,5,10000);
-    
-    setRight();
-    ddd.ctx.fillStyle="white";
-	ddd.ctx.strokeStyle="black";
-    ddd.ctx.lineWidth=2;
-	ddd.ctx.clearRect(0, 0, 10000, 10000);
-	ddd.renderMesh(cube, cam, ddd.rendermode.faces);
-	ddd.renderMesh(cross, cam, ddd.rendermode.faces);
-    ddd.ctx.fillRect(ddd.canv.width,0,5,10000);
-    
+    leftCtx.fillStyle="white";
+	leftCtx.strokeStyle="black";
+    leftCtx.lineWidth=2;
+	leftCtx.clearRect(0, 0, 10000, 10000);
+    leftCtx.fillRect(left.width-2,0,2,10000);
+    rightCtx.fillStyle="white";
+	rightCtx.strokeStyle="black";
+    rightCtx.lineWidth=2;
+	rightCtx.clearRect(0, 0, 10000, 10000);
+    rightCtx.fillRect(0,0,2,10000);
+    ddd.renderMeshOn2(cube, cam, ddd.rendermode.faces, left, right);
+    ddd.renderMeshOn2(cross, cam, ddd.rendermode.faces, left, right);
 	window.requestAnimFrame(update);
 }

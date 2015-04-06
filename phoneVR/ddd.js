@@ -1,5 +1,4 @@
 var ddd = {}
-ddd.ctx, ddd.canv
 ddd.clip = {}
 ddd.clip.min = 0.3
 ddd.clip.max = 100000000
@@ -113,7 +112,8 @@ ddd.rendermode.triangles_fan    =  23;
 ddd.rendermode.faces            =  31;
 
 //rendering
-ddd.renderMesh=function(mesh,cam,mode){
+ddd.renderMesh=function(mesh,cam,mode,canv){
+    var ctx=canv.getContext("2d");
     var projectedVertices = new Array();
 	for(var v in mesh.vertices){
 		var vertex = {x:mesh.vertices[v][0], y:mesh.vertices[v][1], z:mesh.vertices[v][2], w:mesh.vertices[v][3]}
@@ -127,11 +127,11 @@ ddd.renderMesh=function(mesh,cam,mode){
     if (mode===ddd.rendermode.points) {
             v=parseInt(v);
         for (var v in projectedVertices) {
-            x = projectedVertices[v][0] * ddd.canv.midd + ddd.canv.width/2
-            y = projectedVertices[v][1] * ddd.canv.midd + ddd.canv.height/2
+            x = projectedVertices[v][0] * canv.midd + canv.width/2
+            y = projectedVertices[v][1] * canv.midd + canv.height/2
             z = projectedVertices[v][2]
             if (z > ddd.clip.min && z < ddd.clip.max){
-                ddd.ctx.fillRect(x,y,10,10);
+                ctx.fillRect(x,y,10,10);
             }
         }
     }
@@ -140,19 +140,19 @@ ddd.renderMesh=function(mesh,cam,mode){
         for (var v in projectedVertices) {
             v=parseInt(v);
             if (v%2==0) {
-                x1 = projectedVertices[v][0] * ddd.canv.midd + ddd.canv.width/2
-                y1 = projectedVertices[v][1] * ddd.canv.midd + ddd.canv.height/2
+                x1 = projectedVertices[v][0] * canv.midd + canv.width/2
+                y1 = projectedVertices[v][1] * canv.midd + canv.height/2
                 z1 = projectedVertices[v][2]
-                x2 = projectedVertices[v+1][0] * ddd.canv.midd + ddd.canv.width/2
-                y2 = projectedVertices[v+1][1] * ddd.canv.midd + ddd.canv.height/2
+                x2 = projectedVertices[v+1][0] * canv.midd + canv.width/2
+                y2 = projectedVertices[v+1][1] * canv.midd + canv.height/2
                 z2 = projectedVertices[v+1][2]
                 if ((z1 > ddd.clip.min && z1 < ddd.clip.max)&&(z2 > ddd.clip.min && z2 < ddd.clip.max)){
-                    ddd.ctx.beginPath();
-                    ddd.ctx.moveTo(x1,y1);
-                    ddd.ctx.lineTo(x2,y2);
-                    ddd.ctx.closePath();
-                    ddd.ctx.strokeStyle="white";
-                    ddd.ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(x1,y1);
+                    ctx.lineTo(x2,y2);
+                    ctx.closePath();
+                    ctx.strokeStyle="white";
+                    ctx.stroke();
                 }
             }
         }
@@ -160,72 +160,72 @@ ddd.renderMesh=function(mesh,cam,mode){
     
     if (mode===ddd.rendermode.lines_chain) {
         var first=true;
-        ddd.ctx.beginPath();
+        ctx.beginPath();
         for (var v in projectedVertices) {
             v=parseInt(v);
-            x = projectedVertices[v][0] * ddd.canv.midd + ddd.canv.width/2
-            y = projectedVertices[v][1] * ddd.canv.midd + ddd.canv.height/2
+            x = projectedVertices[v][0] * canv.midd + canv.width/2
+            y = projectedVertices[v][1] * canv.midd + canv.height/2
             z = projectedVertices[v][2]
             if (z < ddd.clip.min || z > ddd.clip.max){
                 return;
             }else{
                 if (first) {
-                    ddd.ctx.moveTo(x1,y1);
+                    ctx.moveTo(x1,y1);
                     first=false;
                 }else{
-                    ddd.ctx.lineTo(x2,y2);
+                    ctx.lineTo(x2,y2);
                 }
             }
         }
-        ddd.ctx.strokeStyle="white";
-        ddd.ctx.stroke();
+        ctx.strokeStyle="white";
+        ctx.stroke();
     }
     
     if (mode===ddd.rendermode.lines_loop) {
-        ddd.ctx.beginPath();
+        ctx.beginPath();
         var first=true;
         for (var v in projectedVertices) {
             v=parseInt(v);
-            x = projectedVertices[v][0] * ddd.canv.midd + ddd.canv.width/2
-            y = projectedVertices[v][1] * ddd.canv.midd + ddd.canv.height/2
+            x = projectedVertices[v][0] * canv.midd + canv.width/2
+            y = projectedVertices[v][1] * canv.midd + canv.height/2
             z = projectedVertices[v][2]
             if (z < ddd.clip.min || z > ddd.clip.max){
                 return;
             }else{
                 if (first) {
-                    ddd.ctx.moveTo(x1,y1);
+                    ctx.moveTo(x1,y1);
                     first=false;
                 }else{
-                    ddd.ctx.lineTo(x2,y2);
+                    ctx.lineTo(x2,y2);
                 }
             }
         }
-        ddd.ctx.closePath();
-        ddd.ctx.strokeStyle="white";
-        ddd.ctx.stroke();
+        ctx.closePath();
+        ctx.strokeStyle="white";
+        ctx.stroke();
     }
     
     if (mode===ddd.rendermode.triangles) {
         for (var v in projectedVertices) {
             v=parseInt(v);
             if (v%3==0) {
-                x1 = projectedVertices[v  ][0] * ddd.canv.midd + ddd.canv.width/2
-                y1 = projectedVertices[v  ][1] * ddd.canv.midd + ddd.canv.height/2
+                x1 = projectedVertices[v  ][0] * canv.midd + canv.width/2
+                y1 = projectedVertices[v  ][1] * canv.midd + canv.height/2
                 z1 = projectedVertices[v  ][2]
-                x2 = projectedVertices[v+1][0] * ddd.canv.midd + ddd.canv.width/2
-                y2 = projectedVertices[v+1][1] * ddd.canv.midd + ddd.canv.height/2
+                x2 = projectedVertices[v+1][0] * canv.midd + canv.width/2
+                y2 = projectedVertices[v+1][1] * canv.midd + canv.height/2
                 z2 = projectedVertices[v+1][2]
-                x3 = projectedVertices[v+2][0] * ddd.canv.midd + ddd.canv.width/2
-                y3 = projectedVertices[v+2][1] * ddd.canv.midd + ddd.canv.height/2
+                x3 = projectedVertices[v+2][0] * canv.midd + canv.width/2
+                y3 = projectedVertices[v+2][1] * canv.midd + canv.height/2
                 z3 = projectedVertices[v+2][2]
                 if (z1 > ddd.clip.min && z1 < ddd.clip.max && z2 > ddd.clip.min && z2 < ddd.clip.max && z3 > ddd.clip.min && z3 < ddd.clip.max){
-                    ddd.ctx.beginPath();
-                    ddd.ctx.moveTo(x1,y1);
-                    ddd.ctx.lineTo(x2,y2);
-                    ddd.ctx.lineTo(x3,y3);
-                    ddd.ctx.closePath();
-                    ddd.ctx.strokeStyle="white";
-                    ddd.ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(x1,y1);
+                    ctx.lineTo(x2,y2);
+                    ctx.lineTo(x3,y3);
+                    ctx.closePath();
+                    ctx.strokeStyle="white";
+                    ctx.stroke();
                 }
             }
         }
@@ -235,49 +235,49 @@ ddd.renderMesh=function(mesh,cam,mode){
         for (var v in projectedVertices) {
             v=parseInt(v);
             if (v<projectedVertices-2) {
-                x1 = projectedVertices[v  ][0] * ddd.canv.midd + ddd.canv.width/2
-                y1 = projectedVertices[v  ][1] * ddd.canv.midd + ddd.canv.height/2
+                x1 = projectedVertices[v  ][0] * canv.midd + canv.width/2
+                y1 = projectedVertices[v  ][1] * canv.midd + canv.height/2
                 z1 = projectedVertices[v  ][2]
-                x2 = projectedVertices[v+1][0] * ddd.canv.midd + ddd.canv.width/2
-                y2 = projectedVertices[v+1][1] * ddd.canv.midd + ddd.canv.height/2
+                x2 = projectedVertices[v+1][0] * canv.midd + canv.width/2
+                y2 = projectedVertices[v+1][1] * canv.midd + canv.height/2
                 z2 = projectedVertices[v+1][2]
-                x3 = projectedVertices[v+2][0] * ddd.canv.midd + ddd.canv.width/2
-                y3 = projectedVertices[v+2][1] * ddd.canv.midd + ddd.canv.height/2
+                x3 = projectedVertices[v+2][0] * canv.midd + canv.width/2
+                y3 = projectedVertices[v+2][1] * canv.midd + canv.height/2
                 z3 = projectedVertices[v+2][2]
                 if (z1 > ddd.clip.min && z1 < ddd.clip.max && z2 > ddd.clip.min && z2 < ddd.clip.max && z3 > ddd.clip.min && z3 < ddd.clip.max){
-                    ddd.ctx.beginPath();
-                    ddd.ctx.moveTo(x1,y1);
-                    ddd.ctx.lineTo(x2,y2);
-                    ddd.ctx.lineTo(x3,y3);
-                    ddd.ctx.closePath();
-                    ddd.ctx.strokeStyle="white";
-                    ddd.ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(x1,y1);
+                    ctx.lineTo(x2,y2);
+                    ctx.lineTo(x3,y3);
+                    ctx.closePath();
+                    ctx.strokeStyle="white";
+                    ctx.stroke();
                 }
             }
         }
     }
     
     if (mode===ddd.rendermode.triangles_fan) {
-        x = projectedVertices[0][0] * ddd.canv.midd + ddd.canv.width/2;     //first point
-        y = projectedVertices[0][1] * ddd.canv.midd + ddd.canv.height/2;
+        x = projectedVertices[0][0] * canv.midd + canv.width/2;     //first point
+        y = projectedVertices[0][1] * canv.midd + canv.height/2;
         z = projectedVertices[0][2];
         for (var v in projectedVertices) {
             v=parseInt(v);
             if (v<projectedVertices.length-1) {
-                x1 = projectedVertices[v  ][0] * ddd.canv.midd + ddd.canv.width/2
-                y1 = projectedVertices[v  ][1] * ddd.canv.midd + ddd.canv.height/2
+                x1 = projectedVertices[v  ][0] * canv.midd + canv.width/2
+                y1 = projectedVertices[v  ][1] * canv.midd + canv.height/2
                 z1 = projectedVertices[v  ][2]
-                x2 = projectedVertices[v+1][0] * ddd.canv.midd + ddd.canv.width/2
-                y2 = projectedVertices[v+1][1] * ddd.canv.midd + ddd.canv.height/2
+                x2 = projectedVertices[v+1][0] * canv.midd + canv.width/2
+                y2 = projectedVertices[v+1][1] * canv.midd + canv.height/2
                 z2 = projectedVertices[v+1][2]
                 if (z > ddd.clip.min && z < ddd.clip.max && z1 > ddd.clip.min && z1 < ddd.clip.max && z2 > ddd.clip.min && z2 < ddd.clip.max){
-                    ddd.ctx.beginPath();
-                    ddd.ctx.moveTo(x,y);
-                    ddd.ctx.lineTo(x1,y1);
-                    ddd.ctx.lineTo(x2,y2);
-                    ddd.ctx.closePath();
-                    ddd.ctx.strokeStyle="white";
-                    ddd.ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(x,y);
+                    ctx.lineTo(x1,y1);
+                    ctx.lineTo(x2,y2);
+                    ctx.closePath();
+                    ctx.strokeStyle="white";
+                    ctx.stroke();
                 }
             }
         }
@@ -286,28 +286,42 @@ ddd.renderMesh=function(mesh,cam,mode){
     if (mode===ddd.rendermode.faces) {
         for (var f of mesh.faces) {
             var first=true;
-            ddd.ctx.beginPath();
+            ctx.beginPath();
             for (var v of f) {
                 v = parseInt(v);
-                x = projectedVertices[v][0] * ddd.canv.midd + ddd.canv.width/2
-                y = projectedVertices[v][1] * ddd.canv.midd + ddd.canv.height/2
+                x = projectedVertices[v][0] * canv.midd + canv.width/2
+                y = projectedVertices[v][1] * canv.midd + canv.height/2
                 z = projectedVertices[v][2]
                 if (z < ddd.clip.min || z > ddd.clip.max){
                     return;
                 }else{
                     if (first) {
                         first=false;
-                        ddd.ctx.moveTo(x,y);
+                        ctx.moveTo(x,y);
                     }else{
-                        ddd.ctx.lineTo(x,y);
+                        ctx.lineTo(x,y);
                     }
                 }
             }
-            ddd.ctx.closePath();
-            ddd.ctx.strokeStyle="white";
-            ddd.ctx.stroke();
+            ctx.closePath();
+            ctx.strokeStyle="white";
+            ctx.stroke();
         }
     }
+}
+
+ddd.renderMeshOn2 = function(mesh, centralCamera, renderMode, leftCanvas, rightCanvas){
+    if (typeof centralCamera.eyeDist != "number") {
+        centralCamera.eyeDist = 0.1;
+    }
+    var leftCamera = {pos:{x:centralCamera.pos.x+Math.cos(centralCamera.rot.y)*centralCamera.eyeDist,
+                            y:centralCamera.pos.y,
+                            z:centralCamera.pos.z+Math.sin(centralCamera.rot.y)*centralCamera.eyeDist},rot:centralCamera.rot};
+    var rightCamera = {pos:{x:centralCamera.pos.x-Math.cos(centralCamera.rot.y)*centralCamera.eyeDist,
+                            y:centralCamera.pos.y,
+                            z:centralCamera.pos.z-Math.sin(centralCamera.rot.y)*centralCamera.eyeDist},rot:centralCamera.rot};
+    ddd.renderMesh(mesh, leftCamera, renderMode, leftCanvas);
+    ddd.renderMesh(mesh, rightCamera, renderMode, rightCanvas);
 }
 
 function degToRad(a) {
