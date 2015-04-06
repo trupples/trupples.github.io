@@ -6,30 +6,41 @@ var movement = {x:0,y:0,z:0}, position = {x:0, y:0, z:0};
 function mobile(){
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
-load = function(){
-    ddd.canv=document.getElementById("canvas");
+function setLeft(){
+    ddd.canv=document.getElementById("canvasLeft");
 	ddd.ctx=ddd.canv.getContext("2d");
+    cam.pos.x=cam.pos.x+Math.cos(cam.rot.y)*0.1;
+    cam.pos.y=cam.pos.y;//+Math.cos(cam.rot.y)*0.1;
+    cam.pos.z=cam.pos.z+Math.sin(cam.rot.y)*0.1;
+}
+function setRight(){
+    ddd.canv=document.getElementById("canvasRight");
+	ddd.ctx=ddd.canv.getContext("2d");
+    cam.pos.x=cam.pos.x-Math.cos(cam.rot.y)*0.1;
+    cam.pos.y=cam.pos.y;//-Math.cos(cam.rot.y)*0.1;
+    cam.pos.z=cam.pos.z-Math.sin(cam.rot.y)*0.1;
+}
+load = function(){
+    setLeft();
     if (mobile()) {
         ddd.canv.width=document.body.clientHeight;
-        ddd.canv.height=document.body.clientWidth;
+        ddd.canv.height=document.body.clientWidth/2;
     }else{
-        ddd.canv.width=document.body.clientWidth;
+        ddd.canv.width=document.body.clientWidth/2;
         ddd.canv.height=document.body.clientHeight;
     }
     ddd.canv.aspect = ddd.canv.width / ddd.canv.height;
     ddd.canv.midd = ddd.canv.width/2 + ddd.canv.height/2;
-    ddd.canv.onresize = function(){
-        if (mobile()) {
-            ddd.canv.width=document.body.clientHeight;
-            ddd.canv.height=document.body.clientWidth;
-        }else{
-            ddd.canv.width=document.body.clientWidth;
-            ddd.canv.height=document.body.clientHeight;
-        }
-        ddd.canv.aspect = ddd.canv.width / ddd.canv.height;
-        ddd.canv.midd = ddd.canv.width/2 + ddd.canv.height/2;
+    setRight();
+    if (mobile()) {
+        ddd.canv.width=document.body.clientHeight;
+        ddd.canv.height=document.body.clientWidth/2;
+    }else{
+        ddd.canv.width=document.body.clientWidth/2;
+        ddd.canv.height=document.body.clientHeight;
     }
-    //ddd.ctx.transform(-1,0,0,1,0,0);//scale x -1
+    ddd.canv.aspect = ddd.canv.width / ddd.canv.height;
+    ddd.canv.midd = ddd.canv.width/2 + ddd.canv.height/2;
 	if (!window.DeviceOrientationEvent) throw "DeviceOrientationEvent not supported!";
 	else window.addEventListener('deviceorientation', function(evt){
 		evt.preventDefault();
@@ -96,22 +107,23 @@ load = function(){
 }
 
 update=function(){
+    setLeft();
     ddd.ctx.fillStyle="white";
 	ddd.ctx.strokeStyle="black";
     ddd.ctx.lineWidth=2;
 	ddd.ctx.clearRect(0, 0, 10000, 10000);
 	ddd.renderMesh(cube, cam, ddd.rendermode.faces);
 	ddd.renderMesh(cross, cam, ddd.rendermode.faces);
+    ddd.ctx.fillRect(ddd.canv.width-5,0,5,10000);
     
+    setRight();
+    ddd.ctx.fillStyle="white";
+	ddd.ctx.strokeStyle="black";
+    ddd.ctx.lineWidth=2;
+	ddd.ctx.clearRect(0, 0, 10000, 10000);
+	ddd.renderMesh(cube, cam, ddd.rendermode.faces);
+	ddd.renderMesh(cross, cam, ddd.rendermode.faces);
+    ddd.ctx.fillRect(ddd.canv.width,0,5,10000);
     
-    
-    ddd.ctx.font = 'normal 50px Consolas';
-	ddd.ctx.fillText((cam.pos.x+"").substr(0,5),10, 50);ddd.ctx.strokeText((cam.pos.x+"").substr(0,5),10, 50);
-	ddd.ctx.fillText((cam.pos.y+"").substr(0,5),10,100);ddd.ctx.strokeText((cam.pos.y+"").substr(0,5),10,100);
-	ddd.ctx.fillText((cam.pos.z+"").substr(0,5),10,150);ddd.ctx.strokeText((cam.pos.z+"").substr(0,5),10,150);
-    
-	ddd.ctx.fillText((cam.rot.x+"").substr(0,5),10,200);ddd.ctx.strokeText((cam.rot.x+"").substr(0,5),10,200);
-	ddd.ctx.fillText((cam.rot.y+"").substr(0,5),10,250);ddd.ctx.strokeText((cam.rot.y+"").substr(0,5),10,250);
-	ddd.ctx.fillText((cam.rot.z+"").substr(0,5),10,300);ddd.ctx.strokeText((cam.rot.z+"").substr(0,5),10,300);
 	window.requestAnimFrame(update);
 }
