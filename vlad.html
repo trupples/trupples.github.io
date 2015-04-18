@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<style>
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+canvas {
+	border-radius:10px;
+}
+@-webkit-keyframes flip {
+	from {
+		transorm: rotateX(0deg);
+		-webkit-transform: rotateX(0deg);
+	}to{
+		transform: rotateX(180deg);
+		-webkit-transform: rotateX(180deg);
+	}
+}
+@keyframes flip {
+	from {
+		transorm: rotateX(0deg);
+		-webkit-transform: rotateX(0deg);
+	}to{
+		transform: rotateX(180deg);
+		-webkit-transform: rotateX(0deg);
+	}
+}
+#container {
+	-webkit-perspective: 1500px; /* Chrome, Safari, Opera */
+	-webkit-perspective-origin: 300px 300px; /* Chrome, Safari, Opera */
+	perspective: 800px;
+	perspective-origin: 300px 300px;
+}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<canvas id="c11" width="199" height="199" style="background-color:black;position:fixed;top:0px;left:0px;" onmousedown="setRandom('c11');clicks++;">Eroare</canvas>
+			<canvas id="c12" width="199" height="199" style="background-color:blue;position:fixed;top:0px;left:200px;" onmousedown="setRandom('c12');clicks++;">Eroare</canvas>
+			<canvas id="c13" width="199" height="199" style="background-color:red;position:fixed;top:0px;left:400px;" onmousedown="setRandom('c13');clicks++;">Eroare</canvas>
+			<canvas id="c21" width="199" height="199" style="background-color:green;position:fixed;top:200px;left:0px;" onmousedown="setRandom('c21');clicks++;">Eroare</canvas>
+			<canvas id="c22" width="199" height="199" style="background-color:purple;position:fixed;top:200px;left:200px;" onmousedown="setRandom('c22');clicks++;">Eroare</canvas>
+			<canvas id="c23" width="199" height="199" style="background-color:gold;position:fixed;top:200px;left:400px;" onmousedown="setRandom('c23');clicks++;">Eroare</canvas>
+			<canvas id="c31" width="199" height="199" style="background-color:silver;position:fixed;top:400px;left:0px;" onmousedown="setRandom('c31');clicks++;">Eroare</canvas>
+			<canvas id="c32" width="199" height="199" style="background-color:cyan;position:fixed;top:400px;left:200px;" onmousedown="setRandom('c32');clicks++;">Eroare</canvas>
+			<canvas id="c33" width="199" height="199" style="background-color:gray;position:fixed;top:400px;left:400px;" onmousedown="setRandom('c33');clicks++;">Eroare</canvas>
+		</div>
+		<div id="WinScreen" class="noselect" style="display:none;position:fixed;top:200px;left:0px;width:600px;height:600px;">
+		<center><b>YOU WON.<br>Total moves:<span id="ClickCount"></span></b><br>
+		<span onmousedown="restart()">RESTART GAME</span>  |  <span onmousedown="FBShare()">SHARE ON FACEBOOK</span>
+		</div>
+		<script>
+var colors = ["black", "blue", "red", "green", "purple", "gold", "silver", "cyan", "gray"];
+var clicks = 0;
+var flipTime = 0.5;
+var c11 = document.getElementById("c11"),
+	c12 = document.getElementById("c12"),
+	c13 = document.getElementById("c13"),
+	c21 = document.getElementById("c21"),
+	c22 = document.getElementById("c22"),
+	c23 = document.getElementById("c23"),
+	c31 = document.getElementById("c31"),
+	c32 = document.getElementById("c32"),
+	c33 = document.getElementById("c33");
+function setRandom(id) {
+	flipAnim(id);
+	setTimeout(function(){
+		document.getElementById(id).style.backgroundColor = colors[Math.floor(Math.random() * 9)];
+		if(c11.style.backgroundColor==c12.style.backgroundColor
+			&& c11.style.backgroundColor==c13.style.backgroundColor
+			&& c11.style.backgroundColor==c21.style.backgroundColor
+			&& c11.style.backgroundColor==c22.style.backgroundColor
+			&& c11.style.backgroundColor==c23.style.backgroundColor
+			&& c11.style.backgroundColor==c31.style.backgroundColor
+			&& c11.style.backgroundColor==c32.style.backgroundColor
+			&& c11.style.backgroundColor==c33.style.backgroundColor)
+			win();
+	},flipTime*500);
+}
+
+function flipAnim(id){
+	var elem = document.getElementById(id);
+	elem.style.animation = "flip "+flipTime+"s 1";
+	elem.style.WebkitAnimation = "flip "+flipTime+"s 1";
+	setTimeout(function(){
+		elem.style.animation=elem.style.WebkitAnimation= "";
+	},flipTime*1000);
+}
+
+function win(){
+
+	document.getElementById("WinScreen").style.display = "block";
+	document.getElementById("WinScreen").style.fontSize = "64px";
+	document.getElementById("WinScreen").style.fontFamily = "Impact";
+	
+	document.getElementById("ClickCount").innerHTML = clicks;
+}
+
+setRandom("c11");
+setRandom("c21");
+setRandom("c31");
+setRandom("c12");
+setRandom("c22");
+setRandom("c32");
+setRandom("c13");
+setRandom("c23");
+setRandom("c33");
+
+//function c
+
+		</script>
+	</body>
+</html>
