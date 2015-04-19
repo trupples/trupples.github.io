@@ -3,6 +3,14 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<style>
+.rotated {
+    -webkit-transform: rotate(90deg);
+	-webkit-transform-origin: 600px 600px;
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -44,7 +52,7 @@ canvas {
 		</style>
 	</head>
 	<body>
-		<div id="container">
+		<div id="container" class="rotated">
 			<canvas id="c11" width="170" height="170" style="position:fixed;top:0px;left:0px;">Error</canvas>
 			<canvas id="c12" width="170" height="170" style="position:fixed;top:0px;left:200px;">Error</canvas>
 			<canvas id="c13" width="170" height="170" style="position:fixed;top:0px;left:400px;">Error</canvas>
