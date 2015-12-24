@@ -1,4 +1,4 @@
-#logo{width:10%;}
+#logo {width:10%;}
 
 #content {width: 90%;}
 
@@ -46,5 +46,5 @@
 .menuarrow 		{color: white;bottom:0px;cursor:pointer;}
 .menuarrow:hover{color: black;}
 
-#lftarrowtext{font-size: 50%;}
-#rgtarrowtext{font-size: 50%;}
+#lftarrowtext {font-size: 50%;}
+#rgtarrowtext {font-size: 50%;}

@@ -31,7 +31,7 @@ function linie(x1, y1, x2, y2){
 function sterge(){
 	ctx.clearRect(0, 0, 400, 300)
 }
-function culoare(contur, unplere){
+function culoare(contur, umplere){
 	if(typeof contur !== 'undefined')
 		ctx.strokeStyle=contur
 	if(typeof umplere !== 'undefined')
@@ -51,4 +51,3 @@ function handlemousemove(event) {
 	mouse.x = event.clientX-rect.left
 	mouse.y = event.clientY-rect.top
 }
-
