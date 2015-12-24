@@ -1,3 +1,4 @@
+<meta charset="UTF8">
 <style>
 	* {
 		color: white;
@@ -15,6 +16,12 @@
 	}
 </style>
 
+<div id="3">
+	<h2>Emojis</h2>
+	<p>
+		I added emoji support :smile:
+	</p>
+</div>
 <div id="2">
 	<h2>Lorem</h2>
 	<p>
@@ -28,3 +35,8 @@
 		Second line.
 	</p>
 </div>
+
+<!-- EMOJIS -->
+<script src="http://cdn.jsdelivr.net/emojione/2.0.0/lib/js/emojione.min.js"></script>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/emojione/2.0.0/assets/css/emojione.min.css"/>
+<script>document.body.innerHTML = emojione.toImage(document.body.innerHTML)</script>
