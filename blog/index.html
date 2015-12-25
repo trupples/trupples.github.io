@@ -1,42 +1,28 @@
 <meta charset="UTF8">
 <style>
-	* {
-		color: white;
-	}
-	h2 { /* Post titles */
-		font-family: monospace;
-		font-size: 40px;
-	}
-	hr {
-		width: 50%;
-		float: left;
-	}
-	div {
-		padding-bottom: 20px;
+	iframe {
+		margin-bottom: 20px;
+		width: 100%;
+		border: none;
 	}
 </style>
 
-<div id="3">
-	<h2>Emojis</h2>
-	<p>
-		I added emoji support :smile:
-	</p>
-</div>
-<div id="2">
-	<h2>Lorem</h2>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
-</div>
-<div id="1">
-	<h2>Title1</h2>
-	<p>
-		This is the first paragraph content.<br/>
-		Second line.
-	</p>
-</div>
+<iframe id="ent_1" onresize="iframe_stuff(this)"></iframe>
+<iframe id="ent_2" onresize="iframe_stuff(this)"></iframe>
+<iframe id="ent_3" onresize="iframe_stuff(this)"></iframe>
 
-<!-- EMOJIS -->
-<script src="http://cdn.jsdelivr.net/emojione/2.0.0/lib/js/emojione.min.js"></script>
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/emojione/2.0.0/assets/css/emojione.min.css"/>
-<script>document.body.innerHTML = emojione.toImage(document.body.innerHTML)</script>
+<a style="float:left;" onclick="blog.olderPage()">&lt; Older posts</a>
+<a style="float:right;" onclick="blog.newerPage()">Newer posts &gt;</a>
+<center id="page_number">Page 1</center>
+
+<script type="text/javascript" src="blog.js"></script>
+<script type="text/javascript">
+	function iframe_stuff(o) {
+		o.style.height = 0;													// Resize the entry iframe
+		o.style.height = o.contentWindow.document.body.scrollHeight+'px';	// Resize the entry iframe
+		parent.parent.window.postMessage("try_resize", "*");				// Resize the whole blog iframe
+	}
+
+	blog.page = 1;
+	blog.setEntries();
+</script>
