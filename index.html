@@ -1,34 +1,40 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF8">
-		<script src="assets/js/PAGE.js"></script>
-		<link rel="stylesheet" href="assets/css/stylesheet.css">
+		<script type="text/javascript" src="assets/js/PAGE.js"></script>
+		<link rel="stylesheet" href="stylesheet.css">
+		<script type="text/javascript">
+			function iframeResize(ifr) {
+				ifr.style.height = 0;
+				ifr.style.height = ifr.contentWindow.document.body.scrollHeight + 'px';
+			}
+		</script>
+		<title>mahham</title>
 	</head>
-	<body bgcolor="black" onload="PAGE.initPage(1)">
-		<center>
-			<table id="content">
-				<tr id="headerRow">
-					<td>
-						<table id="header">
-							<tr class="noselect">
-								<td id="logo"><img src="assets/img/logo.png" width="100" height="100"></td>
-								<td>
-									<ul id="menu">
-										<li class="menuarrow" onclick="PAGE.initPage(0)"><center id="0">Blog</center></li>
-										<li class="menuarrow" onclick="PAGE.initPage(1)"><center id="1">Me</center></li>
-										<li class="menuarrow" onclick="PAGE.initPage(2)"><center id="2">Projects</center></li>
-									</ul>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr id="contentRow">
-					<td>
-						<iframe id="pageContents" frameborder="0" onload="this.style.height = 0;this.style.height = this.contentWindow.document.body.scrollHeight + 'px'"></iframe>
-					</td>
-				</tr>
-			</table>
-		</center>
+	<body class="bg_color3" onload="PAGE.initPage(1)">
+		<div id="container" class="bg_color2 center_h">
+			<header class="fg_color1" id="page_header">
+				<div id="pageList">
+					<ul>
+						<li id="page_link0" class="page_link" onclick="PAGE.initPage(0)">blog</li>
+						<li id="page_link1" class="page_link" onclick="PAGE.initPage(1)">me</li>
+						<li id="page_link2" class="page_link" onclick="PAGE.initPage(2)">projects</li>
+					</ul>
+				</div>
+				<div id="titledesc">
+					<div id="title">MAHHAM</div>
+					<div id="desc">Lorem ipsum dolor sit amet</div>
+				</div>
+			</header>
+			<hr class="bg_color3"/>
+			<main class="fg_color1">
+				<iframe id="page" onload="iframeResize(this)" scrolling="no"></iframe>
+			</main>
+			<hr class="bg_color3"/>
+			<div id="footer" class="fg_color1 footer center_h">
+				Footer
+			</div>
+		</div>
 	</body>
 </html>

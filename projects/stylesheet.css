@@ -1,0 +1,12 @@
+.projectRow {
+	font-family: monospace;
+	font-size: 6.5em;
+	vertical-align: middle;
+}
+
+img {
+	 width: 100px;
+	 height: 100px;
+	 padding: 20px;
+	 vertical-align: middle;
+}

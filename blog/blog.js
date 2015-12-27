@@ -1,8 +1,8 @@
 var blog = {};
 
-blog.page = 0;
-blog.entriesPerPage = 3;
-blog.entryCount = 4;
+blog.page = 1;
+blog.entriesPerPage = 4;
+blog.entryCount = 5;
 
 blog.setEntries = function() {
 	var epp = blog.entriesPerPage; // we need a copy
@@ -22,13 +22,11 @@ blog.setEntries = function() {
 
 		var entryID = blog.entryCount - (i + start - 1) + 1;
 		ifr.src = "entries/"+entryID+".html";
-
-		ifr.onload = function(){iframe_stuff(this);}
 	}
 }
 
 blog.olderPage = function() {
-	var firstEntryOnNextPage = blog.page * blog.entriesPerPage;
+	var firstEntryOnNextPage = blog.page * blog.entriesPerPage + 1;
 	if(firstEntryOnNextPage > blog.entryCount) return;
 	blog.page++;
 	blog.setEntries();
