@@ -1,0 +1,22 @@
+
+#page_header #pageList {
+	padding-top: 20px;
+	float: none;
+}
+
+#page_header ul li {
+	float: left;
+	width: calc(100% / 3);
+	text-align: center;
+}
+
+#page_header #titledesc {
+	float: none;
+	text-align: center;
+}
+
+.page_selected::before {content: "";}	/* remove the > before the selected page */
+
+#container {
+	font-size: 0.70588vw;
+}

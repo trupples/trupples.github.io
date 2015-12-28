@@ -1,0 +1,91 @@
+/* Base stylesheet. This specifies the color scheme and default page looks */
+
+/* declarations */
+.bg_color1 {background-color: #BEF;}
+.fg_color1 {color: #BEF;}
+
+.bg_color2 {background-color: #09C;}
+.fg_color2 {color: #09C;}
+
+.bg_color3 {background-color: #069;}
+.fg_color3 {color: #069;}
+
+.bg_color4 {background-color: white;}
+.fg_color4 {color: white;}
+
+@font-face {
+	font-family: "Poplar-Std";
+	src: url("../font/PoplarStd.otf");
+}
+
+/* basic */
+body {
+	margin: 0;
+}
+
+/* articles */
+article {
+	font-size: 1vw;
+}
+
+article header {
+	font-family: Poplar-Std, impact;
+	font-size: 8em;
+}
+
+article p, article div {
+	font-family: "Times New Roman";
+	font-size: 3em;
+	margin: 0 0 3em 0;
+}
+
+.indent {
+	text-indent: 2em;
+}
+
+/* iframes */
+iframe {
+	border: 0;
+	width: 94%;
+	padding: 3%; /* make it so that the iframes don't touch the content border */
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/* links */
+a {
+	color: #069;	/* same as fg_color3 */
+	text-decoration: none; /* disable the underline */
+	font-weight: bold;
+	cursor: pointer;
+}
+
+article header a {
+	font-weight: normal;	/* or else you would have double-bold */
+}
+
+a:hover {
+	color: #6CF;	/* same as fg_color1 */
+}
+
+/* footer */
+#footer {
+	padding-top: 1em;
+	font-family: georgia;
+	font-size: 3em;
+	text-align: center;
+}
+
+/* others */
+hr {
+	width: 95%;
+	height: 2px;
+	border: 0;
+}
+
+.center_h {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center_w {vertical-align: middle;}

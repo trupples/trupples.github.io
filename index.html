@@ -2,8 +2,17 @@
 <html>
 	<head>
 		<meta charset="UTF8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<script type="text/javascript" src="assets/js/PAGE.js"></script>
-		<link rel="stylesheet" href="stylesheet.css">
+		<link rel="stylesheet" href="assets/css/base.css">
+		<link rel="stylesheet" href="index.css">
+
+		<link rel="stylesheet" media="(min-width: 960px)" href="assets/css/min-960.css">
+		<link rel="stylesheet" media="(min-width: 850px) and (max-width: 960px)" href="assets/css/850-960.css">
+		<link rel="stylesheet" media="(max-width: 850px)" href="assets/css/max-850.css">
+
 		<script type="text/javascript">
 			function iframeResize(ifr) {
 				ifr.style.height = 0;
@@ -14,7 +23,11 @@
 	</head>
 	<body class="bg_color3" onload="PAGE.initPage(1)">
 		<div id="container" class="bg_color2 center_h">
-			<header class="fg_color1" id="page_header">
+			<header class="fg_color4" id="page_header">
+				<div id="titledesc">
+					<div id="title">MAHHAM</div>
+					<div id="desc">Lorem ipsum dolor sit amet</div>
+				</div>
 				<div id="pageList">
 					<ul>
 						<li id="page_link0" class="page_link" onclick="PAGE.initPage(0)">blog</li>
@@ -22,18 +35,14 @@
 						<li id="page_link2" class="page_link" onclick="PAGE.initPage(2)">projects</li>
 					</ul>
 				</div>
-				<div id="titledesc">
-					<div id="title">MAHHAM</div>
-					<div id="desc">Lorem ipsum dolor sit amet</div>
-				</div>
 			</header>
 			<hr class="bg_color3"/>
-			<main class="fg_color1">
+			<main>
 				<iframe id="page" onload="iframeResize(this)" scrolling="no"></iframe>
 			</main>
 			<hr class="bg_color3"/>
 			<div id="footer" class="fg_color1 footer center_h">
-				Footer
+				Lazily made by mahham
 			</div>
 		</div>
 	</body>

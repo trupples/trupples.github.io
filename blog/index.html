@@ -2,15 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF8">
-		<link rel="stylesheet" href="../stylesheet.css"/>
-
-		<style>
-			iframe { /* this will only change the iframe style for this page */
-				margin-bottom: 1em;
-				width: 100%;
-				border: 0;
-			}
-		</style>
+		<link rel="stylesheet" href="../assets/css/base.css"/>
 
 		<!-- Blog script -->
 		<script type="text/javascript" src="blog.js"></script>
@@ -24,7 +16,6 @@
 			function ONLOAD() {
 				document.body.innerHTML = emojione.toImage(document.body.innerHTML); // emojify
 				blog.setEntries();	// show blog entries
-
 			}
 
 		 	function iframe_load(o) {

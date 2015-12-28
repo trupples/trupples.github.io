@@ -1,0 +1,62 @@
+/* CSS file specific to the main html file */
+
+#page_header {
+	font-family: Poplar-Std, impact, Charcoal, sans-serif;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	padding-left: 6em;
+	padding-right: 10em;
+}
+
+/* Page list */
+#page_header #pageList {
+	float: left;
+	font-size: 12em;
+}
+
+#page_header ul {
+	/* lists have an annoying spacing :S */
+	margin: 0; 			/* default top-bottom spacing */
+	padding: 0;			/* default <TAB> */
+	list-style: none;	/* disable the bullets */
+	line-height: 1em;
+}
+
+#page_header ul li {
+	padding-bottom: 0.15em;	/* this and the padding:0 in #pageheader ul effectively */
+							/* moves the spacing from 1/2top + 1/2bot to 1 bot */
+}
+
+/* Title and description */
+#page_header #titledesc {
+	float: right;
+}
+
+#page_header #title {
+	font-size: 25em;
+	line-height: 0.9em;
+}
+
+#page_header #desc {
+	font-size: 8em;
+	line-height: 1em;
+}
+
+/* Clear the floats */
+#page_header::after {
+	display: block;
+	content: " ";
+	clear: both;
+}
+
+.page_selected {
+	text-transform: uppercase;
+}
+
+.page_selected::before {
+	content: "> ";
+}
+
+.page_link {
+	cursor: pointer;
+}

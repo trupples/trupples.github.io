@@ -21,8 +21,7 @@ body {
 
 #container {
 	width: 960px;
-	font-size: 6px;	/* so that for a 1366px wide viewport this will be */
-	 						/* around 6px */
+	font-size: 6px;
 }
 
 /* --------------------- HEADER --------------------- */

@@ -2,7 +2,7 @@ var blog = {};
 
 blog.page = 1;
 blog.entriesPerPage = 4;
-blog.entryCount = 5;
+blog.entryCount = 6;
 
 blog.setEntries = function() {
 	var epp = blog.entriesPerPage; // we need a copy
