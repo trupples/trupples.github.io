@@ -13,6 +13,16 @@
 .bg_color4 {background-color: white;}
 .fg_color4 {color: white;}
 
+::-moz-selection { /* Code for Firefox */
+    color: #39F;
+    background: white;
+}
+
+::selection {
+    color: #39F;
+    background: white;
+}
+
 @font-face {
 	font-family: "Poplar-Std";
 	src: url("../font/PoplarStd.otf");
