@@ -34,8 +34,12 @@ body {
 }
 
 /* articles */
+main {
+	padding: 3%;
+}
+
 article {
-	font-size: 1vw;
+	font-size: 0.6em;
 }
 
 article header {
@@ -46,20 +50,11 @@ article header {
 article p, article div {
 	font-family: "Times New Roman";
 	font-size: 3em;
-	margin: 0 0 3em 0;
+	margin: 0 0 1em 0;
 }
 
 .indent {
 	text-indent: 2em;
-}
-
-/* iframes */
-iframe {
-	border: 0;
-	width: 94%;
-	padding: 3%; /* make it so that the iframes don't touch the content border */
-	padding-top: 0;
-	padding-bottom: 0;
 }
 
 /* links */
@@ -80,9 +75,7 @@ a:hover {
 
 /* footer */
 #footer {
-	padding-top: 1em;
 	font-family: georgia;
-	font-size: 3em;
 	text-align: center;
 }
 

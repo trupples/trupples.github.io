@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="../../assets/css/base.css">
+		<link rel="stylesheet" href="../../assets/css/pageHeader.css">
+
+		<link rel="stylesheet" media="(min-width: 961px)" href="../../assets/css/gt-960.css">
+		<link rel="stylesheet" media="(max-width: 960px)" href="../../assets/css/lt-960.css">
+
+		<title>mahham</title>
+	</head>
+	<body class="bg_color3" onload="document.body.innerHTML = emojione.toImage(document.body.innerHTML)">
+		<div id="container" class="bg_color2 center_h">
+			<header class="fg_color4" id="page_header">
+				<div id="titledesc">
+					<div id="title">MAHHAM</div>
+					<div id="desc">Lorem ipsum dolor sit amet</div>
+				</div>
+				<div id="pageList">
+					<ul>
+						<li><a href="../../blog/index.html">blog</a></li>
+						<li><a href="../../index.html">me</a></li>
+						<li><a href="../../projects/index.html">projects</a></li>
+					</ul>
+				</div>
+			</header>
+			<hr class="bg_color3"/>
+			<main class="fg_color1">
+				<article>
+					<header>Boom: new website!</header>
+					<p class="indent">
+						So yeah, I changed the whole website design, made it
+						responsive (for width&lt;960 and width&gt;960) and threw
+						the	iframe idea out of the window. It got too hard to
+						use	when resizing the window and with iframes inside of
+						iframes.
+					</p>
+					<p class="indent">
+						Also, the blog system was really bad, not being	able to
+						link certain blog posts and such. Fixed that, but I
+						might need to make a tool to automatically make the blog
+						post pages, since it might get annoying to copy-paste
+						the empty page and write a summary on the blog/index
+						and all. Also, being able to write blogposts in markdown
+						would be a great improvement.
+					</p>
+			</main>
+			<hr class="bg_color3"/>
+			<div id="footer" class="fg_color1 footer center_h">
+				Lazily made by mahham
+			</div>
+		</div>
+	</body>
+</html>
+
+<!-- EMOJIS -->
+<script src="http://cdn.jsdelivr.net/emojione/2.0.0/lib/js/emojione.min.js"></script>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/emojione/2.0.0/assets/css/emojione.min.css"/>
+<script>document.body.innerHTML = emojione.toImage(document.body.innerHTML)</script>

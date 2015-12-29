@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF8"/>
-		<link rel="stylesheet" href="../assets/css/base.css"/>	<!-- The main style -->
-		<link rel="stylesheet" href="stylesheet.css"/>		<!-- The style for this page -->
+		<meta charset="UTF8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="../assets/css/base.css">
+		<link rel="stylesheet" href="../assets/css/pageHeader.css">
+
+		<link rel="stylesheet" href="stylesheet.css">
+
+		<link rel="stylesheet" media="(min-width: 961px)" href="../assets/css/gt-960.css">
+		<link rel="stylesheet" media="(max-width: 960px)" href="../assets/css/lt-960.css">
+
+		<title>mahham</title>
 	</head>
-	<body class="fg_color1">
-		<article>
-			<header><a href="colorFly/index.html" target="_parent"><img src="colorFly/icon.png"/>ColorFly</a></header>
-			<p class="projectDesc">A game I made to show a friend at ONI some web programming.</p>
-		</article>
-		<article>
-			<header><a href="Ludum_dare/31/index.html" target="_parent"><img src="Ludum_dare/31/icon.png"/>Death in front</a></header>
-			<p class="projectDesc">My Ludum Dare 31 entry. DISABLE. THE. SOUND.</p>
-		</article>
-		<article>
-			<header><a href="phoneVR/index.html" target="_parent"><img src="phoneVR/icon.png"/>Smartphone VR</a></header>
-			<p class="projectDesc">Do you have google cardboard? Why not check this out?</p>
-		</article>
-		<article>
-			<header><a href="https://gist.github.com/ianiD" target="_parent">Gists:</a></header>
-			<div class="projectDesc">
-				<ul>
-					<li><a href="https://gist.github.com/ianiD/434d3dd877abc5e810ea" target="_parent">beam.py</a> - A small python script used to quickly send files to other devices on your network.</li>
-					<li><a href="https://gist.github.com/ianiD/60530967d9b92bae124e" target="_parent">mahhamBot</a> - A discord chat bot written in python.</li>
-				</ul>
+	<body class="bg_color3" onload="document.body.innerHTML = emojione.toImage(document.body.innerHTML)">
+		<div id="container" class="bg_color2 center_h">
+			<header class="fg_color4" id="page_header">
+				<div id="titledesc">
+					<div id="title">MAHHAM</div>
+					<div id="desc">Lorem ipsum dolor sit amet</div>
+				</div>
+				<div id="pageList">
+					<ul>
+						<li><a href="../blog/index.html">blog</a></li>
+						<li><a href="../index.html">me</a></li>
+						<li class="page_selected"><a href="index.html">projects</a></li>
+					</ul>
+				</div>
+			</header>
+			<hr class="bg_color3"/>
+			<main class="fg_color1">
+				<article>
+					<header><a href="colorFly/index.html" target="_parent"><img src="colorFly/icon.png"/>ColorFly</a></header>
+					<p class="projectDesc indent">A game I made to show a friend at ONI some web programming.</p>
+				</article>
+				<article>
+					<header><a href="Ludum_dare/31/index.html" target="_parent"><img src="Ludum_dare/31/icon.png"/>Death in front</a></header>
+					<p class="projectDesc indent">My Ludum Dare 31 entry. DISABLE. THE. SOUND.</p>
+				</article>
+				<article>
+					<header><a href="phoneVR/index.html" target="_parent"><img src="phoneVR/icon.png"/>Smartphone VR</a></header>
+					<p class="projectDesc indent">Do you have google cardboard? Why not check this out?</p>
+				</article>
+				<article>
+					<header><a href="https://gist.github.com/ianiD" target="_parent">Gists:</a></header>
+					<div class="projectDesc">
+						<ul>
+							<li><a href="https://gist.github.com/ianiD/434d3dd877abc5e810ea" target="_parent">beam.py</a> - A small python script used to quickly send files to other devices on your network.</li>
+							<li><a href="https://gist.github.com/ianiD/60530967d9b92bae124e" target="_parent">mahhamBot</a> - A discord chat bot written in python.</li>
+						</ul>
+					</div>
+				</article>
+			</main>
+			<hr class="bg_color3"/>
+			<div id="footer" class="fg_color1 footer center_h">
+				Lazily made by mahham
 			</div>
-		</article>
+		</div>
 	</body>
 </html>
 

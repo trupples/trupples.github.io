@@ -1,6 +1,11 @@
 
+#page_header {
+	font-size: 0.70588vw;
+}
+
 #page_header #pageList {
-	padding-top: 20px;
+	padding-top: 0.5em;
+	font-size: 10em;
 	float: none;
 }
 
@@ -15,8 +20,11 @@
 	text-align: center;
 }
 
-.page_selected::before {content: "";}	/* remove the > before the selected page */
+main {
+	font-size: 2vw;
+}
 
-#container {
-	font-size: 0.70588vw;
+#footer {
+	padding-top: 2vw;
+	font-size: 2vw;
 }

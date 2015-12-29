@@ -2,38 +2,50 @@
 <html>
 	<head>
 		<meta charset="UTF8">
-		<link rel="stylesheet" href="../assets/css/base.css"/>
 
-		<!-- Blog script -->
-		<script type="text/javascript" src="blog.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- EMOJIS -->
-		<script src="http://cdn.jsdelivr.net/emojione/2.0.0/lib/js/emojione.min.js"></script>
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/emojione/2.0.0/assets/css/emojione.min.css"/>
+		<link rel="stylesheet" href="../assets/css/base.css">
+		<link rel="stylesheet" href="../assets/css/pageHeader.css">
 
-		<!-- setup -->
-		<script>
-			function ONLOAD() {
-				document.body.innerHTML = emojione.toImage(document.body.innerHTML); // emojify
-				blog.setEntries();	// show blog entries
-			}
+		<link rel="stylesheet" media="(min-width: 961px)" href="../assets/css/gt-960.css">
+		<link rel="stylesheet" media="(max-width: 960px)" href="../assets/css/lt-960.css">
 
-		 	function iframe_load(o) {
-		 		o.style.height = 0;													// Resize the entry iframe
-		 		o.style.height = o.contentWindow.document.body.scrollHeight+'px';	// Resize the entry iframe
-		 		parent.parent.window.postMessage("try_resize", "*");				// Resize the whole blog iframe
-		 	}
-		</script>
+		<title>mahham</title>
 	</head>
-	<body class="fg_color1" onload="ONLOAD()">
-		<iframe id="ent_1" onload="iframe_load(this)"></iframe>
-		<iframe id="ent_2" onload="iframe_load(this)"></iframe>
-		<iframe id="ent_3" onload="iframe_load(this)"></iframe>
-		<iframe id="ent_4" onload="iframe_load(this)"></iframe>
-
-		<!-- Pages -->
-		<a style="float:left"  onclick="blog.olderPage()">&lt; Older posts</a>
-		<a style="float:right" onclick="blog.newerPage()">Newer posts &gt;</a>
-		<center id="page_number">Page 1</center>
+	<body class="bg_color3">
+		<div id="container" class="bg_color2 center_h">
+			<header class="fg_color4" id="page_header">
+				<div id="titledesc">
+					<div id="title">MAHHAM</div>
+					<div id="desc">Lorem ipsum dolor sit amet</div>
+				</div>
+				<div id="pageList">
+					<ul>
+						<li class="page_selected"><a href="index.html">blog</a></li>
+						<li><a href="../index.html">me</a></li>
+						<li><a href="../projects/index.html">projects</a></li>
+					</ul>
+				</div>
+			</header>
+			<hr class="bg_color3"/>
+			<main class="fg_color1">
+				<article>
+					<header><a href="entries/29-dec-2015-boom-new-website.html">Boom: new website!</a></header>
+					<p class="indent">
+						So yeah, I changed the whole website design, made it responsive (for width&lt;960 and width&gt;960) and threw the iframe idea out of the window...
+					</p>
+				</article>
+			</main>
+			<hr class="bg_color3"/>
+			<div id="footer" class="fg_color1 footer center_h">
+				Lazily made by mahham
+			</div>
+		</div>
 	</body>
 </html>
+
+<!-- EMOJIS -->
+<script src="http://cdn.jsdelivr.net/emojione/2.0.0/lib/js/emojione.min.js"></script>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/emojione/2.0.0/assets/css/emojione.min.css"/>
+<script>document.body.innerHTML = emojione.toImage(document.body.innerHTML)</script>

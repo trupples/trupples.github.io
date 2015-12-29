@@ -5,23 +5,15 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script type="text/javascript" src="assets/js/PAGE.js"></script>
 		<link rel="stylesheet" href="assets/css/base.css">
-		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="assets/css/pageHeader.css">
 
-		<link rel="stylesheet" media="(min-width: 960px)" href="assets/css/min-960.css">
-		<link rel="stylesheet" media="(min-width: 850px) and (max-width: 960px)" href="assets/css/850-960.css">
-		<link rel="stylesheet" media="(max-width: 850px)" href="assets/css/max-850.css">
+		<link rel="stylesheet" media="(min-width: 961px)" href="assets/css/gt-960.css">
+		<link rel="stylesheet" media="(max-width: 960px)" href="assets/css/lt-960.css">
 
-		<script type="text/javascript">
-			function iframeResize(ifr) {
-				ifr.style.height = 0;
-				ifr.style.height = ifr.contentWindow.document.body.scrollHeight + 'px';
-			}
-		</script>
 		<title>mahham</title>
 	</head>
-	<body class="bg_color3" onload="PAGE.initPage(1)">
+	<body class="bg_color3" onload="document.body.innerHTML = emojione.toImage(document.body.innerHTML)">
 		<div id="container" class="bg_color2 center_h">
 			<header class="fg_color4" id="page_header">
 				<div id="titledesc">
@@ -30,15 +22,37 @@
 				</div>
 				<div id="pageList">
 					<ul>
-						<li id="page_link0" class="page_link" onclick="PAGE.initPage(0)">blog</li>
-						<li id="page_link1" class="page_link" onclick="PAGE.initPage(1)">me</li>
-						<li id="page_link2" class="page_link" onclick="PAGE.initPage(2)">projects</li>
+						<li><a href="blog/index.html">blog</a></li>
+						<li class="page_selected"><a href="index.html">me</a></li>
+						<li><a href="projects/index.html">projects</a></li>
 					</ul>
 				</div>
 			</header>
 			<hr class="bg_color3"/>
-			<main>
-				<iframe id="page" onload="iframeResize(this)" scrolling="no"></iframe>
+			<main class="fg_color1">
+				<article>
+					<header>Hi there!</header>
+					<p>
+					I'm mahham (A.K.A. Falttened Tesseract).<br/>
+					I like programming, biology, physics and math.<br/><br/>
+					I know how to program in C, lua, python and javascript. I have a limited programming experience with Java, C# and ruby (rails). I've also got the hang of HTML5 and CSS, but I'm bad at design, fact that you probably already know because of how ugly this site looks.</br>
+					I really like using <a href="http://love2d.org" target="_parent">LÖVE</a>.<br/><br/>
+					You can see what I made on <a href="http://github.com/ianiD" target="_parent">my github profile</a> or on the projects page.<br/><br/>
+					I also like bragging about getting ok-ish results at national programming contests and olympiads since 2012 :3<br/>
+					</p>
+				</article>
+				<article>
+					<header>You can find me on:</header>
+					<div>
+						<ul>
+							<li><a target="_parent" href="http://steamcommunity.com/profiles/76561198074080313">Steam</a></li>
+							<li><a target="_parent" href="http://github.com/ianiD">Github</a></li>
+							<li>Discord - mahham</li>
+							<li>Skype - ioan_dragomir91149</li>
+						</ul>
+						Or <a href="mailto:123ioandragomir123@gmail.com">send me an email</a>.
+					</div>
+				</article>
 			</main>
 			<hr class="bg_color3"/>
 			<div id="footer" class="fg_color1 footer center_h">
@@ -47,3 +61,8 @@
 		</div>
 	</body>
 </html>
+
+<!-- EMOJIS -->
+<script src="http://cdn.jsdelivr.net/emojione/2.0.0/lib/js/emojione.min.js"></script>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/emojione/2.0.0/assets/css/emojione.min.css"/>
+<script>document.body.innerHTML = emojione.toImage(document.body.innerHTML)</script>
