@@ -46,6 +46,7 @@
 
 #page_header a {
 	color: white; /* same as fg_color4 */
+	font-weight: normal;
 }
 
 /* Clear the floats */
