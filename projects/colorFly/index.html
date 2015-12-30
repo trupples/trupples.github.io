@@ -46,7 +46,6 @@
 		<script>
 			// init facebook
 			window.fbAsyncInit = function() {
-				console.log("initialising FB");
 				FB.init({
 					appId      : '1653016888302511',
 					xfbml      : true,
@@ -55,7 +54,6 @@
 			};
 
 			(function(d, s, id){
-				console.log("Creating "+id+" "+s+" element");
 				var js, fjs = d.getElementsByTagName(s)[0];
 				if (d.getElementById(id)) {return;}
 				js = d.createElement(s); js.id = id;

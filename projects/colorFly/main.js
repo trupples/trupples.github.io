@@ -74,13 +74,6 @@ function checkWin() {
 	return true;
 }
 
-function cheat() {
-	for(var i=1; i<=3; i++)
-		for(var j=1; j <= 3; j++)
-			flip(cards[i][j], colors[1], null);
-	setTimeout(win, flipTime * 1000);
-}
-
 function facebookClick() {
 	FB.ui({
 			method: "share",
