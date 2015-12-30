@@ -1,75 +1,63 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		<style>
-.rotated {
-    -webkit-transform: rotate(90deg);
-	-webkit-transform-origin: 600px 600px;
-    -moz-transform: rotate(90deg);
-	-moz-transform-origin: 600px 600px;
-    -o-transform: rotate(90deg);
-	-o-transform-origin: 600px 600px;
-    -ms-transform: rotate(90deg);
-	-ms-transform-origin: 600px 600px;
-    transform: rotate(90deg);
-	transform-origin: 600px 600px;
-}
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-canvas {
-	border-radius:30px;
-	border-style:solid;
-	border-width:15px;
-	border-color:#F5F5DC;
-}
-@-webkit-keyframes flip {
-	0% {
-		transorm: rotateX(0deg);
-		-webkit-transform: rotateX(0deg);
-	}100%{
-		transform: rotateX(180deg);
-		-webkit-transform: rotateX(180deg);
-	}
-}
-@keyframes flip {
-	from {
-		transorm: rotateX(0deg);
-		-webkit-transform: rotateX(0deg);
-	}to{
-		transform: rotateX(180deg);
-		-webkit-transform: rotateX(180deg);
-	}
-}
-#container {
-	-webkit-perspective: 1500px; /* Chrome, Safari, Opera */
-	-webkit-perspective-origin: 300px 300px; /* Chrome, Safari, Opera */
-	perspective: 800px;
-	perspective-origin: 300px 300px;
-}
-		</style>
+		<meta charset="utf-8">
+
+		<!-- FACEBOOK SHARE STUFF -->
+		<meta property="og:title" content="Play colorfly!"/>
+		<meta property="og:image" content="http://mahham.ws/projects/colorFly/icon.png"/>
+		<meta property="og:site_name" content="http://mahham.ws/projects/colorFly"/>
+		<meta property="og:description" content="Make all the card colors match and compete with your friends on who gets the lowest score!"/>
+
+
+		<title>Colorfly</title>
+
+		<link rel="stylesheet" href="css/game.css">
+
+		<script type="text/javascript" src="main.js"></script>
 	</head>
-	<body>
-		<div id="container" class="rotated">
-			<canvas id="c11" width="170" height="170" style="position:fixed;top:0px;left:0px;">Error</canvas>
-			<canvas id="c12" width="170" height="170" style="position:fixed;top:0px;left:200px;">Error</canvas>
-			<canvas id="c13" width="170" height="170" style="position:fixed;top:0px;left:400px;">Error</canvas>
-			<canvas id="c21" width="170" height="170" style="position:fixed;top:200px;left:0px;">Error</canvas>
-			<canvas id="c22" width="170" height="170" style="position:fixed;top:200px;left:200px;">Error</canvas>
-			<canvas id="c23" width="170" height="170" style="position:fixed;top:200px;left:400px;">Error</canvas>
-			<canvas id="c31" width="170" height="170" style="position:fixed;top:400px;left:0px;">Error</canvas>
-			<canvas id="c32" width="170" height="170" style="position:fixed;top:400px;left:200px;">Error</canvas>
-			<canvas id="c33" width="170" height="170" style="position:fixed;top:400px;left:400px;">Error</canvas>
+	<body onload="init()">
+		<div id="container">
+			<center>
+			<table class="noselect">
+			<tr>
+			<td><img id="11" class="card" src="transparent.png"/></td>
+			<td><img id="12" class="card" src="transparent.png"/></td>
+			<td><img id="13" class="card" src="transparent.png"/></td>
+			</tr>
+			<tr>
+			<td><img id="21" class="card" src="transparent.png"/></td>
+			<td><img id="22" class="card" src="transparent.png"/></td>
+			<td><img id="23" class="card" src="transparent.png"/></td>
+			</tr>
+			<tr>
+			<td><img id="31" class="card" src="transparent.png"/></td>
+			<td><img id="32" class="card" src="transparent.png"/></td>
+			<td><img id="33" class="card" src="transparent.png"/></td>
+			</tr>
+			</table>
+			</center>
 		</div>
-		<script src="main.js"></script>
-		<img id="fbLogoImage" src="fblogo.png" width="200" height="200" style="display:none;"/>
-		<img id="retryImage" src="retry.png" width="200" height="200" style="display:none;"/>
-		<img id="winTitle" src="win.png" width="200" height="200" style="display:none;"/>
-	</body>
+
+		<div id="fb-root"></div>
+		<script>
+			// init facebook
+			window.fbAsyncInit = function() {
+				console.log("initialising FB");
+				FB.init({
+					appId      : '1653016888302511',
+					xfbml      : true,
+					version    : 'v2.5'
+				});
+			};
+
+			(function(d, s, id){
+				console.log("Creating "+id+" "+s+" element");
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
 </html>

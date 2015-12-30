@@ -1,124 +1,92 @@
-var colors = ["lime", "blue", "red", "green", "purple", "gold", "silver", "cyan", "gray"];
-var clicks = 0;
-var flipTime = 0.5;
-var c11 = document.getElementById("c11"),
-	c12 = document.getElementById("c12"),
-	c13 = document.getElementById("c13"),
-	c21 = document.getElementById("c21"),
-	c22 = document.getElementById("c22"),
-	c23 = document.getElementById("c23"),
-	c31 = document.getElementById("c31"),
-	c32 = document.getElementById("c32"),
-	c33 = document.getElementById("c33");
-	
-function setRandom(id){
-	setColor(id, colors[Math.floor(Math.random()*9)]);
-}
-	
-function setColor(id, color) {
-	flipAnim(id);
-	eval("setTimeout(function() {"+
-		 "document.getElementById(id).style.backgroundColor = '"+color+"';"+
-		 "if(c11.style.backgroundColor==c12.style.backgroundColor"+
-			"&& c11.style.backgroundColor==c13.style.backgroundColor"+
-			"&& c11.style.backgroundColor==c21.style.backgroundColor"+
-			"&& c11.style.backgroundColor==c22.style.backgroundColor"+
-			"&& c11.style.backgroundColor==c23.style.backgroundColor"+
-			"&& c11.style.backgroundColor==c31.style.backgroundColor"+
-			"&& c11.style.backgroundColor==c32.style.backgroundColor"+
-			"&& c11.style.backgroundColor==c33.style.backgroundColor)"+
-			"win();"+
-		"},flipTime*500);");
+"use strict";
+
+var cards = [],
+	colors = ["lime", "blue", "red", "green", "purple", "gold", "silver", "cyan", "gray"],
+	flipTime = 1, clicks = 0;
+
+function flip(e, newColor, newImage) {
+	// start animation
+	e.style.animation = "flip " + flipTime + "s 1";
+	e.style.WebkitAnimation = "flip " + flipTime + "s 1";
+
+	// reset animation
+	setTimeout(function() {
+		e.style.animation = "";
+		e.style.WebkitAnimation = "";
+	}, flipTime * 1000);
+
+	// color change
+	setTimeout(function() {
+		if(newColor !== null)
+			e.style.backgroundColor = newColor;
+		if(newImage !== null)
+			e.src = newImage;
+	}, flipTime * 333); // when the flip animation is 1/2 finished
+	// somewhy the animation is at 1/2 when only 1/3 of the time has passed
 }
 
-function setText(id, text, color, style, size, fontFamily, y) {
-    document.getElementById(id).getContext("2d").textAlign = 'center';
-    document.getElementById(id).getContext("2d").font = style + " " + size + "px '"+ fontFamily + "'";
-	flipAnim(id);
-	eval("setTimeout(function() {"+
-		"var ctx = document.getElementById(id).getContext('2d');"+
-		"ctx.fillText(text, document.getElementById(id).width/2, "+y+");},flipTime*500);");
+function init() {
+	for(var i=1; i<=3; i++) {
+		cards[i] = [];
+		for(var j=1; j <= 3; j++) {
+			cards[i][j] = document.getElementById(""+i+j);
+			cards[i][j].style.backgroundColor = colors[Math.floor(Math.random()*9)];
+			cards[i][j].onclick = function() {
+				// if the animation is not over, exit
+				if(this.style.animation !== "") return;
+
+				clicks++;
+
+				// flip animation
+				flip(this, colors[Math.floor(Math.random()*9)], null);
+
+				// check win
+				setTimeout(win, flipTime * 1000);
+			}
+		}
+	}
 }
 
-function cl(id){document.getElementById(id).getContext("2d").clearRect(0,0,200,200);}
+function win() {
+	if(!checkWin()) return;
 
-function setImage(id, image, x, y) {
-	flipAnim(id);
-	eval("setTimeout(function() {"+
-		"var ctx = document.getElementById(id).getContext('2d');ctx.clearRect(0,0,200,200);"+
-		"ctx.drawImage("+image+", -7.5, -7.5, 185, 185);},flipTime*500);");
-}
-
-function flipAnim(id){
-	var elem = document.getElementById(id);
-	elem.style.animation = "flip "+flipTime+"s 1";
-	elem.style.WebkitAnimation = "flip "+flipTime+"s 1";
-	setTimeout(function(){
-		elem.style.animation=elem.style.WebkitAnimation= "";
-	},flipTime*1000);
-}
-
-function win(){
-	cl("c12");
-	cl("c33");
-	cl("c31");
-	cl("c22");
-	setImage("c12",'document.getElementById("winTitle")',0,0);
-	setImage("c33",'document.getElementById("fbLogoImage")',0,0);
-	setColor("c31","lime");
-	setImage("c31",'document.getElementById("retryImage")',0,0);
-	setText("c22",clicks,"black","bold",60,'Open sans',60);
-	setText("c22","clicks","black","bold",60,'Open sans',120);
-	
-	c11.onclick = function(){};
-	c12.onclick = function(){};
-	c13.onclick = function(){};
-	c21.onclick = function(){};
-	c22.onclick = function(){};
-	c23.onclick = function(){};
-	c31.onclick = function(){						//RESET GAME	
-		clicks=0;
-	
-		c11.getContext("2d").clearRect(0,0,200,200);setRandom("c11");
-		c12.getContext("2d").clearRect(0,0,200,200);setRandom("c21");
-		c13.getContext("2d").clearRect(0,0,200,200);setRandom("c31");
-		c21.getContext("2d").clearRect(0,0,200,200);setRandom("c12");
-		c22.getContext("2d").clearRect(0,0,200,200);setRandom("c22");
-		c23.getContext("2d").clearRect(0,0,200,200);setRandom("c32");
-		c31.getContext("2d").clearRect(0,0,200,200);setRandom("c13");
-		c32.getContext("2d").clearRect(0,0,200,200);setRandom("c23");
-		c33.getContext("2d").clearRect(0,0,200,200);setRandom("c33");
-		
-		c11.onclick = function(){clicks++;setRandom("c11");};
-		c12.onclick = function(){clicks++;setRandom("c12");};
-		c13.onclick = function(){clicks++;setRandom("c13");};
-		c21.onclick = function(){clicks++;setRandom("c21");};
-		c22.onclick = function(){clicks++;setRandom("c22");};
-		c23.onclick = function(){clicks++;setRandom("c23");};
-		c31.onclick = function(){clicks++;setRandom("c31");};
-		c32.onclick = function(){clicks++;setRandom("c32");};
-		c33.onclick = function(){clicks++;setRandom("c33");};
+	// show the retry and facebook share buttons
+	flip(cards[3][3], null, "fblogo.png");
+	flip(cards[3][1], null, "retry.png");
+	cards[3][3].onclick = facebookClick;			// Share on facebook
+	cards[3][1].onclick = function() {
+		window.location.reload();	// Reload the game
 	};
-	c32.onclick = function(){};
-	c33.onclick = function(){};
+
+	// show the "you won" and click count cards
+	flip(cards[1][2], null, "win.png");
+	flip(cards[2][2], "", null);
 }
 
-setRandom("c11");
-setRandom("c21");
-setRandom("c31");
-setRandom("c12");
-setRandom("c22");
-setRandom("c32");
-setRandom("c13");
-setRandom("c23");
-setRandom("c33");
+function checkWin() {
+	var c = cards[1][1].style.backgroundColor;
+	for(var i=1; i<=3; i++)
+		for(var j=1; j <= 3; j++)
+			if(cards[i][j].style.backgroundColor !== c)
+				return false;
+	return true;
+}
 
-c11.onclick = function(){clicks++;setRandom("c11");};
-c12.onclick = function(){clicks++;setRandom("c12");};
-c13.onclick = function(){clicks++;setRandom("c13");};
-c21.onclick = function(){clicks++;setRandom("c21");};
-c22.onclick = function(){clicks++;setRandom("c22");};
-c23.onclick = function(){clicks++;setRandom("c23");};
-c31.onclick = function(){clicks++;setRandom("c31");};
-c32.onclick = function(){clicks++;setRandom("c32");};
-c33.onclick = function(){clicks++;setRandom("c33");};
+function cheat() {
+	for(var i=1; i<=3; i++)
+		for(var j=1; j <= 3; j++)
+			flip(cards[i][j], colors[1], null);
+	setTimeout(win, flipTime * 1000);
+}
+
+function facebookClick() {
+	FB.ui({
+			method: "share",
+			link: "http://mahham.ws/projecs/colorFly",
+			picture: "http://mahham.ws/projecs/colorFly/icon.png",
+			name: "ColorFly",
+			caption: "",
+			description: "Make all of the cards' colors match and compete with your friends on who gets the lowest score!",
+			message: "I won with "+clicks+" clicks"
+		});
+}
