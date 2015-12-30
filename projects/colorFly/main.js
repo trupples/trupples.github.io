@@ -78,6 +78,9 @@ function facebookClick() {
 	FB.ui({
 			method: "feed",
 			link: "mahham.ws/projects/colorFly",
-			name: "I won with "+clicks+" clicks!"
+			name: "I won with "+clicks+" clicks!",
+			description: "Make all the card colors match and compete with your friends on who gets the best score!",
+			caption: "colorfly",
+			picture: "mahham.ws/projects/colorFly/icon.png"
 		});
 }
