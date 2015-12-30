@@ -83,9 +83,8 @@ function cheat() {
 
 function facebookClick() {
 	FB.ui({
-			method: "share",
-			href: "http://mahham.ws/projects/colorFly",
-			redirect_uri: "http://mahham.ws/projects/colorFly",
+			method: "feed",
+			link: "http://mahham.ws/projects/colorFly",
 			picture: "http://mahham.ws/projects/colorFly/icon.png",
 			name: "I won with "+clicks+" clicks",
 			caption: "Colorfly",
