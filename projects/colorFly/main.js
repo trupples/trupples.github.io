@@ -83,11 +83,7 @@ function cheat() {
 
 function facebookClick() {
 	FB.ui({
-			method: "feed",
-			link: "http://mahham.ws/projects/colorFly",
-			picture: "http://mahham.ws/projects/colorFly/icon.png",
-			name: "I won with "+clicks+" clicks",
-			caption: "Colorfly",
-			description: "Make all of the cards' colors match and compete with your friends on who gets the best click count!"
+			method: "share",
+			href: "mahham.ws/projects/colorFly"
 		});
 }
