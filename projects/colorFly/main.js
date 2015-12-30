@@ -61,6 +61,8 @@ function win() {
 	// show the "you won" and click count cards
 	flip(cards[1][2], null, "win.png");
 	flip(cards[2][2], "", null);
+	cards[2][2].className = "";
+	document.getElementById("clickCount").innerHTML = clicks + "<br/>clicks";
 }
 
 function checkWin() {
@@ -83,10 +85,10 @@ function facebookClick() {
 	FB.ui({
 			method: "share",
 			href: "http://mahham.ws/projects/colorFly",
+			redirect_uri: "http://mahham.ws/projects/colorFly",
 			picture: "http://mahham.ws/projects/colorFly/icon.png",
-			name: "ColorFly",
-			caption: "",
-			description: "Make all of the cards' colors match and compete with your friends on who gets the lowest score!",
-			message: "I won with "+clicks+" clicks"
+			name: "I won with "+clicks+" clicks",
+			caption: "Colorfly",
+			description: "Make all of the cards' colors match and compete with your friends on who gets the best click count!"
 		});
 }

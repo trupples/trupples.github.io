@@ -27,6 +27,14 @@ td {
 	border-radius: 5vmin;
 }
 
+/* CLICK COUNT SPAN */
+#clickCount {
+	font-family: impact;
+	vertical-align: top;
+	font-size: 9vmin;
+	line-height: 0.8em;
+}
+
 /* NO SELECT */
 .noselect {
     -webkit-touch-callout: none;
