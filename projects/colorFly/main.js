@@ -76,8 +76,8 @@ function checkWin() {
 
 function facebookClick() {
 	FB.ui({
-			method: "share",
-			href: "mahham.ws/projects/colorFly",
+			method: "feed",
+			link: "mahham.ws/projects/colorFly",
 			name: "I won with "+clicks+" clicks!"
 		});
 }
