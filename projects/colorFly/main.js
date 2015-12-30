@@ -82,8 +82,8 @@ function cheat() {
 function facebookClick() {
 	FB.ui({
 			method: "share",
-			href: "http://mahham.ws/projecs/colorFly",
-			picture: "http://mahham.ws/projecs/colorFly/icon.png",
+			href: "http://mahham.ws/projects/colorFly",
+			picture: "http://mahham.ws/projects/colorFly/icon.png",
 			name: "ColorFly",
 			caption: "",
 			description: "Make all of the cards' colors match and compete with your friends on who gets the lowest score!",
