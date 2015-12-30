@@ -82,7 +82,7 @@ function cheat() {
 function facebookClick() {
 	FB.ui({
 			method: "share",
-			link: "http://mahham.ws/projecs/colorFly",
+			href: "http://mahham.ws/projecs/colorFly",
 			picture: "http://mahham.ws/projecs/colorFly/icon.png",
 			name: "ColorFly",
 			caption: "",
