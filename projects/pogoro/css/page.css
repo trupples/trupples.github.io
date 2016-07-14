@@ -1,0 +1,25 @@
+/* css/page.css */
+/* Handles basic page attributes */
+
+.page {
+	overflow: hidden;
+}
+
+.page {
+	position: absolute;
+	left: 0;
+	width: 100vw;
+	height: 95vh;
+	transition: all 0.5s;
+	transition-easing-function: ease-in-out;
+}
+
+.big.page {
+	top: 5vh;
+	overflow-y: auto;
+}
+
+.small.page {
+	top: -100vh;
+	overflow: hidden;
+}
