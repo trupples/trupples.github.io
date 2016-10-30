@@ -1,3 +1,10 @@
 body #content {
+  padding: 1px 1em 1em 1em;
   margin: 0 auto 0 auto;
-  width: 125vh; }
+  width: 125vh;
+  /*
+		section {
+			width: 120vh;
+		}*/ }
+  body #content header p {
+    width: 75vh; }

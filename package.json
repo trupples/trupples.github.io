@@ -22,6 +22,7 @@
   },
   "homepage": "ianid.github.io",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "node-sass": "^3.10.1",
     "nodemon": "^1.11.0"
   }

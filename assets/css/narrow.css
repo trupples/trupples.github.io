@@ -1,3 +1,11 @@
 body #content {
-  width: 94vw;
-  padding: 1em 1em 1em 1em; }
+  padding: 1px 1em 1em 1em;
+  margin: 0 0 0 0;
+  width: 100vw; }
+  body #content header p {
+    width: 50vw; }
+  body #content header #profile-pic {
+    position: relative;
+    right: 2.5em; }
+  body #content section {
+    width: 90vw; }

@@ -1,4 +1,9 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Lato");
+@font-face {
+  font-family: fontawesome;
+  src: url(../../node_modules/font-awesome/fonts/fontawesome-webfont.svg), url(../../node_modules/font-awesome/fonts/fontawesome-webfont.woff), url(../../node_modules/font-awesome/fonts/fontawesome-webfont.ttf); }
+
 body {
   font-family: 'Lato', sans-serif;
   overflow-x: hidden;
@@ -6,8 +11,7 @@ body {
   background-color: #eee;
   font-size: 4vmin; }
   body #content {
-    background-color: #fff;
-    padding: 1px 1em 1em 1em; }
+    background-color: #fff; }
     body #content header {
       margin-bottom: 3em; }
       body #content header h1 {
@@ -17,10 +21,23 @@ body {
       body #content header p {
         color: #888;
         font-size: 1em;
-        line-height: 1em;
+        line-height: 1.25em;
         margin-top: 0; }
       body #content header #profile-pic {
         float: right;
-        height: 6em; }
+        height: 8em; }
     body #content section {
       line-height: 1.25em; }
+      body #content section ul {
+        margin-top: 0;
+        list-style: none; }
+        body #content section ul li::before {
+          font-family: fontawesome;
+          font-size: 0.75em;
+          content: " "; }
+  body a:link, body a:visited {
+    color: #e55e5e; }
+  body a:hover {
+    color: #d68080; }
+  body a:active {
+    color: #888; }
