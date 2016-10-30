@@ -1,13 +1,16 @@
 $epsilon: 1px;
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 body {
+	font-family: 'Open Sans', sans-serif;
 	overflow-x: hidden;
 	margin: 0;
-	background-color: #5ef6ff;
+	background-color: #eee;
 	font-size: 4vmin;
 
 	#content {
-		background-color: #e8fdff;
+		background-color: #fff;
 		padding: $epsilon 1em 1em 1em;
 
 		header {
@@ -20,7 +23,7 @@ body {
 			}
 
 			p {
-				color: rgba(0, 0, 0, 0.5);
+				color: #888;
 				font-size: $spacing * 2;
 				line-height: $spacing * 2;
 				margin-top: 0;

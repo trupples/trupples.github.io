@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 body {
+  font-family: 'Open Sans', sans-serif;
   overflow-x: hidden;
   margin: 0;
-  background-color: #5ef6ff;
+  background-color: #eee;
   font-size: 4vmin; }
   body #content {
-    background-color: #e8fdff;
+    background-color: #fff;
     padding: 1px 1em 1em 1em; }
     body #content header {
       margin-bottom: 3em; }
@@ -13,7 +15,7 @@ body {
         line-height: 2em;
         margin-bottom: 0; }
       body #content header p {
-        color: rgba(0, 0, 0, 0.5);
+        color: #888;
         font-size: 1em;
         line-height: 1em;
         margin-top: 0; }
