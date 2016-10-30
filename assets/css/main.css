@@ -1,0 +1,24 @@
+body {
+  overflow-x: hidden;
+  margin: 0;
+  background-color: #5ef6ff;
+  font-size: 4vmin; }
+  body #content {
+    background-color: #e8fdff;
+    padding: 1px 1em 1em 1em; }
+    body #content header {
+      margin-bottom: 3em; }
+      body #content header h1 {
+        font-size: 2em;
+        line-height: 2em;
+        margin-bottom: 0; }
+      body #content header p {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1em;
+        line-height: 1em;
+        margin-top: 0; }
+      body #content header #profile-pic {
+        float: right;
+        height: 6em; }
+    body #content section {
+      line-height: 1.25em; }
