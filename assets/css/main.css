@@ -1,19 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
-/*
-@font-face {
-	font-family: fontawesome;
-	src: url(../../node_modules/font-awesome/fonts/fontawesome-webfont.svg),
-		url(../../node_modules/font-awesome/fonts/fontawesome-webfont.woff),
-		url(../../node_modules/font-awesome/fonts/fontawesome-webfont.ttf);
-}
-*/
 body {
   font-family: 'Lato', sans-serif;
   overflow-x: hidden;
   margin: 0;
   background-color: #eee;
-  font-size: 4vmin; }
+  font-size: 3.5vmin; }
   body #content {
+    padding: 1px 1em 1em 1em;
     background-color: #fff; }
     body #content header {
       margin-bottom: 3em; }
