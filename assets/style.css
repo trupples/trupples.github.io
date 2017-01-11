@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+body {
+	font-family: 'Lato', sans-serif;
+	overflow-x: hidden;
+	margin: inherit;
+	background-color: #e3e3e3;
+	font-size: 3.5vmin;
+}
+
+#content {
+	margin: 0 auto 0 auto;
+	padding: 1px 1em 1em 1em;
+	background-color: #eee;
+}
+
+header {
+	margin-top: 1em;
+	margin-bottom: 2em;
+	height: 8em;
+}
+
+header h1 {
+	font-size: 2em;
+	line-height: 2em;
+	margin: 0;
+}
+
+header p {
+	color: #888;
+	line-height: 1.25em;
+	margin: 0;
+	max-width: calc((100% - 8em) * 2 / 3); /* 8em is the height (also width bc square) of the pic */
+}
+
+header #profile-pic {
+	float: right;
+	height: 8em;
+	border-radius: 0.5em;
+}
+
+/* vertical rhythm 'n' shit like that */
+section {
+	line-height: 1.25em;
+}
+
+/* #connect list */
+
+ul {
+	margin-top: 0;
+	list-style: none;
+}
+
+/* fancy chevron for the #connect list */
+li::before {
+	display: inline-block;
+	content: " ";
+	width: 1em;	/* chevron-text spacing */
+	height: .9em; /* y position of the chevron */
+	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'><path fill='#000000' d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z'/></svg>");
+	background-size: 1.25em 1.25em; /* gah */
+	background-repeat: no-repeat;
+}
+
+/* link colors */
+a:link, a:visited {color: #e55e5e;}
+a:hover {color: #d68080;}
+a:active {color: #888;}
+
+/* narrow/wide screen handling */
+@media screen and (min-aspect-ratio: 6/4) {
+	#content {
+	  width: 125vh;
+	}
+}
+
+@media screen and (max-aspect-ratio: 6/4) {
+	#content {
+	  width: 100%;
+	}
+}
