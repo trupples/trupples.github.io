@@ -81,13 +81,13 @@ a:active {color: #888;}
 @media screen and (min-width: 720px) { /* desktop or comparable */
 	#content {
 		width: 720px;				/* sorry ultrawide users ;-; */
-		font-size: 20px;			/* 2.5% of 720 */
+		font-size: 20px;
 	}
 }
 
 @media screen and (max-width: 721px) {
 	#content {
 		width: 100vw;
-		font-size: 4vw;			/* for around 80 words per line */
+		font-size: 3vw;
 	}
 }
