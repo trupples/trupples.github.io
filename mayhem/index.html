@@ -17,22 +17,24 @@
 				<h2>"To be, or not to be, that is the question"</h2>
 				<p>
 					Interpreting the famous Hamlet quote as a logic statement is a thing people have
-					been doing for ages to sound clever and gain attention, creating such atrocities
-					as this ever so <d title="Yes, this is a word">artifacty</d> image
+					been doing for ages both just because it's a fun thing to do and to
+					<d title="All them 'nerd' facebook pages">sound	clever, creating such
+					atrocities</d> as this ever so <d title="words pls">artifacty</d> image
 				</p>
 				<center><img src="../assets/img/2bornot2b.jpg" alt="B=B=NOT(OR(B, B))"/></center>
 				<p>
 					Seeing "2b or not 2b" on the gamedev discord server, I had the immediate
-					reaction of just not giving a damn, yet there was a part of me who really wanted
-					to screw around with this in javasacript, because everyone
-					<d title="yes you do">loves</d>	the way Javascript does logic.
+					reaction of "yeah I already saw that so many times, don't really care", yet
+					there was a part of me who really wanted to screw around with this in
+					javasacript, because everyone <d title="yes you do">loves</d> the way Javascript
+					does logic.
 				</p>
 				<h3> Expectations </h3>
 				<p>
 					The way English works, the quote should always evaluate to true if using the
-					logical disjunction operator instead of the conjunction (part of speech, not the
+					logical OR operator instead of the conjunction (part of speech, not the
 					logical operator) presenting a contrasting choice, just like the "joke" does. If
-					X is a binary value, X or the inverse of itself will always be true.
+					X is a binary value, X OR the inverse of itself will always be true.
 				</p>
 
 				<h3> The first attempt - naively taking it literally</h3>
@@ -49,18 +51,19 @@
 					pretty much every programming language with a decent operator precedence) on
 					this. This is because "to be" is a single <d title="right word?">entity</d> in
 					the former, but <code>2*b</code> isn't. Nothing fishy should be happening on the
-					left side of the ||. The unexpected behaviour is due to the ! operator being
-					applied to <code>2</code> before the multiplication can take place. This way if
-					<code>b</code> is truthy, castable to a number and that number is also truthy
-					(i'm looking at you, <code>[]</code>) the left side of the || will be truthy so
-					the engine won't even bother evaluating the right side and the function will
-					return the double of <code>b</code>. If <code>b</code> or it casted to a number
-					is falsey, the left side of the operation will be false so the function will
-					return whatever the right side is. The <code>2</code> will always be negated,
-					resulting in <code>false</code>, which will be multiplied with <code>b</code>.
-					Anything multiplied with <code>false</code> gives a falsey result in Javascript
-					(numbers just cast the <code>false</code> to 0, <code>false*{}</code> is
-					<code>NaN</code> for some reason, etc.)
+					left side of the <code>||</code>. The unexpected behaviour is due to the
+					<code>!</code> operator being applied to <code>2</code> before the
+					multiplication can take place. This way if <code>b</code> is truthy, castable to
+					a number and that number is also truthy	(i'm looking at you, <code>[]</code>)
+					the left side of the <code>||</code> will be truthy so the engine won't even bother
+					evaluating the right side and the function will	return the double of
+					<code>b</code>. If <code>b</code> or it casted to a number is falsey, the left
+					side of the operation will be false so the function will return whatever the
+					right side is. The <code>2</code> will always be negated, resulting in
+					<code>false</code>, which will be multiplied with <code>b</code>. Anything
+					multiplied with <code>false</code> gives a falsey result in Javascript (numbers
+					just cast the <code>false</code> to 0, <code>false*{}</code> is	<code>NaN</code>
+					for some reason, etc.)
 				</p>
 
 				<h3> Fixing precedence - Can I still break it? </h3>
@@ -80,11 +83,11 @@
 				</p>
 				<code class="block">
 <hl-keyword>function</hl-keyword> <hl-fntitle>Cheater</hl-fntitle>() {
-    <hl-keyword>this</hl-keyword>.value = <hl-literal>0</hl-literal>;
+	<hl-keyword>this</hl-keyword>.value = <hl-literal>0</hl-literal>;
 }
 
 <hl-var>Cheater</hl-var>.prototype.valueOf = <hl-keyword>function</hl-keyword>() {
-    <hl-keyword>return</hl-keyword> <hl-keyword>this</hl-keyword>.value++;
+	<hl-keyword>return</hl-keyword> <hl-keyword>this</hl-keyword>.value++;
 }
 
 <hl-keyword>let</hl-keyword> <hl-var>myCheater</hl-var> = <hl-keyword>new</hl-keyword> <hl-var>Cheater</hl-var>();
@@ -104,7 +107,7 @@
 				</p>
 				<code class="block">
 <hl-keyword>function</hl-keyword> <hl-fntitle>FailedCheater</hl-fntitle>() {
-    <hl-keyword>this</hl-keyword>.value = <hl-literal>0</hl-literal>;
+	<hl-keyword>this</hl-keyword>.value = <hl-literal>0</hl-literal>;
 }
 
 <hl-var>FailedCheater</hl-var>.prototype.valueOf = () => <hl-keyword>this</hl-keyword>.value++;
