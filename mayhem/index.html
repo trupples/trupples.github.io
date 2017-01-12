@@ -3,6 +3,7 @@
 	<head>
 		<title>mahham's mayhem</title>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
 
 		<link rel="stylesheet" href="../assets/style.css" />
 		<link rel="stylesheet" href="../assets/code.css" />
@@ -10,140 +11,14 @@
 	<body>
 		<div id="content">
 			<header>
-				<h1><s>mahham</s> mayhem</h1>
+				<h1 style="cursor: pointer" onclick="window.location='index.html'"><s>mahham</s> mayhem</h1>
 				<p>Me fucking around</p>
 			</header>
 			<section>
-				<h2>"To be, or not to be, that is the question"</h2>
-				<p>
-					Interpreting the famous Hamlet quote as a logic statement is a thing people have
-					been doing for ages both just because it's a fun thing to do and to
-					<d title="All them 'nerd' facebook pages">sound	clever, creating such
-					atrocities</d> as this ever so <d title="words pls">artifacty</d> image
-				</p>
-				<center><img src="../assets/img/2bornot2b.jpg" alt="B=B=NOT(OR(B, B))"/></center>
-				<p>
-					Seeing "2b or not 2b" on the gamedev discord server, I had the immediate
-					reaction of "yeah I already saw that so many times, don't really care", yet
-					there was a part of me who really wanted to screw around with this in
-					javasacript, because everyone <d title="yes you do">loves</d> the way Javascript
-					does logic.
-				</p>
-				<h3> Expectations </h3>
-				<p>
-					The way English works, the quote should always evaluate to true if using the
-					logical OR operator instead of the conjunction (part of speech, not the
-					logical operator) presenting a contrasting choice, just like the "joke" does. If
-					X is a binary value, X OR the inverse of itself will always be true.
-				</p>
-
-				<h3> The first attempt - naively taking it literally</h3>
-				<code class="block">
-<hl-var>tbontb</hl-var> = (<hl-param>b</hl-param>) =&gt; <hl-num>2</hl-num>*<hl-var>b</hl-var> || !<hl-num>2</hl-num>*<hl-var>b</hl-var>
-<hl-builtin>console</hl-builtin>.log(<hl-var>tbontb</hl-var>(<hl-num>0</hl-num>),  <hl-var>tbontb</hl-var>(<hl-num>1</hl-num>),    <hl-comment>// 0 2</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-literal>[]</hl-literal>), <hl-var>tbontb</hl-var>(<hl-literal>{}</hl-literal>),   <hl-comment>// 0 NaN</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-str>""</hl-str>), <hl-var>tbontb</hl-var>(<hl-str>"1"</hl-str>),  <hl-comment>// 0 2</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-str>"0"</hl-str>),<hl-var>tbontb</hl-var>(<hl-literal>true</hl-literal>), <hl-comment>// 0 2</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-literal>false</hl-literal>))            <hl-comment>// 0</hl-comment>
-				</code>
-				<p>
-					Oh boy, many falsey results. Natural language doesn't agree with Javascript (and
-					pretty much every programming language with a decent operator precedence) on
-					this. This is because "to be" is a single <d title="right word?">entity</d> in
-					the former, but <code>2*b</code> isn't. Nothing fishy should be happening on the
-					left side of the <code>||</code>. The unexpected behaviour is due to the
-					<code>!</code> operator being applied to <code>2</code> before the
-					multiplication can take place. This way if <code>b</code> is truthy, castable to
-					a number and that number is also truthy	(i'm looking at you, <code>[]</code>)
-					the left side of the <code>||</code> will be truthy so the engine won't even bother
-					evaluating the right side and the function will	return the double of
-					<code>b</code>. If <code>b</code> or it casted to a number is falsey, the left
-					side of the operation will be false so the function will return whatever the
-					right side is. The <code>2</code> will always be negated, resulting in
-					<code>false</code>, which will be multiplied with <code>b</code>. Anything
-					multiplied with <code>false</code> gives a falsey result in Javascript (numbers
-					just cast the <code>false</code> to 0, <code>false*{}</code> is	<code>NaN</code>
-					for some reason, etc.)
-				</p>
-
-				<h3> Fixing precedence - Can I still break it? </h3>
-				<code class="block">
-<hl-var>tbontb</hl-var> = (<hl-param>b</hl-param>) =&gt; <hl-num>2</hl-num>*<hl-var>b</hl-var> || !(<hl-num>2</hl-num>*<hl-var>b</hl-var>)
-<hl-builtin>console</hl-builtin>.log(<hl-var>tbontb</hl-var>(<hl-num>0</hl-num>),  <hl-var>tbontb</hl-var>(<hl-num>1</hl-num>),    <hl-comment>// true 2</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-literal>[]</hl-literal>), <hl-var>tbontb</hl-var>(<hl-literal>{}</hl-literal>),   <hl-comment>// true true</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-str>""</hl-str>), <hl-var>tbontb</hl-var>(<hl-str>"1"</hl-str>),  <hl-comment>// true 2</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-str>"0"</hl-str>),<hl-var>tbontb</hl-var>(<hl-literal>true</hl-literal>), <hl-comment>// true 2</hl-comment>
-            <hl-var>tbontb</hl-var>(<hl-literal>false</hl-literal>))            <hl-comment>// true</hl-comment>
-				</code>
-				<p>
-					Now all the falsey results of the previous implementation have turned into
-					<code>true</code>. Beside the values not being all booleans, the function seems
-					to work just like the English sentence: no more falseyness. Of course, there
-					still is a way to trick it, but I'm pretty sure this is cheating:
-				</p>
-				<code class="block">
-<hl-keyword>function</hl-keyword> <hl-fntitle>Cheater</hl-fntitle>() {
-	<hl-keyword>this</hl-keyword>.value = <hl-literal>0</hl-literal>;
-}
-
-<hl-var>Cheater</hl-var>.prototype.valueOf = <hl-keyword>function</hl-keyword>() {
-	<hl-keyword>return</hl-keyword> <hl-keyword>this</hl-keyword>.value++;
-}
-
-<hl-keyword>let</hl-keyword> <hl-var>myCheater</hl-var> = <hl-keyword>new</hl-keyword> <hl-var>Cheater</hl-var>();
-<hl-builtin>console</hl-builtin>.log(<hl-var>tbontb</hl-var>(<hl-var>myCheater</hl-var>)); <hl-comment>// false</hl-comment>
-				</code>
-				<p>
-					This works because when the <code>tbontb</code> function first gets the value of
-					<code>b</code>, the cheater returns <code>0</code> so that the left side is
-					falsey. When evaluating the right side, the function is being given the "new"
-					value of b: 1, thus making the right side also falsey.
-				</p>
-				<p>
-					Another thing I stumbled upon when making the cheater is that
-					<code>Cheater.prototype.valueOf</code> (or any other prototype function) must be
-					declared with <code>function() { ... }</code>. <code>() => { ... }</code>
-					doesn't work:
-				</p>
-				<code class="block">
-<hl-keyword>function</hl-keyword> <hl-fntitle>FailedCheater</hl-fntitle>() {
-	<hl-keyword>this</hl-keyword>.value = <hl-literal>0</hl-literal>;
-}
-
-<hl-var>FailedCheater</hl-var>.prototype.valueOf = () => <hl-keyword>this</hl-keyword>.value++;
-
-<hl-keyword>let</hl-keyword> <hl-var>yourCheater</hl-var> = <hl-keyword>new</hl-keyword> <hl-var>FailedCheater</hl-var>();
-<hl-builtin>console</hl-builtin>.log(<hl-var>tbontb</hl-var>(<hl-var>yourCheater</hl-var>)); <hl-comment>// true</hl-comment>
-				</code>
-				<p>
-					This confused me at first, but it appears that
-					<a href="http://stackoverflow.com/a/36234410">arrow functions don't have
-					<code>this</code></a>.
-				</p>
-				<h3> Bulletproofing it </h3>
-				<p>
-					Okay, now let's try to make this invincible. An idea would be storing the value
-					of b and using that so it doesn't change. Also, making the function always
-					return bools would get us closer to the "logical" interpretation from which we
-					started.
-				</p>
-				<code class="block">
-<hl-var>tbontb</hl-var> = (<hl-param>b</hl-param>) => {
-	<hl-keyword>let</hl-keyword> <hl-var>B</hl-var> = b.valueOf &amp;&amp; b.valueOf() || <hl-var>b</hl-var>;
-	<hl-keyword>return</hl-keyword> !!(<hl-num>2</hl-num>*<hl-var>B</hl-var> || !(<hl-num>2</hl-num>*<hl-var>B</hl-var>));
-}
-
-<hl-keyword>let</hl-keyword> <hl-var>myOtherCheater</hl-var> = new Cheater();
-<hl-keyword>let</hl-keyword> <hl-var>yourOtherCheater</hl-var> = new FailedCheater();
-<hl-builtin>console</hl-builtin>.log(<hl-var>tbontb</hl-var>(<hl-var>myOtherCheater</hl-var>));<hl-comment>   // true</hl-comment>
-<hl-builtin>console</hl-builtin>.log(<hl-var>tbontb</hl-var>(<hl-var>yourOtherCheater</hl-var>));<hl-comment> // true</hl-comment>
-				</code>
-				<p>
-					The and on the <code>let B = ...</code> line checks if <code>b</code> has a
-					<code>valueOf</code> function. If it has, it sets <code>B</code> to that
-					function's return value. Else, it falls back to just copying the value of
-					<code>b</code>.
-				</p>
+				<h2> "Article" list </h2>
+				<ul>
+					<li><a href="2bornot2b.html">"To be, or not to be, that is the question"</a></li>
+				</ul>
 			</section>
 		</div>
 	</body>
