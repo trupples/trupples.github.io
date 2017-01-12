@@ -1,0 +1,38 @@
+code {
+	display: inline-block; /* so that max-width works */
+	box-sizing: border-box;	/* so that max-width: 100% also includees the margin */
+	white-space: pre;
+	max-width: 100%;
+	padding: 0 .3em 0 .3em;
+	border: 1px solid #888;
+	border-radius: .3em;
+	background-color: #F7F8FA;
+	color: black;
+	line-height: 1em;
+}
+
+code.block {
+	padding: 0 1em 0 1em;
+}
+
+/*
+Atom One Light highlightjs.org ripoff
+*/
+
+hl-comment {
+  color: #a0a1a7;
+  font-style: italic;
+}
+
+hl-keyword {color: #a626a4;}
+
+hl-literal, hl-param {color: #0184bb;}
+
+hl-str, hl-regexp {color: #50a14f;}
+
+hl-builtin {color: #c18401;}
+
+hl-var {color: #000;}
+hl-num {color: #986801;}
+
+hl-fntitle {color: #4078f2;}

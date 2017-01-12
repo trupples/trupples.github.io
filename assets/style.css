@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css?family=Lato");
 
 body {
@@ -6,6 +7,11 @@ body {
 	margin: inherit;
 	background-color: #e3e3e3;
 	font-size: 3.5vmin;
+}
+
+d {
+    border-bottom: 1px dotted #e55e5e;
+    text-decoration: none;
 }
 
 #content {
@@ -41,7 +47,12 @@ header #profile-pic {
 
 /* vertical rhythm 'n' shit like that */
 section {
-	line-height: 1.25em;
+	line-height: 1.5em;
+}
+
+section img {
+	border: 1px solid black;
+	max-height: 10em;
 }
 
 /* #connect list */
