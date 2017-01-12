@@ -63,7 +63,7 @@
 					right side is. The <code>2</code> will always be negated, resulting in
 					<code>false</code>, which will be multiplied with <code>b</code>. Anything
 					multiplied with <code>false</code> gives a falsey result in Javascript (numbers
-					just cast the <code>false</code> to 0, <code>false*{}</code> is	<code>NaN</code>
+					just cast <code>false == 0</code>, <code>false*{}</code> is	<code>NaN</code>
 					for some reason, etc.)
 				</p>
 
@@ -98,7 +98,7 @@
 					This works because when the <code>tbontb</code> function first gets the value of
 					<code>b</code>, the cheater returns <code>0</code> so that the left side is
 					falsey. When evaluating the right side, the function is being given the "new"
-					value of b: 1, thus making the right side also falsey.
+					value <code>b = 1</code>, thus making the right side also falsey.
 				</p>
 				<p>
 					Another thing I stumbled upon when making the cheater is that
@@ -118,8 +118,8 @@
 				</code>
 				<p>
 					This confused me at first, but it appears that
-					<a href="http://stackoverflow.com/a/36234410">arrow functions don't have
-					<code>this</code></a>.
+					<a href="http://stackoverflow.com/a/36234410"><code>this</code> doesn't work the
+					same in arrow functions</a>.
 				</p>
 				<h3> Bulletproofing it </h3>
 				<p>
@@ -148,4 +148,19 @@
 			</section>
 		</div>
 	</body>
+	<script>
+		// just for the fun of it
+		let tbontb1 = (b) => 2*b || !2*b
+		let tbontb2 = (b) => 2*b || !(2*b)
+		let tbontb3 = (b) => {
+			let B = b.valueOf && b.valueOf() || b;
+			return !!(2*B || !(2*B));
+		}
+
+		function Cheater() {this.value = 0;}
+		Cheater.prototype.valueOf = function() {return this.value++;}
+
+		function FailedCheater() {this.value = 0;}
+		FailedCheater.prototype.valueOf = () => this.value++;
+	</script>
 </html>
