@@ -51,6 +51,7 @@ section {
 }
 
 section img {
+	margin-left: 1em; margin-right: 1em;
 	border: 1px solid black;
 	max-height: 10em;
 }

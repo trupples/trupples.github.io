@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>mahham's mayhem</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+
+		<link rel="stylesheet" href="../assets/style.css" />
+		<link rel="stylesheet" href="../assets/code.css" />
+	</head>
+	<body>
+		<div id="content">
+			<header>
+				<h1 style="cursor: pointer" onclick="window.location='index.html'"><s>mahham</s> mayhem</h1>
+				<p>Me screwing around</p>
+				<h2>Screwing around with logic ICs</h2>
+			</header>
+			<section id="day1">
+				<h2 title="Friday, 2017-01-27">Day 1</h2>
+				<p>TL;DR - ICs got delivered; RS latch; not enough wires and breadboards</p>
+				<p>
+					First thing after getting out of school I got a call from the courier telling me
+					he had the order. Yay!
+				</p>
+				<center>
+					<img src="../assets/img/deliveredbox.jpg" alt="box with antistatic bags containing ICs" />
+					<img src="../assets/img/labeledtubes.jpg" alt="labeled IC tubes" />
+				</center>
+				<p>
+					After unpacking everything, I labeled the long IC tubes so that I don't have to
+					keep the bag labels or have to read the brown on black serial number on the
+					chips themselves. And yes, I know I'm going to have to use pull up and pull down
+					resistors everywhere because I'm mixing HC with HCT with LS series. I was dumb
+					enough not to research before buying >.<
+				</p>
+				<p>
+					To try these out, I made one of the simplest circuits there are, the RS latch.
+					I'm using an Arduino Nano clone as a power source.
+				</p>
+				<center>
+					<img src="../assets/img/rslatch.jpg" alt="RS latch on a breadboard" />
+				</center>
+				<p>
+					I then realised that my project will become an absolute rat's nest if I
+					continued using dupont-like cables instead of cutting fixed length, flush with
+					the breadboard ones from a big coil. Too bad I don't have a big wire coil, nor
+					capacitors for the 555 clock, nor enough resistors for all the pull-ups, nor
+					enough breadboards. This means that the project will be on halt for 2 days
+					because it's friday night and all hardware stores near me are closed in the
+					weekend.
+				</p>
+				<p>
+					Well, not really. I can still plan stuff in these two days.
+				</p>
+			</section>
+			<section id="planning">
+				<h2>Planning the thing</h2>
+				<p>
+					<h3>All the mistakes!</h3>
+					When I started planning, I realised I forgot to order a ROM chip for the
+					instruction decoding. This led me to decide to use punch cards for the program
+					memory because punch cards seem really cool. I really hope I won't regret this
+					too much. I also forgot to get some demuxes so I'll need to keep decoding binary
+					to multiple lines to a minimum. These two are the reason the punch cards will be
+					very wide.
+				</p>
+				<p>
+					<h3>Word length</h3>
+					I chose 6 as the word length. I wanted something greater than 4, but 8 seemed a
+					little too big. On one hand it would add a few centimeters to the punch card
+					width and on the other it would probably require a few more breadboards and
+					stupid amounts of transistors for the hopefully few decoders I'll need.
+					That won't work for me because I'm really cheap. 7 bits would've probably worked
+					but 7 is odd and I have some standards. 6 bit words seem just right. A 6 bit
+					charset is big enough to fit letters, digits and a few symbols. 64 instructions
+					is not a bad limit at all, really, and the shopping basket won't get bigger than
+					what I mentioned at the end of the last section.
+				</p>
+				<p>
+					<h3>Punch card format</h3>
+					I settled on 3 instructions: MOV, SUM and JMP. The 6 PC bits are there to remove
+					the need for PC logic.
+				</p>
+				<center><img src="../assets/img/is.jpg" alt="Instruction set" /></center>
+				<p>
+					The MOV instruction takes a binary FROM value being the register to read, 6 TO
+					bits representing the places the value will be moved to (can be multiple) and 6
+					bits that will be the value of the read-only D register for moving literal
+					values.
+				</p>
+				<p>
+					The SUM instruction takes a sign bit (addition or subtraction), a CMP bit which
+					dictates if the Z and C flags are set, a Carry bit, which if high XORs the carry
+					in with the last operation's carry out and a TO part which works like the MOV
+					TO.
+				</p>
+				<p>
+					Lastly, the JMP instruction takes a 3 bit condition and a 6 bit address. This
+					sets the controller's "target address" register to that address, making the CPU
+					cycle through the punch cards until that PC value comes up.
+				</p>
+				<center><img style="font-size: 2em" src="../assets/img/msi.jpg" alt="MSI scheme" />
+			</section>
+			<section id="day2">
+				<h2 title="Saturday, 2017-01-28">Day 2</h2>
+				Made this file and typed in the "journal".
+			</section>
+		</div>
+	</body>
+</html>
