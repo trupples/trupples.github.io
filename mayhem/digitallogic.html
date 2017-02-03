@@ -127,6 +127,31 @@
 					at least 2-3 more bits to the adder.
 				</p>
 				<center><img style="font-size: 1.5em" src="../assets/img/1bitfulladder.jpg" alt="1 bit full adder" /></center>
+			</section>
+			<span id="day6"></span><span id="day7"></span>
+			<section id="day8">
+				<h2 title="Friday, 2017-02-03">Day 8</h2>
+				<p>
+					After 2 days of feeling sick, I got to working on the CPU again. While using
+					multi-strand wires is a total pain in the ass, solid ones are such a breeze to
+					work with. I managed to make 4 bits w/o the last one's carry working:
+				</p>
+				<center><img src="../assets/img/4bitfulladder.jpg" alt="4 bit full adder" /></center>
+				<p>
+					A multimeter is also a very handy tool because now I don't have to connect LEDs
+					everywhere I want to test what's on a wire or consult the resistor color code
+					chart that I can't remember all the time.
+				</p>
+				<center><img src="../assets/img/multimeter.jpg" alt="multimeter" /></center>
+				<p>
+					FFWD a few hours and I have the whole adder working. Next on the todo list is
+					the add/subtract/compare logic. In the image I'm calculating 24 + 51 = 11 (after
+					overflowing). The top 3 LEDs are the 3 least significant bits, the bottom left 3
+					are the most significant 3 digits and the bottom right is the overflow flag w/o
+					a curent limiting resistor because I live life on the edge.
+				</p>
+				<center><img src="../assets/img/adderdone.jpg" alt="Adder done!" /></center>
+			</section>
 		</div>
 	</body>
 </html>
