@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>mahham's mayhem</title>
+		<title>Making a 6 bit CPU - mahham's mayhem</title>
+		<meta name="description" content="Log of me making a 6 bit punch card CPU out of (mostly) logic ICs" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 
@@ -13,7 +14,7 @@
 			<header>
 				<h1 style="cursor: pointer" onclick="window.location='index.html'"><s>mahham</s> mayhem</h1>
 				<p>Me screwing around</p>
-				<h2>Screwing around with logic ICs</h2>
+				<h2>Making a 6 bit CPU</h2>
 			</header>
 			<section id="day1">
 				<h2 title="Friday, 2017-01-27">Day 1</h2>
@@ -134,13 +135,13 @@
 				<p>
 					After 2 days of feeling sick, I got to working on the CPU again. While using
 					multi-strand wires is a total pain in the ass, solid ones are such a breeze to
-					work with. I managed to make 4 bits w/o the last one's carry working:
+					work with. I managed to make 4 bits w/o the last one's carry working by 3PM-ish:
 				</p>
 				<center><img src="../assets/img/4bitfulladder.jpg" alt="4 bit full adder" /></center>
 				<p>
 					A multimeter is also a very handy tool because now I don't have to connect LEDs
 					everywhere I want to test what's on a wire or consult the resistor color code
-					chart that I can't remember all the time.
+					chart (that I don't remember) all the time.
 				</p>
 				<center><img src="../assets/img/multimeter.jpg" alt="multimeter" /></center>
 				<p>
@@ -148,7 +149,8 @@
 					the add/subtract/compare logic. In the image I'm calculating 24 + 51 = 11 (after
 					overflowing). The top 3 LEDs are the 3 least significant bits, the bottom left 3
 					are the most significant 3 digits and the bottom right is the overflow flag w/o
-					a curent limiting resistor because I live life on the edge.
+					a curent limiting resistor because <d title="The absolute madman">I live life on
+					the edge.</d>
 				</p>
 				<center><img src="../assets/img/adderdone.jpg" alt="Adder done!" /></center>
 			</section>
