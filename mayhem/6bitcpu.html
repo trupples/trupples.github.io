@@ -154,6 +154,26 @@
 				</p>
 				<center><img src="../assets/img/adderdone.jpg" alt="Adder done!" /></center>
 			</section>
+			<span id="day9"></span><span id="day10"></span><span id="day11"></span><span id="day12"></span><span id="day13"></span>
+			<section id="day14">
+				<h2 title="Thursday, 2017-02-09">Day 14</h2>
+				<p>
+					I really have no better excuse than lazyness to not having worked on the CPU for
+					so long :/
+				</p>
+				<p>
+					Anyways, here's the ADD/SUB logic (just 7 XORs, meh). During the making of this
+					module the inconvenience of pull-down resistors became really apparent as I had
+					to mix different family ICs.
+					<a href="http://wiki.openwrt.org/_media/doc/hardware/chart-ic-voltage-switching-levels-grpah.png">This chart</a>
+					is hella useful by the way. The left image shows 28+15=43 being calculated and
+					the second shows 28-15=13, but I only needed to move ONE wire to do that :D
+				</p>
+				<center><img src="../assets/img/day14add.png" alt="28+15" /><img src="../assets/img/day14sub.png" alt="28-15" /></center>
+				<p>
+					The 3 ICs on the top right are an XNOR, 3-input AND and D latch for the zero
+					flag computation and for storing the zero and carry flags.
+				</p>
 		</div>
 	</body>
 </html>
