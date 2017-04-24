@@ -13,10 +13,18 @@ d {
     text-decoration: none;
 }
 
-#content {
+.center-column {
 	box-sizing: border-box;
 	margin: 0 auto 0 auto;
 	padding: 1px 1em 1em 1em;
+}
+
+#https-warning {
+	background-color: orange;
+	cursor: pointer;
+}
+
+#content {
 	background-color: #eee;
 }
 
@@ -80,14 +88,14 @@ a:hover {color: #d68080;}
 a:active {color: #888;}
 
 @media screen and (min-width: 720px) { /* desktop or comparable */
-	#content {
+	.center-column {
 		width: 720px;				/* sorry ultrawide users ;-; */
 		font-size: 20px;
 	}
 }
 
 @media screen and (max-width: 721px) {
-	#content {
+	.center-column {
 		width: 100vw;
 		font-size: 3vw;
 	}
