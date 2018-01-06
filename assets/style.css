@@ -33,12 +33,6 @@ header {
 	margin-bottom: 2em;
 }
 
-header h1 {
-	font-size: 2em;
-	line-height: 2em;
-	margin: 0;
-}
-
 header p {
 	color: #888;
 	line-height: 1.25em;
@@ -52,7 +46,6 @@ header #profile-pic {
 	border-radius: 0.5em;
 }
 
-/* vertical rhythm 'n' shit like that */
 section {
 	line-height: 1.5em;
 }
@@ -62,8 +55,6 @@ section img {
 	border: 1px solid black;
 	max-height: 10em;
 }
-
-/* #connect list */
 
 ul {
 	margin-top: 0;
@@ -77,7 +68,7 @@ a:active {color: #888;}
 
 @media screen and (min-width: 720px) { /* desktop or comparable */
 	.center-column {
-		width: 720px;				/* sorry ultrawide users ;-; */
+		width: 720px;		/* sorry ultrawide users ;-; */
 	}
 }
 
