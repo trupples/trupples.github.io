@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>2b || !2b - mahham's mayhem</title>
+		<title>2b || !2b - trupples' blog</title>
 		<meta name="description" content="Playing around with 'to be or not to be' in javascript" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -13,8 +13,9 @@
 	<body>
 		<div id="content" class="center-column">
 			<header>
-				<h1 style="cursor: pointer" onclick="window.location='index.html'">mayhem</h1>
-				<p>Me screwing around</p>
+				<a href="/">&lt; go back to the main page</a><br/>
+				<a href=".">&lt; go back to the blog article list</a><br/>
+				<h1>trupples' blog</h1>
 			</header>
 			<section>
 				<h2>"To be, or not to be, that is the question"</h2>
@@ -24,7 +25,7 @@
 					<d title="All them 'nerd' facebook pages">sound	clever, creating such
 					atrocities</d> as this ever so <d title="words pls">artifacty</d> image
 				</p>
-				<center><img src="../assets/img/2bornot2b.jpg" alt="B=B=NOT(OR(B, B))"/></center>
+				<center><img src="/assets/img/2bornot2b.jpg" alt="B=B=NOT(OR(B, B))"/></center>
 				<p>
 					Seeing "2b or not 2b" on the gamedev discord server, I had the immediate
 					reaction of "yeah I already saw that so many times, don't really care", yet
@@ -157,7 +158,7 @@
 		let tbontb3 = (b) => {
 			let B = b.valueOf && b.valueOf() || b;
 			return !!(2*B || !(2*B));
-		}
+		} 
 
 		function Cheater() {this.value = 0;}
 		Cheater.prototype.valueOf = function() {return this.value++;}

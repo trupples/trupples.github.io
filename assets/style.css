@@ -31,7 +31,6 @@ d {
 header {
 	margin-top: 1em;
 	margin-bottom: 2em;
-	height: 8em;
 }
 
 header h1 {
@@ -71,17 +70,6 @@ ul {
 	list-style: none;
 }
 
-/* fancy chevron for the #connect list */
-li::before {
-	display: inline-block;
-	content: " ";
-	width: 1em;	/* chevron-text spacing */
-	height: .9em; /* y position of the chevron */
-	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'><path fill='#000000' d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z'/></svg>");
-	background-size: 1.25em 1.25em; /* gah */
-	background-repeat: no-repeat;
-}
-
 /* link colors */
 a:link, a:visited {color: #e55e5e;}
 a:hover {color: #d68080;}
@@ -90,13 +78,11 @@ a:active {color: #888;}
 @media screen and (min-width: 720px) { /* desktop or comparable */
 	.center-column {
 		width: 720px;				/* sorry ultrawide users ;-; */
-		font-size: 20px;
 	}
 }
 
 @media screen and (max-width: 721px) {
 	.center-column {
 		width: 100vw;
-		font-size: 3vw;
 	}
 }
