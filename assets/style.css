@@ -37,7 +37,6 @@ header p {
 	color: #888;
 	line-height: 1.25em;
 	margin: 0;
-	max-width: calc((100% - 8em) * 2 / 3); /* 8em is the height (also width bc square) of the pic */
 }
 
 header #profile-pic {
