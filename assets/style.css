@@ -41,6 +41,7 @@ header p {
 
 header #profile-pic {
 	float: right;
+	margin-left: 3em;
 	height: 8em;
 	border-radius: 0.5em;
 }
