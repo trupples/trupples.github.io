@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700');
+
+body {
+	margin: 0;
+
+	font-family: 'Nunito', sans-serif;
+	font-size: 2em;
+
+	background-color: #222;
+}
+
+h1,h2,h3,h4,h5,h6{
+	margin: 0 auto;
+}
+
+canvas {
+	position: absolute;
+	left: calc((100vw - 40rem - 100vh) / 2); top: 0; width: 100vh; height: 100vh;
+	box-sizing: border-box;
+
+	background-color: unset;
+
+	z-index: 1;
+}
+
+aside {
+	background-color: #333;
+	color: #fff;
+	position: absolute; display: block;
+	top: 0; right: 0; width: 40rem; height: 100vh;
+	box-shadow: rgba(0,0,0,0.3) 0px 0px 1em 0px;
+	box-sizing: border-box;
+
+
+	overflow-y: scroll;
+	scroll-snap-type: y proximity;
+
+	z-index: 2;
+}
+
+aside section {
+	scroll-snap-align: start;
+	min-height: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 2rem;
+}
+
+header {
+	width: 100%;
+	text-align: center;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+header h1 {
+	margin-bottom: 0;
+}
+
+#menu {
+	position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+	display: none;
+	z-index: 4;
+
+	background-color: #333;
+	box-shadow: 0 0 1em 0 rgba(0,0,0,0.3);
+}
+
+#menu.active {
+	display: initial;
+}
+
+#menu-backdrop {
+	display: none;
+	z-index: 3;
+}
+
+#menu.active + #menu-backdrop {
+	display: block;
+	position: absolute; left:0;top:0;width:100vw;height:100vh;
+	background-color: rgba(0,0,0,0.4);
+}
+
+#menu > div {
+	padding: 0.3em;
+	color: #fff;
+	transition: background-color 200ms;
+}
+
+#menu > div.pushable:hover {
+	cursor: pointer;
+	background-color: #383838;
+}
+
+#menu > div:nth-of-type(1) {
+	background-color: #444;
+}
+
+.not_essential {
+	font-size: 0.8em;
+	color: #aaa;
+}
+
+.not_essential::before {
+	display: inline;
+	content: "＊ ";
+}
+
+.expl {
+	font-size: 0.75em;
+	color: #bbb;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+

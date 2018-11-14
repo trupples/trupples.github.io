@@ -1,0 +1,7 @@
+/* hardcoded proportions so this will look like it looks on my laptop everywhere i guess */
+/* Maybe at least screens with an aspect ratio close to 16:9 */
+/* i am sorry */
+
+:root {
+	font-size: 1.82vh; /* 14px @ 1vh = 7.68px */
+}

@@ -1,0 +1,38 @@
+.myNumber {
+	all: unset;
+	display: inline-block;
+	background-color: inherit;
+	color: inherit;
+
+	border: 2px solid white;
+	border-radius: 10px;
+	width: auto;
+}
+
+.myNumber > * {
+	float: left;
+}
+
+.myNumber > div:nth-of-type(1), .myNumber > div:nth-of-type(3) {
+	display: inline-block;
+	width: 0.7em;
+	padding: 0 10px;
+	text-align: center;
+
+	transition: background-color 250ms;
+}
+
+.myNumber > div:nth-of-type(1) {
+	border-right: 2px solid white;
+	margin-right: 5px;
+}
+
+.myNumber > div:nth-of-type(3) {
+	border-left: 2px solid white;
+	margin-left: 5px;
+}
+
+.myNumber > div:nth-of-type(1):hover, .myNumber > div:nth-of-type(3):hover {
+	background-color: rgba(255,255,255,0.2);
+	cursor: pointer;
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Proiect interactiv la fizica pe subiectul rezonantei. Liceul Teoretic Nicolae Iorga">
+		<meta name="viewport" content="initial-scale=1">
+		<title>Rezonanța</title>
+
+		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./hardcoded_proportions_bleh.css">
+		<link rel="stylesheet" href="./mynumberinput.css">
+		<link rel="stylesheet" href="./mybutton.css">
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+	</head>
+	<body>
+		<canvas class="physicsSim">HTML5 canvas not supported. Try another browser!</canvas>
+		<div id="menu"></div>
+		<div id="menu-backdrop"></div>
+		<aside id="slides">
+			<section id="title_slide">
+				<h1>Rezonanța</h1>
+				<h2>Dragomir Ioan<br>
+				Vasile Dan</h2>
+			</section>
+			<section>
+				<h2>Definiție</h2>
+				<p><b>Rezonanța</b> este tendința unui sistem de a oscila cu o amplitudine mai mare la unele frecvențe decât la altele.</p>
+			</section>
+			<section id="single_spring">
+				<h2>1 &ndash; Cazul simplu</h2>
+				<p>În cazul unui sistem alcătuit dintr-un singur resort, aflarea frecvenței de rezonanță cunoscând parametrii resortului e o problemă trivială.</p>
+				<p>Frecvența rezonantă a sistemului este egală cu frecvența OLA-ului.</p>
+			</section>
+			<section>
+				<h2>Experiment - același sistem, oscilații diferite</h2>
+				<p>Trei resorturi identice \(( k = 10\text{N}/\text{m} \); \( l_0=40\text{cm} )\) au un capăt antrenat de un motor și câte un punct material \(( m = 100\text{g} )\) legat de celălalt capăt.</p>
+
+				Perioade:<br/>
+				<div class="myNumber" data-step=0.1 data-precision=1 id="three_springs_1"><div>-</div><div contenteditable="">1</div><div>+</div></div>
+				<div class="myNumber" data-step=0.1 data-precision=1 id="three_springs_2"><div>-</div><div contenteditable="">2</div><div>+</div></div>
+				<div class="myNumber" data-step=0.1 data-precision=1 id="three_springs_3"><div>-</div><div contenteditable="">3</div><div>+</div></div><br/>
+				<div class="myButton" onclick="do_threesprings_experiment()">Dă-i!</div>
+			</section>
+			<section>
+				<h2>De unde vine 0.6!?</h2>
+				<p>E posibil să ajungem la aceeași valoare folosind doar notiuni teoretice?</p>
+				<p>
+				La extremitățile oscilației avem forța elastică maximă, deci și accelerație maximă:
+				<!-- $$ a(t) = \frac{d^2}{dt^2} A \cdot sin(t\omega+\varphi_0) $$ -->
+				$$ a(t) = \omega^2 \cdot A \cdot (-1) \cdot sin(\varphi(t)) $$
+				$$ a_{max} = \omega^2 \cdot A  \ \ \ \ \text{(1)}$$
+				
+				Din Legea lui Hooke avem:
+
+				$$ F_{el}(t) = -k \cdot x(t) $$
+				$$ F_{max} = k \cdot A $$
+				$$ a_{max} = \frac{F_{max}}{m} $$
+				$$ a_{max} = \frac{kA}{m} \ \ \ \ \text{(2)}$$
+
+
+				$$ \text{(1),(2)} \Rightarrow \frac{kA}{m} = A\omega^2 $$
+				$$ \omega = \sqrt{\frac{k}{m}} $$
+				$$ T = \frac{2\pi}{\omega} $$
+				$$ T = \frac{2\pi}{\sqrt{\frac{k}{m}}} $$
+				$$ T = \frac{2\pi}{\sqrt{\frac{10\text{N}/\text{m}}{0.1\text{kg}}}} $$
+				$$ T \approx 0.628\text{s} $$
+				</p>
+				<p>
+				Rezultatul confirmă faptul că frecvența rezonantă a unui sistem resort &ndash; punct material este egală cu frecvența oscilatorului liniar armonic alcătuit din acestea.
+				</p>
+			</section>
+			<section id="static_house">
+				<h2>2 &ndash; Cazul mai complicat</h2>
+				<p>Complexitatea problemei determinării frecvenței rezonante a unui sistem crește drastic odată cu creșterea numărului de elemente ce alcătuie sistemul.</p>
+				<p>De exemplu, e foarte greu să calculezi teoretic frecvența de rezonanță a machetei din stânga. E nevoie de muncă experimentală!</p>
+			</section>
+			<section>
+				<h2>Experiment - cutremur 1</h2>
+				<p>Oscilăm fundația modelului unei case la diferite perioade.</p>
+				Perioada:<br>
+				<div class="myNumber" data-step=0.1 data-precision=1 id="house_sim_period"><div>-</div><div contenteditable="">2.0</div><div>+</div></div><br/>
+				<button class="myButton" onclick="do_house_experiment()">Dă-i!</button>
+			</section>
+			<section>
+				<h2>Experiment - cutremur 2</h2>
+				<p>Observăm cum reacționează casa la o multitudine de oscilații.</p>
+				T de la:<br>
+				<div class="myNumber" data-step=0.1 data-precision=1 id="house_batch_period1"><div>-</div><div contenteditable="">0.1</div><div>+</div></div><br/>
+				Până la:<br/>
+				<div class="myNumber" data-step=0.1 data-precision=1 id="house_batch_period2"><div>-</div><div contenteditable="">10</div><div>+</div></div><br/>
+				<button class="myButton" onclick="do_batch_experiment()">Dă-i!</button><br/>
+				<p>Putem compara graficul cu rezultate experimentale din viața reală:</p>
+				<button class="myButton" onclick="house_batch.compare = !house_batch.compare">Compară!</button>
+			</section>
+			<section id="filter_1">
+				<h2>3 &ndash; Filtre rezonante</h2>
+				<p>Un resort are efectul de a "filtra" frecvențe, lăsând să treacă de la un capăt la altul pe cele apropiate de frecvența rezonantă și absorbând cele depărtate.</p>
+			</section>
+			<section>
+				<h2>Experiment - filtru sunet</h2>
+				<p>Capătul din stânga al resortului e legat de un difuzor care generează zgomot alb (1). Mișcările capătului din dreapta sunt măsurate de ceva similar unui microfon.</p>
+				<p>Ambelor mișcări li se calculează transformata Fourier pentru a obține graficele frecvență/amplitudine. (2)</p>
+				<p class="expl">1 &ndash; o grămadă mare de frecvențe cu mișcare cât mai haotică</p>
+				<p class="expl">2 &ndash; ca cele des întâlnite pe youtube la muzică electronică</p>
+				
+				Putem adjusta masa "microfonului" pentru a schimba frecvența rezonantă:<br/>
+				<div class="myNumber" data-step=0.005 data-precision=3 id="filter1_mass"><div>-</div><div contenteditable="">0.10</div><div>+</div></div><br/>
+			</section>
+			<section>
+				<h2>Cum se aude asta?</h2>
+				<p>N-am avut timp să implementez <i>și asta</i>, dar e o demonstrație bună la <a href="http://omnikrll.github.io/ResonantFilterBank/">http://omnikrll.github.io/ResonantFilterBank/</a></p>
+			</section>
+			<section>
+				<h1>Multumim!</h1>
+				<br><br><br>
+				<h3>Resurse folosite</h3>
+				<ul>
+					<li>\( \KaTeX \)</li>
+					<li>Wikipedia</li>
+					<li>Mult MDN, stackoverflow</li>
+				</ul>
+			</section>
+		</aside>
+
+		<script type="module" src="./engine/import_all.js"></script>
+		<script type="module">
+			import {ComplexArray} from "./jsfft/lib/fft.js";
+			window.ComplexArray = ComplexArray;
+		</script>
+		<script src="./mynumber.js" defer></script>
+		<script src="./cover_experiment.js" defer></script>
+		<script src="./spring_experiments.js" defer></script>
+		<script src="./house_experiments.js" defer></script>
+		<script src="./filter_experiments.js" defer></script>
+		<script>
+let current_experiment;
+function switchToExperiment(exp) {
+	if(current_experiment) current_experiment.stop();
+	current_experiment = exp;
+	current_experiment.run();
+}
+
+window.onload = () => {
+	const intersectionObserver = new IntersectionObserver(handleIntersect, {
+		threshold: [
+			0, .51
+		]
+	});
+
+	const scenes = {};
+	scenes["title_slide"] = cover;
+	scenes["single_spring"] = single_spring;
+	scenes["static_house"] = static_house;
+	scenes["filter_1"] = filter_scene;
+
+	for(let id in scenes) {
+		const elem = document.getElementById(id);
+		intersectionObserver.observe(elem);
+	}
+
+	function handleIntersect(entries) {
+		entries.forEach(entry => {
+			if(entry.intersectionRatio > 0.50) {
+				if(scenes[entry.target.id]) {
+					switchToExperiment(scenes[entry.target.id]);
+				}
+			}
+		});
+	}
+
+}
+		</script>
+	</body>
+</html>
