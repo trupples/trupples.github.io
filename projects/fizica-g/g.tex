@@ -1,0 +1,310 @@
+\documentclass{article}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\renewcommand{\defaultscriptratio}{1.5}
+
+\title{Calcularea constantei gravitaționale din mișcarea pendulurilor gravitaționale}
+\author{Dragomir Ioan, Prelipcean Marius \\ 11B
+	\and Constantineanu Raluca \\ Prof. Coordonator
+	\and Cristian, Bolea, Turcilă}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Sinopsis}
+Folosind date experimentale măsurate de mai multe grupe de elevi în cadrul
+orei de fizică și noțiuni te\-o\-re\-ti\-ce clasice despre gravitație, forța
+elastică și pendulul gravitațional construim un model ce aproximează
+mișcările unui pendul cu un oscilator liniar armonic pe care îl folosim
+pentru a aproxima constanta gravitațională din zona Bucureștiului. În final
+arătăm și că metoda de calcul prin regresie liniară este mult mai precisă
+decât luarea mediei aritmetice a constantelor gravitaționale rezultate din
+mai multe experimente independente.
+
+\section{Introducere}
+
+Forța gravitațională este aproximată pe Pământ ca
+
+\begin{math}
+	G = mg
+\end{math}
+
+unde $G$ este mărimea forței gravitaționale, $m$ este masa obiectului atras
+de pământ și $g$ este constanta gravitațională.
+
+Scopul acestui studiu este deducerea valorii constantei gravitaționale din
+măsurători experimentale.
+
+Folosind niște greutăți de cântar și niște sfori, grupele de elevi au construit
+penduluri gravitaționale. Cum oscilația unui pendul gravitațional la unghiuri
+mici\footnote{Se consideră "unghiuri mici" unghiurile $ <5^\circ $}
+e aproximată de un oscilator liniar armonic, am calculat modelul OLA-ului
+teoretic corespunzător fiecărui pendul construit și am folosit analogia OLA --- pendul
+pentru a extrage o relație între datele măsurate în experimente și constanta
+gravitațională, astfel calculând-o.
+
+După calcularea unei valori aproximale pentru $g$ se vor discuta posibile surse
+de erori în acest proces și soluții pentru creșterea preciziei răspunsului.
+
+\section{Obținerea datelor experimentale}
+Fiecare grupă a primit de la profesor câte o sfoară de iută cu lungimi
+între 20-50cm (not. $l$) și câte o greutate cu mase între 200-500g (not. $m$). Acestea au
+fost folosite pentru a construi un pendul gravitațional a cărui masă și
+lungime sunt cunoscute.
+
+După construirea pendulelor, grupele au efectuat mai multe teste în care
+lăsau pendulul să oscileze cu un unghi maxim "mic" și măsurau:
+1) durata totală a oscilațiilor (not. $ t $); 2) numărul de oscilații (not.
+$ n $). Din aceste date se poate calcula pentru fiecare test: 3) perioada
+medie a unei oscilații (not. $ T $); și pentru toate testele: 4) media
+perioadelor medii ale oscilațiilor (not. $\overline{T}$); 5) eroarea
+perioadei medii a fiecărui test (not. $\Delta T$); 6) eroarea medie peste
+toate testele (not. $\overline{\Delta T}$).
+
+Pentru a face acest studiu am folosit datele experimentale de la grupele
+conduse de Dragomir Ioan (notată G1) și Prelipcean Marius (notată G2). În
+Tabelul \ref{table:dateexp} (pag. \pageref{table:dateexp}) apar cele 12
+teste înregistrate de cele două grupe, variabilele de pe coloane având
+semnificația din paragraful trecut.
+
+\renewcommand{\arraystretch}{1.25}
+\begin{table}
+\centering
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+	\hline
+	Gr. & $l$ & $t$ & $n$ & $T={t \over n}$ & $\overline{T}$ & $\Delta T =|T - \overline{T}|$ & $\overline{\Delta T}$ \\
+	\hline
+	\multicolumn{1}{|c|}{\multirow{5}{*}{G1}} & \multirow{2}{*}{33.5cm} & 27.735s & 20 & 1.136s & \multirow{2}{*}{1.137s} & 0.001s & \multirow{2}{*}{0.001s} \\
+	\multicolumn{1}{|c|}{}                    &                         & 27.77s  & 20 & 1.138s &                         & 0.001s & \multicolumn{1}{|c|}{} \\
+	\cline{2-8}
+        \multicolumn{1}{|c|}{}			  & \multirow{3}{*}{25cm}   & 9.57s   & 10 & 0.957s & \multirow{3}{*}{0.972s} & 0.0155s & \multirow{3}{*}{0.015s} \\
+	\multicolumn{1}{|c|}{}                    &                         & 14.72s  & 15 & 0.981s &                         & 0.0095s & \multicolumn{1}{|c|}{} \\
+	\multicolumn{1}{|c|}{}	                  &                         & 19.57s  & 20 & 0.978s  &                         & 0.006s & \multicolumn{1}{|c|}{} \\
+	\hline
+	\multicolumn{1}{|c|}{\multirow{7}{*}{G2}} & \multirow{7}{*}{40cm}   & 11.21s &  9 & 1.245s & \multirow{7}{*}{1.242s} & 0.003s & \multirow{7}{*}{0.007s} \\
+	\multicolumn{1}{|c|}{}                    &                         & 12.40s & 10 & 1.240s &                         & 0.002s & \multicolumn{1}{|c|}{} \\
+	\multicolumn{1}{|c|}{}			  &                         & 14.80s & 12 & 1.238s &                         & 0.004s & \multicolumn{1}{|c|}{} \\
+	\multicolumn{1}{|c|}{}                    &                         & 18.69s & 15 & 1.246s &                         & 0.004s & \multicolumn{1}{|c|}{} \\
+	\multicolumn{1}{|c|}{}	                  &                         & 24.96s & 20 & 1.248s &                         & 0.006s & \multicolumn{1}{|c|}{} \\
+	\multicolumn{1}{|c|}{}	                  &                         & 31.35s & 25 & 1.254s &                         & 0.012s & \multicolumn{1}{|c|}{} \\
+	\multicolumn{1}{|c|}{}	                  &                         & 36.65s & 30 & 1.220s &                         & 0.022s & \multicolumn{1}{|c|}{} \\
+	\hline
+\end{tabular}
+
+\caption{Rezultate experimentale de la grupele G1, G2}
+\label{table:dateexp}
+\end{table}
+
+\section{Aproximarea unui pendul cu un OLA}
+
+\begin{figure}
+\begin{tikzpicture}
+	\draw[dashed] (0,10cm) node[](suport){} -- (0,0);
+	\draw (0,10.5cm) node[](){A};
+	\draw (suport) -- (5cm, 1.33cm) node[](obj){};
+	\draw (2.7cm, 5.66cm) node[](){$l$};
+	\draw (0, 9cm) arc[radius=1cm, start angle = 270, end angle = 300] (0.5cm, 9.134cm) node()[pos=0.5,below]{$\alpha$};
+	\draw[dotted] (obj) -- (0, 1.33cm) node[](objproj){};
+	\draw (obj) node[align=right,above](){B};
+	\draw (objproj)+(-0.3cm,0) node[align=left](){B'};
+	\draw[dotted] (suport)+(230:10cm) arc[radius=10cm, start angle = 230, end angle = 310];
+	\draw (0, 0) node[below](){O};
+	\draw[thick,->] (5cm, 1.33cm) -- +(0,-3cm) node[below](){G};
+	\draw[thick,->] (5cm, 1.33cm) -- +(1.296cm, -2.25cm) node[above,align=right](){$G_t$};
+	\draw[thick,->] (5cm, 1.33cm) -- +(-1.3cm, -0.75cm) node[below,align=right](){$G_n$};
+	\draw[thick,->] (5cm, 1.33cm) -- +(-1.3cm, 0) node[above,align=right](){$G_n'$};
+\end{tikzpicture}
+
+\caption{Pendul gravitațional}
+\label{figure:pendulumola}
+\end{figure}
+
+În Figura \ref{figure:pendulumola} (pag. \pageref{figure:pendulumola}) sunt notate:
+
+\hfill \\
+$ A $ = punctul de susținere al pendulului \\
+$ B $ = capătul liber al pendulului de masă $m$ \\
+$ G $ = greutatea \\
+$ G_t $ = greutatea tangențială (componenta perpendiculară pe fir) \\
+$ G_n $ = greutatea normală (componenta pe direcția firului) \\
+$ O $ = poziția de echilibru \\
+$ \alpha $ = unghiul dintre poziția curentă și cea de echilibru \\
+$l$ = lungimea pendulului \\
+
+Și notăm $B'$ proiecția lui B pe $AO$ și $B_x$ lungimea segmentului $[B'B]$.
+
+Cum capătul liber se poate mișca doar tangențial cercului de rază $l$,
+$G_t$ nu efectuează deloc lucru mecanic și toată mișcarea e dictată doar
+de $G_n$, variabilă a cărei valoare este:
+
+\begin{math}
+	G_n = mg\sin{\alpha}
+\end{math}
+
+Datorită restricției că $\alpha < 5^\circ$, putem folosi aproximările:
+
+\begin{center}
+	\[	\sin{\alpha} \approx \alpha	\]
+	\[	\cos{\alpha} \approx 1		\]
+	\[ B_x = l\sin{\alpha} \approx l\alpha	\]
+	\[ G_n \approx mg\alpha \approx mg\frac{B_x}{l} \]
+\end{center}
+
+Ultimul pas pentru a "găsi" OLA-ul ce aproximează mișcarea pendulului este să
+considerăm doar mișcarea pe axa orizontală, deoarece la unghiuri mici mișcarea
+pe axa verticală este nesemnificativă:
+
+\begin{center}
+	\[ G_n' \approx G_n \cos{\alpha} \approx mg\frac{B_x}{l}\cos{\alpha} \]
+\end{center}
+
+Formula aceasta în care forța care acționează asupra unui corp ($G_n'$) depinde
+de poziția corpului ($B_x$) este analogul formulei forței elastice din Legea lui
+Hooke:
+\begin{center}
+        \[ F_e = -k\Delta l \]
+\end{center}
+
+În acest caz, putem deduce constanta elastică:
+
+\begin{center}
+        \[ k = \frac{mg}{l} \]
+\end{center}
+
+Acum cunoaștem parametrii unui OLA care imită cât se poate de bine oscilațiile
+pendulului. Perioada unui OLA cu $k$ cunoscut este:
+
+\begin{center}
+	\[ T = \frac{2\pi}{\sqrt{\frac{k}{m}}} \]
+\end{center}
+
+\section{Calcularea constantei gravitaționale}
+
+Care în acest caz devine:
+\begin{center}
+	\[ T = \frac{2\pi}{\sqrt{\frac{\frac{mg}{l}}{m}}} = \frac{2\pi}{\sqrt{\frac{g}{l}}} = 2\pi\sqrt{\frac{l}{g}} \]
+\end{center}
+
+Această formulă demonstrează faptul că perioada de oscilație a unui pendul
+e independentă de masa acestuia, însă, mai mult, ne dă o relație clară între
+perioada oscilațiilor, lungimea pendulului și constanta gravitațională.
+
+O posibilitate de a proceda în acest stadiu este să se calculeze $g$ pentru
+fiecare test în parte și să se considere media aritmetică a $g$-urilor rezultante
+ca valoarea finală, însă o metodă mai precisă este estimarea constantei gravitaționale
+prin regresie liniară pe perechi $(T^2, l)$.
+
+\begin{center}
+	\[ T^2 = 4\pi^2\frac{l}{g} \]
+\end{center}
+
+Astfel luăm fiecare din cele 12 teste și le calculăm perechea $(T^2, l)$
+(Tabelul \ref{table:tuples} pag. \pageref{table:tuples}), apoi desenăm graficul
+acelor perechi (Figura \ref{figure:tuples} pag. \pageref{figure:tuples}).
+\begin{figure}[h!]
+\begin{minipage}[b]{0.4\linewidth}
+	\begin{tabular}{|c|c|c|}
+		\hline $T$ & $T^2 \over s^2$ & $l$ \\
+		\hline 1.136s & 1.2905 & 0.335m \\
+		\hline 1.138s & 1.2950 & 0.335m \\
+		\hline 0.957s & 0.9158 & 0.25m \\
+		\hline 0.981s & 0.9623 & 0.25m \\
+		\hline 0.978s & 0.9564 & 0.25m \\
+		\hline 1.245s & 1.5500 & 0.4m \\
+		\hline 1.240s & 1.5376 & 0.4m \\
+		\hline 1.238s & 1.5326 & 0.4m \\
+		\hline 1.246s & 1.5525 & 0.4m \\
+		\hline 1.248s & 1.5575 & 0.4m \\
+		\hline 1.254s & 1.5725 & 0.4m \\
+		\hline 1.220s & 1.4884 & 0.4m \\
+		\hline
+	\end{tabular}
+	
+	\caption{Perechile $(T^2, l)$ de la fiecare test}
+	\label{table:tuples}
+\end{minipage}
+\begin{minipage}[b]{0.4\linewidth}
+\begin{tikzpicture}
+\begin{axis}[%
+scatter/classes={%
+    a={mark=o,draw=black}}]
+\addplot[scatter,only marks,%
+    scatter src=explicit symbolic]%
+table[meta=label] {
+$T2$ l label
+	%0 0 a
+1.2905 0.335 a
+1.2950 0.335 a
+0.9158 0.25 a
+0.9623 0.25 a
+0.9564 0.25 a
+1.5500 0.4 a
+1.5376 0.4 a
+1.5326 0.4 a
+1.5525 0.4 a
+1.5575 0.4 a
+1.5725 0.4 a
+1.4884 0.4 a
+};
+	\draw (axis cs:0,0.01410) -- (axis cs:1.6,0.4141);
+\end{axis}	
+\end{tikzpicture}
+\caption{Graficul perechilor $(T^2, l)$}
+\label{figure:tuples}
+\end{minipage}
+\end{figure}
+
+Dreapta care aproximează cel mai aproape perechile de $(T^2, l)$ culese
+este $l = 0.25 T^2 + 0.01410$, deci $g$ rezultat este:
+
+\begin{center}
+	\[ g = 4\pi^2\frac{l}{T^2} \approx 39.478\cdot0.25 \]
+	\[ g \approx 9.86 \]
+\end{center}
+
+\section{Comparație cu metoda naivă}
+
+Acest rezultat este mai precis decât rezultatele obținute independent de
+fiecare grupă prin metoda în care se calcula g pentru fiecare test și se ia
+media aritmetică a acelor rezultate. Rezultatul după regresia liniară este la
+doar 0.5\% de valoarea corectă de 9.81, pe când grupelor le-au dat rezultatele 10.89 (11\% distanța de la valoarea corectă) și 10.43 (4\% distanța).
+
+\section{Surse de eroare}
+
+Deși rezultatul obținut este foarte satisfăcător, acesta e tot destul de departe
+de valoarea reală. În această secțiune vor fi analizate mai multe motive pentru
+care acesta este cazul și voi propune soluții pentru a obține rezultate și mai
+precise în experimentele din viitor.
+
+În primul rând, datorită lipsei de unelte de precizie, măsurătorile au fost făcute
+"dupa ochi". Lungimile firelor au fost aproximate în funcție de dimensiunile telefoanelor
+și caiatelor și cronometrarea a suferit mult datorită reflexelor umane încete.
+
+În al doilea rând, modelul OLA-ului fără frecare e departe de realitate. Pe de o parte
+apare frecarea cu aerul care duce la perioade de oscilație medii mai lungi, deci la
+rezultate pentru constanta gravitațională mai mici, iar pe de alta există un defect
+la nivel conceptual deoarece un OLA nu poate imita perfect un pendul, ci doar îl poate
+aproxima. Oricărui studiu care se bazează pe o astfel de aproximare îi este predestinată
+eroarea datorită diferenței subtile dinte un pendul și un OLA, chiar și într-un mediu fără frecare.
+
+Pentru a rezolva prima problemă sugerez dotarea cu unelte de precizie pentru măsurarea
+lungimii sforii (rigle cu milimetri) și o soluție automată, posibil electronică, pentru măsurarea
+timpului de oscilație. Pentru a doua problemă soluția ar fi schimbarea totală a metodologiei
+experimentului, folosirea unor formule mai complexe pentru mișcarea pendulului pentru a evita
+aproximările de genul $sin(x) \approx x$.
+
+
+\section{Concluzie}
+În concluzie, calcularea constantei gravitaționale locale este un experiment plauzibil, ușor de efectuat și fără
+echipamente de precizie și, în opinia mea, distractiv, la care dacă sunt folosite metode bune de calcul precum regresia liniară în locul
+altor soluții mai naive se poate ajunge la rezultate foarte precise. Experimentul are un mare dezavantaj, insă, 
+deoarece acesta se bazează pe aproximarea unui pendul cu un OLA. Această aproximare e destul de bună incât să se
+poată ajungă la reultate satisfăcătoare, insă nu este decât o aproximare.
+
+\end{document}
+
