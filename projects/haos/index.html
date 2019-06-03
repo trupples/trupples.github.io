@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Teoria Haosului - Dragomir, Climovschi, Vasile</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<canvas width=2000 height=1414></canvas>
+		<div id="presentation">
+			<section data-experiment="logmap">
+				# Teoria haosului
+
+				## Climovschi Mircea
+				## Dragomir Ioan
+				## Vasile Dan
+
+				* Funcția logistică
+				* Pendulul dublu
+				* Jocul haosului
+			</section>
+			<section data-experiment="logmap">
+				# Teoria haosului
+
+				este ramura matematicii care studiază sisteme dinamice care, deși sunt calculabile, prezintă comportamente imprevizibile, foarte sensibile și dependente de condițiile inițiale.
+			</section>
+			<section data-experiment="logmap">
+				# Funcția logistică
+
+				$$ \begin{aligned}
+				\text{fie } P &= \text{populația din anul curent} \\\\
+				    P &\in [ 0, 100 \\% ] \\\\
+				    f(P) &= \text{populația din anul următor}
+				   \end{aligned} $$
+
+				Funcția logistică imită evoluția unei populații imitând urmatoarele fenomene:
+
+				1. Populația se înmulțește proporțional însăși
+					$$ f(P) = P \cdot \text{ceva} $$
+				2. Cu cât e mai mare populația cu atât sunt mai puține resurse pentru generația următoare
+					$$ f(P) = (100\\%-P) \cdot \text{ceva} $$
+
+				Combinând cele două idei se ajunge la forma finală:
+
+				$$ f(P) = R \cdot P \cdot (1-P) $$
+
+				R e un parametru care se poate schimba.
+			</section>
+			<section data-experiment="logfun_exp1">
+				# Iterarea functiei logistice
+
+				Repetarea funcției pentru a simula evoluția populației pe mai mulți ani.
+
+				$$ \begin{aligned}
+				P_1 &= \text{un număr aleator} \\\\
+				P_n &= f(P_{n-1})
+					\end{aligned} $$
+
+				<label for="logfun_exp1_r" id="logfun_exp1_r_preview">$$ R=2 $$</label>
+				<input type="range" name="logfun_exp1_r" id="logfun_exp1_r" min="0" max="4" step="0.05" value="2">
+
+				<span style="color:#ffffff80">Incearca sa schimbi R cu slider-ul de mai sus</span>
+
+				În funcție de R, populația are diferite "comportamente":
+				$$ \begin{aligned}
+				   R < 1 &\rArr P \text{ tinde la 0} \\\\
+				   R \in [1, 3) &\rArr P \text{ tinde la o valoare constantă} \\\\
+				   R \in [3, 3.4] &\rArr P \text{ oscilează intre 2 valori} \\\\
+				   R > 3.4 &\rArr P \text{ imprevizibil, haotic}
+				   \end{aligned} $$
+			</section>
+			<section data-experiment="logmap">
+				# "Harta logistică"
+
+				Arată comportamentul funcției logistice pentru diferitele valori pentru R (axa orizontala).
+
+				Pentru R între 1 și 3 vedem o singură curbă: populația tinde la o singura valoare.
+
+				Pentru R între 3 și 3.4 vedem 2 arce: cele doua valori între care oscilează populația.
+
+				De la 3.4 în dreapta vedem multe valori imprevizibile ale populației.
+			</section>
+			<section data-experiment="double_pendulum">
+				# Pendulul dublu
+
+				Pendulul simplu gravitațional are o mișcare foarte previzibilă și intuitivă.
+
+				On the other hand, pendulul dublu devine foarte imprevizibil odată cu trecerea timpului. Diferente minuscule in poziția inițială duc la diferențe enorme ale poziției dupa o anumită perioadă de timp.
+			</section>
+			<section data-experiment="chaos_game">
+				# Jocul haosului
+
+				Jocul haosului e un proces iterativ de desenare a unor fractali.
+
+				Pas 1
+				---
+
+				Alegem un punct aleator în plan, numit cursor:
+				$$ (c_x, c_y) \in \Reals^2 $$
+
+				Pas 2
+				---
+
+				Alegem unul dintre vârfurile unui poligon, în mod aleator:
+				$$ (v_x, v_y) \in \\{A,B,C, \mathellipsis, Z\\}	 $$
+
+				Pas 3
+				---
+
+				Mutăm cursorul la mijlocul dintre poziția curentă a lui și poziția vârfului ales:
+				$$ (c_x, c_y) \mapsto \text{mij}((c_x,c_y), (v_x, v_y)) $$
+
+				Pas 4
+				---
+
+				Repetăm de la Pasul 2.
+
+				Desen
+				---
+
+				Dacă urmărim pozițiile cursorului pe mai multe iterații ale transformării, putem observa diverse figuri fractale.
+
+				## Experiment
+				Schimbă parametrii demonstratiei:
+				<input type="range" value="3" min="3" max="12" step="1" id="chaos_game_numPoints" onchange="document.querySelector('#chaos_game_numPoints_preview').innerText = document.querySelector('#chaos_game_numPoints').value + ' vârfuri'; restartExperiment(); "/><br/>
+				<center id="chaos_game_numPoints_preview">3 vârfuri</center><br/>
+				<input type="checkbox" id="chaos_game_norepeat" onchange="restartExperiment()" /><label for="chaos_game_norepeat"> Fără același vârf de două ori la rând</label><br/>
+				<input type="checkbox" id="chaos_game_noleft" onchange="restartExperiment()" /><label for="chaos_game_noleft"> Fără vârful din stânga ultimului</label><br/>
+				<input type="checkbox" id="chaos_game_noright" onchange="restartExperiment()" /><label for="chaos_game_noright"> Fără vârful din dreapta ultimului</label><br/>
+				<input type="checkbox" id="chaos_game_spinny" onchange="restartExperiment()" /><label for="chaos_game_spinny"> Un vârf se învârte</label><br/><br/>
+
+				Alte forme interesante apar dacă adăugăm restricții la multimea de vârfuri din care poate fi ales cel de la pasul 2, cum ar fi să nu fie același ca ultimul ales sau să nu fie la stânga/dreapta ultimului ales.
+			</section>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<script>
+			let currentExperiment = {stop: _=>_};
+			function switchToExperiment(name) {
+				if(!window[name]) return;
+				currentExperiment.stop();
+				currentExperiment = window[name];
+				currentExperiment.start();
+			}
+
+			function restartExperiment() {
+				switchToExperiment(currentExperiment);
+			}
+
+			function unindent(s) {
+				const lines = s.split("\n");
+				const first_line = /^\s+/.test(lines[0]) ? lines[0] : lines[1];
+				const base = (/^(\s+)/.exec(first_line) || [,""])[1].length;
+				return lines.map(l => l.slice(base)).join('\n');
+			}
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					const elem = entry.target;
+					if(elem.dataset.experiment)
+						if(entry.intersectionRatio > 0.3)
+							switchToExperiment(elem.dataset.experiment);
+				});
+			}, {threshold: 0.3});
+			
+			document.querySelectorAll("#presentation section").forEach((section) => {
+				section.innerHTML = marked(unindent(section.innerHTML));
+				if(section.dataset.experiment)
+					observer.observe(section);
+			});
+		</script>
+		<script src="./logistic-map.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    		onload="renderMathInElement(document.body);"></script>
+	</body>
+</html>

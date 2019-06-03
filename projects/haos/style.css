@@ -1,0 +1,107 @@
+html {
+	background-color: #000;
+	color: #fff;
+	font-family: sans-serif;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+	font-size: 0.833333vw;
+	font-size: 1.6666vw;
+}
+
+canvas {
+	position: fixed;
+	width: 141vh; height: 100vh;
+	top: 0; right: 0;
+
+	background-color: rgb(0, 0, 0);
+	z-index: -100;
+}
+
+#presentation {
+	padding-left: 2rem;
+	white-space: pre-line; /* Create new line for each DIV */
+
+	scroll-snap-type: y mandatory;
+	-webkit-scroll-snap-type: y mandatory;
+}
+
+
+
+#presentation section {
+	scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
+
+	display: inline-block;
+	margin-bottom: 10rem;
+	min-height: 100vh;
+    max-width: 40vw;
+
+    white-space: initial;
+
+	background: rgba(0,0,0,0.7);
+	box-shadow: 0 0 2rem 2rem rgba(0,0,0,0.7);
+}
+
+/* Title Slide */
+#presentation section:nth-of-type(1) {
+	width: 100vw;
+	background: none;
+	box-shadow: none;
+}
+
+#presentation section:nth-of-type(1) h1 {
+	width: 100vw;
+	font-size: 5rem;
+	margin-bottom: 0;
+	margin-top: 0rem;
+}
+#presentation section:nth-of-type(1) h2 {
+	font-size: 2rem;
+	height: 1em;
+	margin: 0.5em 0;
+}
+
+#presentation section:nth-of-type(1) ul {
+	font-size: 1rem;
+	list-style: none;
+	padding-left: 0;
+	margin-top: 1.5rem;
+}
+
+#presentation section:nth-of-type(1) ul li {
+	margin-top: 0.3rem;
+}
+
+#presentation section h1 {
+	font-size: 1.5rem;
+}
+
+#presentation input[type=range] {
+	width: 100%;
+}
+
+
+/* Horrible janky-ass checkbox hack */
+#presentation input[type=checkbox] {
+	display: none;
+}
+
+#presentation input[type=checkbox] + label {
+	opacity: 0.5;
+}
+
+#presentation input[type=checkbox] + label::before {
+	display: inline-block;
+	content: "O";
+	width: 1em;
+	text-align: center;
+}
+
+#presentation input[type=checkbox]:checked + label {
+	opacity: 1;
+}
+
+#presentation input[type=checkbox]:checked + label::before {
+	content: "X";
+}
