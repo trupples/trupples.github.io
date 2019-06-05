@@ -1,4 +1,4 @@
-const FIXED_DT = 1000/20;
+const FIXED_DT = 20;
 
 class Experiment {
 	constructor() {
@@ -23,14 +23,14 @@ class Experiment {
 
 	loop() {
 		const now = Date.now(), dt = now - this.lastT;
+		this.lastT = now;
 
 		this.tick(dt);
 
 		this.timeDebt += dt;
 		while(this.timeDebt > FIXED_DT) {
-			console.log("fixed");
-			this.fixedTick(FIXED_DT);
 			this.timeDebt -= FIXED_DT;
+			this.fixedTick(FIXED_DT);
 		}
 
 		if(this.running) this.animationFrameRequestId = requestAnimationFrame(this.loop.bind(this));
@@ -109,6 +109,35 @@ class LogfunExperiment extends Experiment {
 	}
 }
 
+class DoublePendulum {
+	constructor(data) {
+		for(let prop of [
+			"l1", "m1", "ang1",
+			"l2", "m2", "ang2"
+		]) this[prop] = data[prop];
+
+		this.dTheta1 = this.dTheta2 = 0;
+	}
+
+	tick(dt) {
+		let g = 10,
+			{l1, l2, m1, m2, dTheta1, dTheta2} = this,
+			[Theta1, Theta2] = [this.ang1, this.ang2],
+			time = dt/1000;
+
+		let mu      =  1+m1/m2,
+			d2Theta1  =  (g*(Math.sin(Theta2)*Math.cos(Theta1-Theta2)-mu*Math.sin(Theta1))-(l2*dTheta2*dTheta2+l1*dTheta1*dTheta1*Math.cos(Theta1-Theta2))*Math.sin(Theta1-Theta2))/(l1*(mu-Math.cos(Theta1-Theta2)*Math.cos(Theta1-Theta2))),
+			d2Theta2  =  (mu*g*(Math.sin(Theta1)*Math.cos(Theta1-Theta2)-Math.sin(Theta2))+(mu*l1*dTheta1*dTheta1+l2*dTheta2*dTheta2*Math.cos(Theta1-Theta2))*Math.sin(Theta1-Theta2))/(l2*(mu-Math.cos(Theta1-Theta2)*Math.cos(Theta1-Theta2)));
+		
+		this.dTheta1   += d2Theta1*time;
+		this.dTheta2   += d2Theta2*time;
+		Theta1    += this.dTheta1*time;
+		Theta2    += this.dTheta2*time;
+		this.ang1 = Theta1;
+		this.ang2 = Theta2;
+	}
+}
+
 class PendulumExperiments extends Experiment {
 	constructor() {
 		super();
@@ -118,58 +147,17 @@ class PendulumExperiments extends Experiment {
 		this.timeDebt = 0;
 		this.last = Date.now();
 
-		this.d2theta = 0;
-	  	this.d2phi = 0;
-	  	this.dtheta = 0;
-	  	this.dphi = 0;
-
-	  	this.m1 = this.m2 = 10;
-	  	this.l1 = this.l2 = 5;
-
-	  	this.ang1 = 1;
-	  	this.ang2 = 1.3;
+		this.dps = Array(10).fill().map((_,i) => new DoublePendulum({
+			l1: 35, l2: 25,
+			m1: 10, m2: 15,
+			ang1: 2, ang2: 1+i*0.001
+		}));
 
 		super.start();
 	}
 
 	fixedTick(dt) {
-		// Double pendulum sim
-		// Stolen from http://bestofallpossibleurls.com/double-pendulum.js
-		const timeStep = 0.001;
-		let {m1, m2, l1, l2, dphi, d2phi, dtheta, d2theta} = this;
-		let theta = this.ang1, phi = this.ang2;
-
-		const g = 0.98;
-	    const a = (2*m1+m2-m2*Math.cos(2*theta-2*phi));
-		d2theta = (-g*(2*m1+m2)*Math.sin(theta)-m2*g*Math.sin(theta-2*phi)-2*Math.sin(theta-phi)*m2*(dphi*dphi*l2-dtheta*dtheta*l1*Math.cos(theta-phi)))/(l1*a);
-		d2phi = (2*Math.sin(theta-phi)*(dtheta*dtheta*l1*(m1+m2)+g*(m1+m2)*Math.cos(theta)+dphi*dphi*l2*m2*Math.cos(theta-phi)))/(l2*a);
-		dtheta += d2theta*timeStep;
-		dphi += d2phi*timeStep;
-		theta += dtheta*timeStep;
-		phi += dphi*timeStep;
-
-		const pi = 3.14159265;
-		const tau = 2*pi;
-
-		console.log(theta, phi);
-		if(theta > pi) {
-			theta -= tau;
-		}
-		if(phi > pi) {
-			phi -= tau;
-		}
-		if(theta < -pi) {
-			theta += tau;
-		}
-		if(phi < -pi) {
-			phi += tau;
-		}
-		console.log(theta, phi);
-
-		this.dphi = dphi; this.d2phi = d2phi;
-		this.dtheta = dtheta; this.d2theta = d2theta;
-		this.ang1 = theta; this.ang2 = phi;
-
+		this.dps.forEach(dp => dp.tick(dt));
 	}
 
 	tick() {
@@ -177,16 +165,23 @@ class PendulumExperiments extends Experiment {
 		this.ctx.strokeStyle = "#FFF";
 		this.ctx.lineWidth = 5;
 
-		// Draw double pendulum
-		const cx = 1000, cy = 400, S=100;
-		this.ctx.beginPath();
-		this.ctx.moveTo(cx, cy);
-		this.ctx.lineTo(cx + Math.cos(this.ang1)*this.l1*S, cy + Math.sin(this.ang1)*this.l1*S);
-		this.ctx.lineTo(cx + Math.cos(this.ang1)*this.l1*S +
-		                     Math.cos(this.ang2)*this.l2*S,
-		                cy + Math.sin(this.ang1)*this.l1*S +
-		                     Math.sin(this.ang2)*this.l2*S);
-		this.ctx.stroke();
+		// Draw double pendulums
+		this.dps.forEach((dp, i) => {
+			const cx = 1200, cy = 400, rot=3.141592/2, S=10;
+
+			this.ctx.strokeStyle = `hsl(${i/10*360}deg, 50%, 50%)`
+			this.ctx.beginPath();
+			this.ctx.moveTo(cx, cy);
+			this.ctx.lineTo(cx + Math.cos(dp.ang1+rot)*dp.l1*S,
+							cy + Math.sin(dp.ang1+rot)*dp.l1*S);
+
+			this.ctx.lineTo(cx + Math.cos(dp.ang1+rot)*dp.l1*S +
+			                     Math.cos(dp.ang2+rot)*dp.l2*S,
+
+			                cy + Math.sin(dp.ang1+rot)*dp.l1*S +
+			                     Math.sin(dp.ang2+rot)*dp.l2*S);
+			this.ctx.stroke();
+		})
 	}
 }
 
@@ -285,6 +280,20 @@ window.logmap = new LogisticMapExperiment();
 window.logfun_exp1 = new LogfunExperiment();
 window.double_pendulum = new PendulumExperiments();
 window.chaos_game = new ChaosGameExperiment();
+window.minge = new (class PlmExperiment extends Experiment {
+	constructor() {
+		super();
+
+		this.i = new Image();
+		this.i.src = "./patronuu.png";
+	}
+
+	tick() {
+		this.ctx.clearRect(0, 0, this.canv.width, this.canv.height);
+		const h = 800*this.i.height/this.i.width;
+		this.ctx.drawImage(this.i, this.canv.width - 1000, this.canv.height/2 - h/2, 800, h);
+	}
+})();
 
 document.querySelector("#logfun_exp1_r").addEventListener("change", (evt) => {
 	const self = evt.target;

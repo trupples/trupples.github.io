@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<title>Teoria Haosului - Dragomir, Climovschi, Vasile</title>
+		<title>Teoria Haosului 11B</title>
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
@@ -13,8 +13,10 @@
 
 				## Climovschi Mircea
 				## Dragomir Ioan
+				## Dan Cristian
 				## Vasile Dan
 
+				* Saltul mingii de Rugby
 				* Funcția logistică
 				* Pendulul dublu
 				* Jocul haosului
@@ -49,7 +51,7 @@
 			<section data-experiment="logfun_exp1">
 				# Iterarea functiei logistice
 
-				Repetarea funcției pentru a simula evoluția populației pe mai mulți ani.
+				Pentru a face prognoza populației pe mai mulți ani, putem aplica funcția propriul ei rezultat.
 
 				$$ \begin{aligned}
 				P_1 &= \text{un număr aleator} \\\\
@@ -85,7 +87,12 @@
 
 				Pendulul simplu gravitațional are o mișcare foarte previzibilă și intuitivă.
 
-				On the other hand, pendulul dublu devine foarte imprevizibil odată cu trecerea timpului. Diferente minuscule in poziția inițială duc la diferențe enorme ale poziției dupa o anumită perioadă de timp.
+				Pe de altă parte, pendulul dublu devine foarte imprevizibil odată cu trecerea timpului. Diferențe minuscule în poziția inițială duc la diferențe enorme ale poziției dupa o anumită perioadă de timp.
+
+				## Experiment
+				10 pendule duble pornesc din poziții aproape identice. Diferența dintre ele este unghiul celui de-al doilea braț, care diferă din 0,05 grade in 0,05 grade.
+
+				Inițial coincid toate pendulele, dar dupa câteva secunde putem observa comportamentul haotic.
 			</section>
 			<section data-experiment="chaos_game">
 				# Jocul haosului
@@ -130,6 +137,18 @@
 				<input type="checkbox" id="chaos_game_spinny" onchange="restartExperiment()" /><label for="chaos_game_spinny"> Un vârf se învârte</label><br/><br/>
 
 				Alte forme interesante apar dacă adăugăm restricții la multimea de vârfuri din care poate fi ales cel de la pasul 2, cum ar fi să nu fie același ca ultimul ales sau să nu fie la stânga/dreapta ultimului ales.
+			</section>
+			<section data-experiment="minge">
+				# Saltul mingii de Rugby
+
+				Minglie sferice (ex. fotbal) sar într-un mod ușor de prevăzut.
+
+				Mingile ovale, precum cele de Rugby, au săritura mai imprevizibilă deoarece direcția acesteia depinde de mai mulți factori, printre care viteza și axa de rotație, unghiul la care atinge pământul, etc.
+
+				Din acest motiv, putem clasifica săritura mingii de rugby ca un alt exemplu de comportament haotic.
+			</section>
+			<section>
+				# Mulțumim
 			</section>
 		</div>
 
