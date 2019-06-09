@@ -1,16 +1,223 @@
+<!--52 h1
+24 normal text
+40 h2
+30 h3
+
+
+bg #0B3F47
+color #ffffff
+a color #AAF1B3-->
+
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Dragomir Ioan</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<title>Dragomir Ioan</title>
+		<style> /* Meh inlining this css cos it's not gonna change anytime soon and it's really simple anyway */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
-		<script defer src="/assets/httpswarn.js"></script>
-		<link rel="stylesheet" href="/assets/style.css" />
+html {
+	background-color: #0B3F47;
+	font-family: 'Roboto Mono', monospace;
+	color: white;
+	margin: 90px;
+
+	font-size: 1.5rem;	/* 24px for a default 16 */
+}
+
+body {
+	margin: 0;
+}
+
+h1 {
+	font-size: 2.16rem;
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.66rem;
+	margin: 0;
+	margin-bottom: 40px;
+}
+
+section {
+	margin-top: 70px;
+	margin-bottom: 70px;
+}
+
+section#bio {
+	width: 30rem;
+	max-width: 100%;
+}
+
+section h3 {
+	font-size: 1.25rem;
+	display: inline;
+	margin: 0;
+}
+
+a {
+	color: #AAF1B3;
+}
+
+ul {
+	padding-left: 0;
+	list-style: none;
+}
+
+ul > li::before {
+	display: inline;
+	content: "*";
+	padding-right: 20px;
+}
+
+.project {
+	display: grid;
+	width: 100%;
+	border: 1px solid white;
+	border-radius: 15px;
+	padding: 15px;
+
+	margin-bottom: 50px;
+
+	grid-template-areas: "img info";
+	grid-template-columns: 12rem 1fr;	/* rem or just 192px? */
+
+	box-shadow: 0 0 8px 0 #AAF1B3;
+}
+
+.project > img {
+	grid-area: img;
+	border-radius: 15px;
+	width: 10rem; height: 10rem; margin: 1rem;
+
+
+}
+
+.project > img:not(.no_shadow) {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+}
+
+.project > div {
+	grid-area: info;
+	 margin: 1rem;
+}
+
+.pink {color: #FFB2FF;}
+
+@media screen and (max-width: 50rem) {
+	html {
+		margin: 1rem;
+	}
+
+	.project {
+		grid-template-areas: "img" "info";
+		grid-template-columns: 1fr;
+		grid-template-rows: 12rem 1fr;
+
+		width: calc(100vw - 2rem);
+		box-sizing: border-box;
+	}
+}
+
+@media print {
+	html {
+		background-color: unset;
+		font-size: initial;
+		color: initial;
+	}
+
+	body {
+		margin: initial;
+	}
+
+	a {
+		color: initial;
+	}
+
+	.project {
+		border: 1px solid black;
+		box-shadow: none;
+	}
+
+	.pink {
+		color: initial;
+	}
+}
+
+		</style>
 	</head>
 	<body>
-		<div id="content" class="center-column">
-			<h1>idk gonna remake this sometime soon</h1>
-		</div>
+		<h1>Dragomir Ioan</h1>
+		<div id="subtitle">@trupples</div>
+
+		<section id="bio">
+			I'm a junior dev slowly tackling all frontiers of fullstack. I 💙 CTFs, playing around with web design, and tinkering with everything I can lay my hands on.<br/>
+			<br/>
+			"I code to avoid all greater responsibilities"
+		</section>
+
+		<section id="projects">
+			<h2>My Projects</h2>
+			<div class="project">
+				<img src="assets/img/leaning_tower.png" alt="Simulated leaning tower" />
+				<div>
+					<h3>Interactive physics explainers</h3><br/>
+					<ul>
+						<li><a href="https://trupples.github.io/projects/rezonanta/">Rezonanța</a></li>
+						<li><a href="https://trupples.github.io/projects/haos/">Teoria Haosului</a></li>
+					</ul>
+					These are school projects I did to express my love for both science and programming.<br/>
+					<br/>
+					Skills: HTML5 + CSS + Vanilla JS
+				</div>
+			</div>
+			<div class="project">
+				<img src="assets/img/bioapp.png" alt="BioApp logo" class="no_shadow" />
+				<div>
+					<h3>BioApp:</h3> A gamified approach to studying for Med School entry exams.<br/>
+					<br/>
+					Work in progress<br/>
+					<br/>
+					Skills: Adobe XD, SCSS, Express, Preact
+				</div>
+			</div>
+			<div class="project">
+				<img src="assets/img/wtl.webp" alt="WreckTheLine team logo" />
+				<div>
+					<h3>CTF writeups</h3><br/>
+					<br/>
+					I play a Reverse Engineering role in the awesome <a href="https://ctftime.org/team/57908">WreckTheLine</a> team and I upload my writeups to <a href="https://gitlab.com/mahham/ctf/">this repo</a>.<br/>
+					<br/>
+					I also have a video series on a particularly interesting VM challenge: <a href="https://www.youtube.com/watch?v=yEbAQXDKRKY">click here!</a><br/>
+					<br/>
+					Skills: A multitude of community tools, Ghidra, IDA Pro
+				</div>
+			</div>
+		</section>
+		<section id="experience">
+			<h2>Experience</h2>
+			My fascination for making pretty things on the web was sparked at a very young age: I remember making simple websites with <span class="pink">amazing &lt;h1&gt; tags</span> as far back as when I was 6 years old.<br/>
+			<br/>
+			In third grade I joined an informatics club, within which I learned C programming and a big and useful lot of computer science concepts. The awesome support of the club got me to the national olympiad in informatics 6 times (2012-2016, 2019), where I earned 2 silver and 2 bronze medals.<br/>
+			<br/>
+			In mid-to-late 2016 I started taking part in community meetups and had great results in a couple of local hackathons.<br/>
+			<br/>
+			In 2018 I helped the Creative Motion team build <a href="https://creativemotion.ro">their website</a> and took on a SysAdmin role, helping them with website hosting, DNS config, and company email.<br/>
+			<br/>
+			I've also been passionate about CTFs ever since taking part in the 2018 European Cyber Security Challenge national qualifiers and I'm currently playing with the <a href="https://ctftime.org/team/57908">WreckTheLine</a> team, as well as being the organiser of the weekly CTF-themed meetup in Bucharest: <a href="https://club.securityespresso.org/about.html">jmp0xc0ffee</a>.
+		</section>
+		<section id="contact">
+			<h2>Contact</h2>
+
+			The best way to contact me is by email. Feel free to send me anything at <a href="mailto:ioandr@gomir.pw">ioandr@gomir.pw</a><br/>
+			<br/>
+			I'm also present on:<br/>
+			<ul>
+				<li>Twitter: <a href="https://twitter.com/_trupples">@_trupples</a></li>
+				<li>YouTube: <a href="https://www.youtube.com/channel/UC5V_aENDKiKuUD50ZVZJyew">My channel</a></li>
+				<li>GitHub: <a href="https://github.com/trupples">@trupples</a></li>
+			</ul>
+		</section>
 	</body>
 </html>
