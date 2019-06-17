@@ -1,42 +1,34 @@
-<!--52 h1
-24 normal text
-40 h2
-30 h3
-
-
-bg #0B3F47
-color #ffffff
-a color #AAF1B3-->
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<title>Dragomir Ioan</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
 		<style> /* Meh inlining this css cos it's not gonna change anytime soon and it's really simple anyway */
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 html {
 	background-color: #0B3F47;
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Montserrat', sans-serif;
 	color: white;
 	margin: 90px;
-
-	font-size: 1.5rem;	/* 24px for a default 16 */
 }
 
 body {
+	max-width: 60rem;
+	margin: auto;
+}
+
+h1, h2, h3 {
 	margin: 0;
+	font-weight: 600;
 }
 
 h1 {
 	font-size: 2.16rem;
-	margin: 0;
 }
 
 h2 {
 	font-size: 1.66rem;
-	margin: 0;
 	margin-bottom: 40px;
 }
 
@@ -53,7 +45,6 @@ section#bio {
 section h3 {
 	font-size: 1.25rem;
 	display: inline;
-	margin: 0;
 }
 
 a {
@@ -100,12 +91,51 @@ ul > li::before {
 
 .project > div {
 	grid-area: info;
-	 margin: 1rem;
+	margin: 1rem;
+}
+
+
+#experience ul {
+	list-style: none;
+	border-left: 4px solid white;
+	padding-left: 30px;
+	margin-left: -30px;
+}
+
+#experience ul > li {
+	margin-top: 2em;
+	position: relative;
+}
+#experience ul > li > h3 {
+	font-weight: 400;
+}
+
+#experience ul > li::after {
+	padding: 0;
+	display: block;
+	position: absolute;
+	content: "";
+	width: 1em; height: 1em;
+	top: 0;
+	left: calc(-6px - 0.5em - 30px);
+	border: 4px solid white;
+	background-color: #0B3F47;
+	border-radius: 50%;
+}
+
+#experience ul > li::before {
+	font-size: 1.25rem;
+	content: attr(data-date);
+	position: absolute;
+	width: 8em;
+	text-align: right;
+	top: 0;
+	left: calc(-8em - 64px);
 }
 
 .pink {color: #FFB2FF;}
 
-@media screen and (max-width: 50rem) {
+@media screen and (max-width: 60rem) {
 	html {
 		margin: 1rem;
 	}
@@ -117,6 +147,17 @@ ul > li::before {
 
 		width: calc(100vw - 2rem);
 		box-sizing: border-box;
+	}
+
+	#experience ul {
+		margin-left: 0;
+	}
+
+	#experience ul > li::before {
+		position: initial;
+		display: block;
+		margin-bottom: 0.5em;
+		text-align: left;
 	}
 }
 
@@ -152,9 +193,9 @@ ul > li::before {
 		<div id="subtitle">@trupples</div>
 
 		<section id="bio">
-			I'm a junior dev slowly tackling all frontiers of fullstack. I 💙 CTFs, playing around with web design, and tinkering with everything I can lay my hands on.<br/>
+			I'm a junior dev slowly tackling all frontiers of fullstack.<br/>
 			<br/>
-			"I code to avoid all greater responsibilities"
+			I 💙 CTFs, playing around with web design, and tinkering with everything I can lay my hands on.
 		</section>
 
 		<section id="projects">
@@ -197,15 +238,32 @@ ul > li::before {
 		</section>
 		<section id="experience">
 			<h2>Experience</h2>
-			My fascination for making pretty things on the web was sparked at a very young age: I remember making simple websites with <span class="pink">amazing &lt;h1&gt; tags</span> as far back as when I was 6 years old.<br/>
-			<br/>
-			In third grade I joined an informatics club, within which I learned C programming and a big and useful lot of computer science concepts. The awesome support of the club got me to the national olympiad in informatics 6 times (2012-2016, 2019), where I earned 2 silver and 2 bronze medals.<br/>
-			<br/>
-			In mid-to-late 2016 I started taking part in community meetups and had great results in a couple of local hackathons.<br/>
-			<br/>
-			In 2018 I helped the Creative Motion team build <a href="https://creativemotion.ro">their website</a> and took on a SysAdmin role, helping them with website hosting, DNS config, and company email.<br/>
-			<br/>
-			I've also been passionate about CTFs ever since taking part in the 2018 European Cyber Security Challenge national qualifiers and I'm currently playing with the <a href="https://ctftime.org/team/57908">WreckTheLine</a> team, as well as being the organiser of the weekly CTF-themed meetup in Bucharest: <a href="https://club.securityespresso.org/about.html">jmp0xc0ffee</a>.
+			<ul>
+				<li data-date="2007-ish">
+					<h3>My First HTML "website"</h3>
+					<p>My fascination for making pretty things on the web was sparked at a very young age: I remember making simple websites with <span class='pink'>amazing &lt;h1&gt; tags</span> as far back as when I was 6 years old.</p>
+				</li>
+				<li data-date="2010-2016">
+					<h3>National olympiad in Informatics participation</h3>
+					<p>In third grade I joined an informatics club, within which I learned C programming and a big and useful lot of computer science concepts. The awesome support of the club got me to the national olympiad in informatics 6 times (2012-2016, 2019), where I earned 2 silver and 2 bronze medals.</p>
+				</li>
+				<li data-date="2016-present">
+					<h3>Local tech community meetups, hackathons</h3>
+					<p>In mid-to-late 2016 I started taking part in community meetups and had great results in a couple of local hackathons.</p>
+				</li>
+				<li data-date="2017-present">
+					<h3>CTF</h3>
+					<p>My first CTF was the 2017 Qualification phase of <a href="https://ecsc.eu/">ECSC</a>, after which I was in love with the contest format. I've been playing ever since and I'm currently part of the great <a href="https://ctftime.org/team/57908">WreckTheLine</a> team.</p>
+				</li>
+				<li data-date="2017-2018">
+					<h3>Sysadmin @ CreativeMotion</h3>
+					<p>In 2018 I helped the Creative Motion team build <a href="https://creativemotin.ro">their website</a> and took on a SysAdmin role, helping them with website hosting, DNS config, and company email.</p>
+				</li>
+				<li data-date="2019-present">
+					<h3>jmp0xc0ffee</h3>
+					<p>jmp0xc0ffee started out as a small CTF club at my school. With the help of Security Espresso and Orange Fab, it became a much greater event and an awesome community. We have weekly meetups in Bucharest. <a href="https://club.securityespresso.org">Check us out!</a></p>
+				</li>
+			</ul>
 		</section>
 		<section id="contact">
 			<h2>Contact</h2>
