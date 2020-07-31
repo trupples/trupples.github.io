@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400');
+body {
+	font-family: "Roboto Mono",monospace;
+	font-weight:300;
+	background-color:#000;
+	color:#fff;
+	text-align:center;
+}
+header{
+	font-size:4vmin;
+	margin:1rem;
+	text-align:left;
+}
